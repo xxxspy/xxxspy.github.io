@@ -1,0 +1,830 @@
+<hr>
+<p>title: 结构方程模型R语言实战教程<br>date: 2024-02-28 12:44:03<br>tags:</p>
+<ul>
+<li>结构方程</li>
+<li>R</li>
+<li>mplus</li>
+<li>amos<br>mathjax: true<br>permalink: &#x2F;2024&#x2F;02&#x2F;28&#x2F;结构方程模型&#x2F;</li>
+</ul>
+<hr>
+<p>SEMinR 为创建和估计结构方程模型 (SEM) 非常容易的使用方法。  SEMinR 集成了 SmartPLS 具有的偏最小二乘路径建模 (PLS-PM) 进行估计，也可以使用 LISREL 和 AMOS 的基于协方差的结构方程模型 (CBSEM) 进行估计， 还支持反应性测量模型的验证性因素分析 (CFA)。SEMinR 中 CBSEM 和 CFA 估计都使用 Lavaan 软件包。</p>
+<!-- more -->
+
+<p>SEMinR 有如下特点：</p>
+<ul>
+<li>使用一种通俗易懂语言，用于在 R 中构建和估计结构方程模型</li>
+<li>可以使用基于方差的 PLS 估计和基于协方差的 SEM 估计来对潜变量结构进行建模 </li>
+<li>高级函数可快速指定交互作用、高阶结构 和结构路径</li>
+</ul>
+<p>SEMinR 使用自己的 PLS-PM 估计引擎，并与 Lavaan 软件包集成以进行 CBSEM&#x2F;CFA 估计。 它还带来了其他软件包或软件中没有的一些方法。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>使用如下代码安装 SEMinR ， 它是R的包， 所以你需要在R中运行如下代码：</p>
+<pre><code class="R">install.packages(&quot;seminr&quot;)
+</code></pre>
+<p>注意seminr是使用R4.3.3编译的, 你的R版本不能低于这个版本.</p>
+<p>然后加载包：</p>
+<pre><code class="R">library(seminr)
+</code></pre>
+<h2 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h2><p>你需要从任何数据文件中加载数据到数据框（data.frame）。 列名必须是测量项目的名称。 重要提示：避免在列名称中使用星号“*”（这些是为交互术语保留的）。</p>
+<p>我们的教程使用的是 seminr 自带的数据集 mobi, 可以使用data方法加载数据, 如下:</p>
+<pre><code class="R">df=data(&#39;mobi&#39;)
+head(mobi)
+</code></pre>
+<p>{% raw %}</p>
+<div class="output" contenteditable="true">
+输出(html):<br>
+<table class="dataframe">
+<caption>A data.frame: 6 × 24</caption>
+<thead>
+    <tr><th></th><th scope=col>CUEX1</th><th scope=col>CUEX2</th><th scope=col>CUEX3</th><th scope=col>CUSA1</th><th scope=col>CUSA2</th><th scope=col>CUSA3</th><th scope=col>CUSCO</th><th scope=col>CUSL1</th><th scope=col>CUSL2</th><th scope=col>CUSL3</th><th scope=col>⋯</th><th scope=col>IMAG5</th><th scope=col>PERQ1</th><th scope=col>PERQ2</th><th scope=col>PERQ3</th><th scope=col>PERQ4</th><th scope=col>PERQ5</th><th scope=col>PERQ6</th><th scope=col>PERQ7</th><th scope=col>PERV1</th><th scope=col>PERV2</th></tr>
+    <tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>⋯</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>1</th><td> 7</td><td> 7</td><td> 6</td><td> 6</td><td> 4</td><td> 7</td><td> 7</td><td> 6</td><td>5</td><td> 6</td><td>⋯</td><td> 4</td><td> 7</td><td> 6</td><td> 4</td><td> 7</td><td>6</td><td> 5</td><td> 5</td><td> 2</td><td> 3</td></tr>
+    <tr><th scope=row>2</th><td>10</td><td>10</td><td> 9</td><td>10</td><td>10</td><td> 8</td><td>10</td><td>10</td><td>2</td><td>10</td><td>⋯</td><td> 9</td><td>10</td><td> 9</td><td>10</td><td>10</td><td>9</td><td>10</td><td>10</td><td>10</td><td>10</td></tr>
+    <tr><th scope=row>3</th><td> 7</td><td> 7</td><td> 7</td><td> 8</td><td> 7</td><td> 7</td><td> 6</td><td> 6</td><td>2</td><td> 7</td><td>⋯</td><td> 7</td><td> 7</td><td> 8</td><td> 5</td><td> 7</td><td>8</td><td> 7</td><td> 7</td><td> 7</td><td> 7</td></tr>
+    <tr><th scope=row>4</th><td> 7</td><td>10</td><td> 5</td><td>10</td><td>10</td><td>10</td><td> 5</td><td>10</td><td>4</td><td>10</td><td>⋯</td><td>10</td><td> 8</td><td>10</td><td>10</td><td> 8</td><td>4</td><td> 5</td><td> 8</td><td> 5</td><td> 5</td></tr>
+    <tr><th scope=row>5</th><td> 8</td><td> 7</td><td>10</td><td>10</td><td> 8</td><td> 8</td><td> 5</td><td>10</td><td>3</td><td> 8</td><td>⋯</td><td> 9</td><td>10</td><td> 9</td><td> 8</td><td>10</td><td>9</td><td> 9</td><td> 8</td><td> 6</td><td> 6</td></tr>
+    <tr><th scope=row>6</th><td>10</td><td> 9</td><td> 7</td><td> 8</td><td> 7</td><td> 7</td><td> 8</td><td>10</td><td>3</td><td>10</td><td>⋯</td><td> 9</td><td> 9</td><td>10</td><td> 9</td><td>10</td><td>8</td><td> 9</td><td> 9</td><td>10</td><td>10</td></tr>
+</tbody>
+</table>
+
+</div>
+{% endraw %}
+
+
+<p> mobi 数据框（也可在 semPLS R 软件包中找到） 该数据集来自适用于移动电话市场的欧洲客户满意度指数 (ECSI) 测量工具（Tenenhaus 等人，2005 年）。</p>
+<p> 下面是一些描述性统计:</p>
+<pre><code class="R">dim(mobi) # 有250个样本, 24个变量
+</code></pre>
+<p>{% raw %}</p>
+<div class="output" contenteditable="true">
+输出(html):<br>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>250</li><li>24</li></ol>
+
+</div>
+{% endraw %}
+
+
+
+<pre><code class="R">summary(mobi)
+</code></pre>
+<p>{% raw %}</p>
+<div class="output">
+输出(plain):<br/>
+
+<pre><code>     CUEX1           CUEX2            CUEX3            CUSA1       
+&lt;br /&gt; Min.   : 1.00   Min.   : 1.000   Min.   : 1.000   Min.   : 4.000  
+&lt;br /&gt; 1st Qu.: 7.00   1st Qu.: 7.000   1st Qu.: 6.000   1st Qu.: 7.000  
+&lt;br /&gt; Median : 8.00   Median : 8.000   Median : 8.000   Median : 8.000  
+&lt;br /&gt; Mean   : 7.58   Mean   : 7.532   Mean   : 7.424   Mean   : 7.988  
+&lt;br /&gt; 3rd Qu.: 8.00   3rd Qu.: 9.000   3rd Qu.: 9.000   3rd Qu.: 9.000  
+&lt;br /&gt; Max.   :10.00   Max.   :10.000   Max.   :10.000   Max.   :10.000  
+&lt;br /&gt;     CUSA2            CUSA3            CUSCO            CUSL1       
+&lt;br /&gt; Min.   : 1.000   Min.   : 1.000   Min.   : 1.000   Min.   : 1.000  
+&lt;br /&gt; 1st Qu.: 6.000   1st Qu.: 7.000   1st Qu.: 6.000   1st Qu.: 6.000  
+&lt;br /&gt; Median : 7.000   Median : 7.000   Median : 7.000   Median : 8.000  
+&lt;br /&gt; Mean   : 7.128   Mean   : 7.316   Mean   : 7.068   Mean   : 7.452  
+&lt;br /&gt; 3rd Qu.: 8.000   3rd Qu.: 8.000   3rd Qu.: 9.000   3rd Qu.:10.000  
+&lt;br /&gt; Max.   :10.000   Max.   :10.000   Max.   :10.000   Max.   :10.000  
+&lt;br /&gt;     CUSL2            CUSL3            IMAG1           IMAG2      
+&lt;br /&gt; Min.   : 1.000   Min.   : 1.000   Min.   : 1.00   Min.   : 1.00  
+&lt;br /&gt; 1st Qu.: 3.000   1st Qu.: 7.000   1st Qu.: 7.00   1st Qu.: 7.00  
+&lt;br /&gt; Median : 4.000   Median : 8.000   Median : 8.00   Median : 8.00  
+&lt;br /&gt; Mean   : 4.988   Mean   : 7.668   Mean   : 7.64   Mean   : 7.78  
+&lt;br /&gt; 3rd Qu.: 6.750   3rd Qu.:10.000   3rd Qu.: 9.00   3rd Qu.: 9.00  
+&lt;br /&gt; Max.   :10.000   Max.   :10.000   Max.   :10.00   Max.   :10.00  
+&lt;br /&gt;     IMAG3            IMAG4            IMAG5            PERQ1       
+&lt;br /&gt; Min.   : 1.000   Min.   : 1.000   Min.   : 1.000   Min.   : 2.000  
+&lt;br /&gt; 1st Qu.: 5.000   1st Qu.: 7.000   1st Qu.: 7.000   1st Qu.: 7.000  
+&lt;br /&gt; Median : 7.000   Median : 8.000   Median : 8.000   Median : 8.000  
+&lt;br /&gt; Mean   : 6.744   Mean   : 7.588   Mean   : 7.932   Mean   : 7.944  
+&lt;br /&gt; 3rd Qu.: 8.000   3rd Qu.: 9.000   3rd Qu.: 9.000   3rd Qu.: 9.000  
+&lt;br /&gt; Max.   :10.000   Max.   :10.000   Max.   :10.000   Max.   :10.000  
+&lt;br /&gt;     PERQ2            PERQ3          PERQ4            PERQ5       
+&lt;br /&gt; Min.   : 1.000   Min.   : 1.0   Min.   : 1.000   Min.   : 3.000  
+&lt;br /&gt; 1st Qu.: 6.000   1st Qu.: 7.0   1st Qu.: 7.000   1st Qu.: 7.000  
+&lt;br /&gt; Median : 7.000   Median : 8.0   Median : 8.000   Median : 8.000  
+&lt;br /&gt; Mean   : 7.192   Mean   : 7.7   Mean   : 7.916   Mean   : 7.872  
+&lt;br /&gt; 3rd Qu.: 8.000   3rd Qu.: 9.0   3rd Qu.: 9.000   3rd Qu.: 9.000  
+&lt;br /&gt; Max.   :10.000   Max.   :10.0   Max.   :10.000   Max.   :10.000  
+&lt;br /&gt;     PERQ6            PERQ7            PERV1            PERV2       
+&lt;br /&gt; Min.   : 1.000   Min.   : 1.000   Min.   : 1.000   Min.   : 1.000  
+&lt;br /&gt; 1st Qu.: 7.000   1st Qu.: 7.000   1st Qu.: 5.000   1st Qu.: 6.000  
+&lt;br /&gt; Median : 8.000   Median : 8.000   Median : 6.000   Median : 7.000  
+&lt;br /&gt; Mean   : 7.776   Mean   : 7.592   Mean   : 6.156   Mean   : 6.916  
+&lt;br /&gt; 3rd Qu.: 9.000   3rd Qu.: 9.000   3rd Qu.: 8.000   3rd Qu.: 8.000  
+&lt;br /&gt; Max.   :10.000   Max.   :10.000   Max.   :10.000   Max.   :10.000  
+</code></pre>
+</div>
+{% endraw %}
+
+
+<h2 id="测量模型的设定"><a href="#测量模型的设定" class="headerlink" title="测量模型的设定"></a>测量模型的设定</h2><p>“multi_items”这个函数非常有用, 我么可以使用”multi_items”来生成连续变化的变量名, 例如:</p>
+<pre><code class="R">multi_items(&quot;IMAG&quot;, 1:5)
+</code></pre>
+<p>{% raw %}</p>
+<div class="output" contenteditable="true">
+输出(html):<br>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'IMAG1'</li><li>'IMAG2'</li><li>'IMAG3'</li><li>'IMAG4'</li><li>'IMAG5'</li></ol>
+
+</div>
+{% endraw %}
+
+
+
+<pre><code class="R"># 不连续的变量名
+
+multi_items(&quot;IMAG&quot;, c(1, 3:5))
+</code></pre>
+<p>{% raw %}</p>
+<div class="output" contenteditable="true">
+输出(html):<br>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'IMAG1'</li><li>'IMAG3'</li><li>'IMAG4'</li><li>'IMAG5'</li></ol>
+
+</div>
+{% endraw %}
+
+
+<p>“composite”这个函数顾名思义, 就是生成一个”构建”, 即形成性潜变量, 形成性只能在pls-sem中使用, 也就是说像AMOS这样的软件是不支持的, 例如:</p>
+<pre><code class="R"># 构建一个潜变量, 名为IMAG, 有五个题目, 分别是: &#39;IMAG1&#39;&#39;IMAG2&#39;&#39;IMAG3&#39;&#39;IMAG4&#39;&#39;IMAG5&#39;
+composite(&quot;IMAG&quot;, multi_items(&quot;IMAG&quot;, 1:5))
+</code></pre>
+<p>{% raw %}</p>
+<div class="output" contenteditable="true">
+输出(html):<br>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'IMAG'</li><li>'IMAG1'</li><li>'A'</li><li>'IMAG'</li><li>'IMAG2'</li><li>'A'</li><li>'IMAG'</li><li>'IMAG3'</li><li>'A'</li><li>'IMAG'</li><li>'IMAG4'</li><li>'A'</li><li>'IMAG'</li><li>'IMAG5'</li><li>'A'</li></ol>
+
+</div>
+{% endraw %}
+
+
+<p>如果你的潜变量是反应性的, 即由反应性指标构成, 那么我们需要使用 “reflective” 方法, 基于协方差矩阵的结构方程模型只能支持反应性的指标:</p>
+<pre><code class="R">reflective(&quot;IMAG&quot;, multi_items(&quot;IMAG&quot;, 1:5))
+</code></pre>
+<p>{% raw %}</p>
+<div class="output" contenteditable="true">
+输出(html):<br>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'IMAG'</li><li>'IMAG1'</li><li>'C'</li><li>'IMAG'</li><li>'IMAG2'</li><li>'C'</li><li>'IMAG'</li><li>'IMAG3'</li><li>'C'</li><li>'IMAG'</li><li>'IMAG4'</li><li>'C'</li><li>'IMAG'</li><li>'IMAG5'</li><li>'C'</li></ol>
+
+</div>
+{% endraw %}
+
+
+<p>定义测量模型使用”constructs”, 例如:</p>
+<pre><code class="R">measurements &lt;- constructs(
+  composite(&quot;Image&quot;,        multi_items(&quot;IMAG&quot;, 1:5)),
+  composite(&quot;Expectation&quot;,  multi_items(&quot;CUEX&quot;, 1:3)),
+  composite(&quot;Value&quot;,        multi_items(&quot;PERV&quot;, 1:2)),
+  composite(&quot;Satisfaction&quot;, multi_items(&quot;CUSA&quot;, 1:3)),
+  interaction_term(iv = &quot;Image&quot;, moderator = &quot;Expectation&quot;)
+)
+
+measurement
+</code></pre>
+<p>{% raw %}</p>
+<div class="output" contenteditable="true">
+输出(html):<br>
+<dl>
+    <dt>$composite</dt>
+        <dd><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'Image'</li><li>'IMAG1'</li><li>'A'</li><li>'Image'</li><li>'IMAG2'</li><li>'A'</li><li>'Image'</li><li>'IMAG3'</li><li>'A'</li><li>'Image'</li><li>'IMAG4'</li><li>'A'</li><li>'Image'</li><li>'IMAG5'</li><li>'A'</li></ol>
+</dd>
+    <dt>$composite</dt>
+        <dd><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'Expectation'</li><li>'CUEX1'</li><li>'A'</li><li>'Expectation'</li><li>'CUEX2'</li><li>'A'</li><li>'Expectation'</li><li>'CUEX3'</li><li>'A'</li></ol>
+</dd>
+    <dt>$composite</dt>
+        <dd><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'Value'</li><li>'PERV1'</li><li>'A'</li><li>'Value'</li><li>'PERV2'</li><li>'A'</li></ol>
+</dd>
+    <dt>$composite</dt>
+        <dd><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'Satisfaction'</li><li>'CUSA1'</li><li>'A'</li><li>'Satisfaction'</li><li>'CUSA2'</li><li>'A'</li><li>'Satisfaction'</li><li>'CUSA3'</li><li>'A'</li></ol>
+</dd>
+    <dt>$scaled_interaction</dt>
+        <dd><pre class=language-r><code>structure(function (data, measurement_model, structural_model, 
+<span style=white-space:pre-wrap>    ints, ...) </span>
+{
+<span style=white-space:pre-wrap>    interaction_name &lt;- paste(iv, moderator, sep = "*")</span>
+<span style=white-space:pre-wrap>    iv1_items &lt;- measurement_model[measurement_model[, "construct"] == </span>
+<span style=white-space:pre-wrap>        iv, "measurement"]</span>
+<span style=white-space:pre-wrap>    iv2_items &lt;- measurement_model[measurement_model[, "construct"] == </span>
+<span style=white-space:pre-wrap>        moderator, "measurement"]</span>
+<span style=white-space:pre-wrap>    iv1_data &lt;- as.data.frame(scale(data[iv1_items]))</span>
+<span style=white-space:pre-wrap>    iv2_data &lt;- as.data.frame(scale(data[iv2_items]))</span>
+<span style=white-space:pre-wrap>    multiples_list &lt;- lapply(iv1_data, mult, iv2_data)</span>
+<span style=white-space:pre-wrap>    interaction_data &lt;- do.call("cbind", multiples_list)</span>
+<span style=white-space:pre-wrap>    colnames(interaction_data) &lt;- as.vector(sapply(iv1_items, </span>
+<span style=white-space:pre-wrap>        name_items, iv2_items))</span>
+<span style=white-space:pre-wrap>    intxn_mm &lt;- matrix(measure_interaction(interaction_name, </span>
+<span style=white-space:pre-wrap>        interaction_data, weights), ncol = 3, byrow = TRUE)</span>
+<span style=white-space:pre-wrap>    return(list(name = interaction_name, data = interaction_data, </span>
+<span style=white-space:pre-wrap>        mm = intxn_mm))</span>
+}, class = c("function", "interaction", "scaled_interaction"))</code></pre></dd>
+</dl>
+
+</div>
+{% endraw %}
+
+
+<p>我们使用了interaction_term来定义交互项, 它是用来检验调节效应的, 下面我们定义结构模型:</p>
+<h2 id="结构模型的设定"><a href="#结构模型的设定" class="headerlink" title="结构模型的设定"></a>结构模型的设定</h2><p>“paths”就是路径的意思, 我们用这个方法可以定义一条或者多条路径, 它的from参数就是路径的起点, 它的to参数就是路径的终点, “relationships”函数用于将所有的路径组合起来构成结构模型:</p>
+<pre><code class="R">
+structure &lt;- relationships(
+  paths(from = c(&quot;Image&quot;, &quot;Expectation&quot;, &quot;Image*Expectation&quot;), to = &quot;Value&quot;),
+  paths(from = &quot;Value&quot;, to = &quot;Satisfaction&quot;)
+)
+</code></pre>
+<h2 id="估计结果"><a href="#估计结果" class="headerlink" title="估计结果"></a>估计结果</h2><p>结构方程由测量模型和结构模型构成, 有了上面的模型, 我们可以计算结果了.</p>
+<p>假如我们想使用最小二乘法估计结构方程, 那么我们这样做:</p>
+<pre><code class="R">pls_model &lt;- estimate_pls(data = mobi, 
+                          measurement_model = measurements, 
+                          structural_model = structure)
+summary(pls_model)
+</code></pre>
+<p>{% raw %}</p>
+<div class="output" contenteditable="true">
+输出(stream):<br>
+Generating the seminr model
+
+<p>All 250 observations are valid.</p>
+</div>
+{% endraw %}
+
+
+<p>{% raw %}</p>
+<div class="output">
+输出(plain):<br/>
+
+    
+<pre><code>&lt;br /&gt;Results from  package seminr (2.3.2)
+&lt;br /&gt;
+&lt;br /&gt;Path Coefficients:
+&lt;br /&gt;                   Value Satisfaction
+&lt;br /&gt;R^2                0.321        0.376
+&lt;br /&gt;AdjR^2             0.313        0.373
+&lt;br /&gt;Image              0.459            .
+&lt;br /&gt;Expectation        0.143            .
+&lt;br /&gt;Image*Expectation -0.143            .
+&lt;br /&gt;Value                  .        0.613
+&lt;br /&gt;
+&lt;br /&gt;Reliability:
+&lt;br /&gt;                  alpha  rhoC   AVE  rhoA
+&lt;br /&gt;Image             0.723 0.817 0.476 0.753
+&lt;br /&gt;Expectation       0.452 0.727 0.474 0.466
+&lt;br /&gt;Image*Expectation 0.802 0.256 0.141 1.000
+&lt;br /&gt;Value             0.824 0.918 0.848 0.859
+&lt;br /&gt;Satisfaction      0.779 0.870 0.692 0.806
+&lt;br /&gt;
+&lt;br /&gt;Alpha, rhoC, and rhoA should exceed 0.7 while AVE should exceed 0.5
+&lt;br /&gt;
+</code></pre>
+</div>
+{% endraw %}
+
+
+
+<pre><code class="R"># 使用bootstrap的方法来计算路径系数的显著性和置信区间
+boot_estimates &lt;- bootstrap_model(pls_model, nboot = 1000, cores = 2)
+summary(boot_estimates)
+</code></pre>
+<p>{% raw %}</p>
+<div class="output" contenteditable="true">
+输出(stream):<br>
+Bootstrapping model using seminr...
+
+<p>SEMinR Model successfully bootstrapped</p>
+</div>
+{% endraw %}
+
+
+<p>{% raw %}</p>
+<div class="output">
+输出(plain):<br/>
+
+    
+<pre><code>&lt;br /&gt;Results from Bootstrap resamples:  1000
+&lt;br /&gt;
+&lt;br /&gt;Bootstrapped Structural Paths:
+&lt;br /&gt;                             Original Est. Bootstrap Mean Bootstrap SD T Stat.
+&lt;br /&gt;Image  -&gt;  Value                     0.459          0.436        0.069   6.611
+&lt;br /&gt;Expectation  -&gt;  Value               0.143          0.149        0.074   1.924
+&lt;br /&gt;Image*Expectation  -&gt;  Value        -0.143         -0.015        0.178  -0.803
+&lt;br /&gt;Value  -&gt;  Satisfaction              0.613          0.615        0.059  10.462
+&lt;br /&gt;                             2.5% CI 97.5% CI
+&lt;br /&gt;Image  -&gt;  Value               0.301    0.572
+&lt;br /&gt;Expectation  -&gt;  Value        -0.001    0.289
+&lt;br /&gt;Image*Expectation  -&gt;  Value  -0.250    0.251
+&lt;br /&gt;Value  -&gt;  Satisfaction        0.485    0.714
+&lt;br /&gt;
+&lt;br /&gt;Bootstrapped Weights:
+&lt;br /&gt;                                   Original Est. Bootstrap Mean Bootstrap SD
+&lt;br /&gt;IMAG1  -&gt;  Image                           0.322          0.316        0.042
+&lt;br /&gt;IMAG2  -&gt;  Image                           0.223          0.223        0.055
+&lt;br /&gt;IMAG3  -&gt;  Image                           0.275          0.273        0.046
+&lt;br /&gt;IMAG4  -&gt;  Image                           0.387          0.388        0.050
+&lt;br /&gt;IMAG5  -&gt;  Image                           0.220          0.217        0.055
+&lt;br /&gt;CUEX1  -&gt;  Expectation                     0.562          0.551        0.088
+&lt;br /&gt;CUEX2  -&gt;  Expectation                     0.344          0.335        0.135
+&lt;br /&gt;CUEX3  -&gt;  Expectation                     0.524          0.517        0.114
+&lt;br /&gt;PERV1  -&gt;  Value                           0.476          0.477        0.020
+&lt;br /&gt;PERV2  -&gt;  Value                           0.607          0.606        0.027
+&lt;br /&gt;CUSA1  -&gt;  Satisfaction                    0.327          0.328        0.032
+&lt;br /&gt;CUSA2  -&gt;  Satisfaction                    0.391          0.390        0.024
+&lt;br /&gt;CUSA3  -&gt;  Satisfaction                    0.477          0.477        0.033
+&lt;br /&gt;IMAG1*CUEX1  -&gt;  Image*Expectation        -0.262          0.077        0.180
+&lt;br /&gt;IMAG1*CUEX2  -&gt;  Image*Expectation        -0.211          0.083        0.175
+&lt;br /&gt;IMAG1*CUEX3  -&gt;  Image*Expectation         0.088          0.085        0.157
+&lt;br /&gt;IMAG2*CUEX1  -&gt;  Image*Expectation         0.322          0.081        0.216
+&lt;br /&gt;IMAG2*CUEX2  -&gt;  Image*Expectation         0.199          0.043        0.182
+&lt;br /&gt;IMAG2*CUEX3  -&gt;  Image*Expectation         0.374          0.075        0.235
+&lt;br /&gt;IMAG3*CUEX1  -&gt;  Image*Expectation        -0.030          0.081        0.160
+&lt;br /&gt;IMAG3*CUEX2  -&gt;  Image*Expectation        -0.065          0.061        0.144
+&lt;br /&gt;IMAG3*CUEX3  -&gt;  Image*Expectation         0.396          0.087        0.218
+&lt;br /&gt;IMAG4*CUEX1  -&gt;  Image*Expectation        -0.128          0.084        0.143
+&lt;br /&gt;IMAG4*CUEX2  -&gt;  Image*Expectation        -0.038          0.079        0.139
+&lt;br /&gt;IMAG4*CUEX3  -&gt;  Image*Expectation         0.203          0.085        0.162
+&lt;br /&gt;IMAG5*CUEX1  -&gt;  Image*Expectation        -0.264          0.010        0.207
+&lt;br /&gt;IMAG5*CUEX2  -&gt;  Image*Expectation         0.071          0.032        0.162
+&lt;br /&gt;IMAG5*CUEX3  -&gt;  Image*Expectation         0.200          0.047        0.193
+&lt;br /&gt;                                   T Stat. 2.5% CI 97.5% CI
+&lt;br /&gt;IMAG1  -&gt;  Image                     7.620   0.235    0.401
+&lt;br /&gt;IMAG2  -&gt;  Image                     4.057   0.115    0.330
+&lt;br /&gt;IMAG3  -&gt;  Image                     5.916   0.182    0.365
+&lt;br /&gt;IMAG4  -&gt;  Image                     7.801   0.300    0.495
+&lt;br /&gt;IMAG5  -&gt;  Image                     4.030   0.096    0.314
+&lt;br /&gt;CUEX1  -&gt;  Expectation               6.378   0.369    0.721
+&lt;br /&gt;CUEX2  -&gt;  Expectation               2.545   0.017    0.569
+&lt;br /&gt;CUEX3  -&gt;  Expectation               4.617   0.299    0.748
+&lt;br /&gt;PERV1  -&gt;  Value                    24.180   0.435    0.512
+&lt;br /&gt;PERV2  -&gt;  Value                    22.544   0.560    0.663
+&lt;br /&gt;CUSA1  -&gt;  Satisfaction             10.275   0.260    0.382
+&lt;br /&gt;CUSA2  -&gt;  Satisfaction             16.288   0.341    0.433
+&lt;br /&gt;CUSA3  -&gt;  Satisfaction             14.513   0.422    0.553
+&lt;br /&gt;IMAG1*CUEX1  -&gt;  Image*Expectation  -1.457  -0.278    0.388
+&lt;br /&gt;IMAG1*CUEX2  -&gt;  Image*Expectation  -1.211  -0.290    0.396
+&lt;br /&gt;IMAG1*CUEX3  -&gt;  Image*Expectation   0.561  -0.255    0.369
+&lt;br /&gt;IMAG2*CUEX1  -&gt;  Image*Expectation   1.489  -0.334    0.466
+&lt;br /&gt;IMAG2*CUEX2  -&gt;  Image*Expectation   1.091  -0.354    0.394
+&lt;br /&gt;IMAG2*CUEX3  -&gt;  Image*Expectation   1.588  -0.399    0.467
+&lt;br /&gt;IMAG3*CUEX1  -&gt;  Image*Expectation  -0.187  -0.249    0.370
+&lt;br /&gt;IMAG3*CUEX2  -&gt;  Image*Expectation  -0.448  -0.237    0.324
+&lt;br /&gt;IMAG3*CUEX3  -&gt;  Image*Expectation   1.819  -0.364    0.452
+&lt;br /&gt;IMAG4*CUEX1  -&gt;  Image*Expectation  -0.893  -0.223    0.337
+&lt;br /&gt;IMAG4*CUEX2  -&gt;  Image*Expectation  -0.274  -0.224    0.329
+&lt;br /&gt;IMAG4*CUEX3  -&gt;  Image*Expectation   1.247  -0.249    0.378
+&lt;br /&gt;IMAG5*CUEX1  -&gt;  Image*Expectation  -1.271  -0.393    0.436
+&lt;br /&gt;IMAG5*CUEX2  -&gt;  Image*Expectation   0.437  -0.299    0.370
+&lt;br /&gt;IMAG5*CUEX3  -&gt;  Image*Expectation   1.038  -0.342    0.411
+&lt;br /&gt;
+&lt;br /&gt;Bootstrapped Loadings:
+&lt;br /&gt;                                   Original Est. Bootstrap Mean Bootstrap SD
+&lt;br /&gt;IMAG1  -&gt;  Image                           0.748          0.742        0.045
+&lt;br /&gt;IMAG2  -&gt;  Image                           0.565          0.561        0.086
+&lt;br /&gt;IMAG3  -&gt;  Image                           0.623          0.622        0.062
+&lt;br /&gt;IMAG4  -&gt;  Image                           0.805          0.806        0.041
+&lt;br /&gt;IMAG5  -&gt;  Image                           0.682          0.676        0.068
+&lt;br /&gt;CUEX1  -&gt;  Expectation                     0.786          0.775        0.074
+&lt;br /&gt;CUEX2  -&gt;  Expectation                     0.583          0.569        0.147
+&lt;br /&gt;CUEX3  -&gt;  Expectation                     0.682          0.674        0.098
+&lt;br /&gt;PERV1  -&gt;  Value                           0.901          0.900        0.020
+&lt;br /&gt;PERV2  -&gt;  Value                           0.941          0.940        0.007
+&lt;br /&gt;CUSA1  -&gt;  Satisfaction                    0.772          0.771        0.038
+&lt;br /&gt;CUSA2  -&gt;  Satisfaction                    0.850          0.849        0.026
+&lt;br /&gt;CUSA3  -&gt;  Satisfaction                    0.869          0.869        0.018
+&lt;br /&gt;IMAG1*CUEX1  -&gt;  Image*Expectation        -0.134          0.452        0.388
+&lt;br /&gt;IMAG1*CUEX2  -&gt;  Image*Expectation        -0.110          0.425        0.376
+&lt;br /&gt;IMAG1*CUEX3  -&gt;  Image*Expectation         0.449          0.385        0.354
+&lt;br /&gt;IMAG2*CUEX1  -&gt;  Image*Expectation         0.479          0.372        0.397
+&lt;br /&gt;IMAG2*CUEX2  -&gt;  Image*Expectation         0.156          0.290        0.339
+&lt;br /&gt;IMAG2*CUEX3  -&gt;  Image*Expectation         0.651          0.284        0.452
+&lt;br /&gt;IMAG3*CUEX1  -&gt;  Image*Expectation        -0.137          0.340        0.333
+&lt;br /&gt;IMAG3*CUEX2  -&gt;  Image*Expectation        -0.288          0.280        0.365
+&lt;br /&gt;IMAG3*CUEX3  -&gt;  Image*Expectation         0.661          0.285        0.423
+&lt;br /&gt;IMAG4*CUEX1  -&gt;  Image*Expectation        -0.178          0.423        0.358
+&lt;br /&gt;IMAG4*CUEX2  -&gt;  Image*Expectation        -0.113          0.367        0.356
+&lt;br /&gt;IMAG4*CUEX3  -&gt;  Image*Expectation         0.480          0.349        0.385
+&lt;br /&gt;IMAG5*CUEX1  -&gt;  Image*Expectation        -0.316          0.251        0.327
+&lt;br /&gt;IMAG5*CUEX2  -&gt;  Image*Expectation        -0.034          0.226        0.309
+&lt;br /&gt;IMAG5*CUEX3  -&gt;  Image*Expectation         0.538          0.234        0.353
+&lt;br /&gt;                                   T Stat. 2.5% CI 97.5% CI
+&lt;br /&gt;IMAG1  -&gt;  Image                    16.544   0.642    0.815
+&lt;br /&gt;IMAG2  -&gt;  Image                     6.583   0.369    0.704
+&lt;br /&gt;IMAG3  -&gt;  Image                    10.114   0.483    0.730
+&lt;br /&gt;IMAG4  -&gt;  Image                    19.541   0.708    0.870
+&lt;br /&gt;IMAG5  -&gt;  Image                    10.026   0.519    0.782
+&lt;br /&gt;CUEX1  -&gt;  Expectation              10.608   0.601    0.888
+&lt;br /&gt;CUEX2  -&gt;  Expectation               3.958   0.244    0.789
+&lt;br /&gt;CUEX3  -&gt;  Expectation               6.939   0.457    0.837
+&lt;br /&gt;PERV1  -&gt;  Value                    44.041   0.854    0.932
+&lt;br /&gt;PERV2  -&gt;  Value                   140.988   0.926    0.952
+&lt;br /&gt;CUSA1  -&gt;  Satisfaction             20.172   0.684    0.838
+&lt;br /&gt;CUSA2  -&gt;  Satisfaction             32.726   0.787    0.891
+&lt;br /&gt;CUSA3  -&gt;  Satisfaction             48.203   0.831    0.901
+&lt;br /&gt;IMAG1*CUEX1  -&gt;  Image*Expectation  -0.345  -0.437    0.944
+&lt;br /&gt;IMAG1*CUEX2  -&gt;  Image*Expectation  -0.291  -0.430    0.919
+&lt;br /&gt;IMAG1*CUEX3  -&gt;  Image*Expectation   1.269  -0.370    0.928
+&lt;br /&gt;IMAG2*CUEX1  -&gt;  Image*Expectation   1.208  -0.434    0.959
+&lt;br /&gt;IMAG2*CUEX2  -&gt;  Image*Expectation   0.459  -0.394    0.878
+&lt;br /&gt;IMAG2*CUEX3  -&gt;  Image*Expectation   1.440  -0.576    0.939
+&lt;br /&gt;IMAG3*CUEX1  -&gt;  Image*Expectation  -0.411  -0.416    0.823
+&lt;br /&gt;IMAG3*CUEX2  -&gt;  Image*Expectation  -0.789  -0.451    0.817
+&lt;br /&gt;IMAG3*CUEX3  -&gt;  Image*Expectation   1.563  -0.604    0.914
+&lt;br /&gt;IMAG4*CUEX1  -&gt;  Image*Expectation  -0.496  -0.401    0.911
+&lt;br /&gt;IMAG4*CUEX2  -&gt;  Image*Expectation  -0.319  -0.434    0.864
+&lt;br /&gt;IMAG4*CUEX3  -&gt;  Image*Expectation   1.247  -0.492    0.903
+&lt;br /&gt;IMAG5*CUEX1  -&gt;  Image*Expectation  -0.966  -0.484    0.779
+&lt;br /&gt;IMAG5*CUEX2  -&gt;  Image*Expectation  -0.111  -0.445    0.744
+&lt;br /&gt;IMAG5*CUEX3  -&gt;  Image*Expectation   1.522  -0.453    0.814
+&lt;br /&gt;
+&lt;br /&gt;Bootstrapped HTMT:
+&lt;br /&gt;                                    Original Est. Bootstrap Mean Bootstrap SD
+&lt;br /&gt;Image  -&gt;  Expectation                      0.888          0.896        0.107
+&lt;br /&gt;Image  -&gt;  Image*Expectation                0.211          0.336        0.084
+&lt;br /&gt;Image  -&gt;  Value                            0.652          0.651        0.067
+&lt;br /&gt;Image  -&gt;  Satisfaction                     0.910          0.913        0.036
+&lt;br /&gt;Expectation  -&gt;  Image*Expectation          0.330          0.465        0.119
+&lt;br /&gt;Expectation  -&gt;  Value                      0.589          0.593        0.121
+&lt;br /&gt;Expectation  -&gt;  Satisfaction               0.865          0.870        0.097
+&lt;br /&gt;Image*Expectation  -&gt;  Value                0.115          0.206        0.049
+&lt;br /&gt;Image*Expectation  -&gt;  Satisfaction         0.154          0.230        0.047
+&lt;br /&gt;Value  -&gt;  Satisfaction                     0.741          0.741        0.075
+&lt;br /&gt;                                    2.5% CI 97.5% CI
+&lt;br /&gt;Image  -&gt;  Expectation                0.680    1.108
+&lt;br /&gt;Image  -&gt;  Image*Expectation          0.204    0.527
+&lt;br /&gt;Image  -&gt;  Value                      0.515    0.771
+&lt;br /&gt;Image  -&gt;  Satisfaction               0.838    0.979
+&lt;br /&gt;Expectation  -&gt;  Image*Expectation    0.276    0.733
+&lt;br /&gt;Expectation  -&gt;  Value                0.348    0.815
+&lt;br /&gt;Expectation  -&gt;  Satisfaction         0.683    1.064
+&lt;br /&gt;Image*Expectation  -&gt;  Value          0.121    0.308
+&lt;br /&gt;Image*Expectation  -&gt;  Satisfaction   0.147    0.336
+&lt;br /&gt;Value  -&gt;  Satisfaction               0.578    0.866
+&lt;br /&gt;
+&lt;br /&gt;Bootstrapped Total Paths:
+&lt;br /&gt;                                    Original Est. Bootstrap Mean Bootstrap SD
+&lt;br /&gt;Image  -&gt;  Value                            0.459          0.436        0.069
+&lt;br /&gt;Image  -&gt;  Satisfaction                     0.281          0.269        0.055
+&lt;br /&gt;Expectation  -&gt;  Value                      0.143          0.149        0.074
+&lt;br /&gt;Expectation  -&gt;  Satisfaction               0.087          0.092        0.047
+&lt;br /&gt;Image*Expectation  -&gt;  Value               -0.143         -0.015        0.178
+&lt;br /&gt;Image*Expectation  -&gt;  Satisfaction        -0.088         -0.010        0.110
+&lt;br /&gt;Value  -&gt;  Satisfaction                     0.613          0.615        0.059
+&lt;br /&gt;                                    2.5% CI 97.5% CI
+&lt;br /&gt;Image  -&gt;  Value                      0.301    0.572
+&lt;br /&gt;Image  -&gt;  Satisfaction               0.161    0.376
+&lt;br /&gt;Expectation  -&gt;  Value               -0.001    0.289
+&lt;br /&gt;Expectation  -&gt;  Satisfaction        -0.001    0.186
+&lt;br /&gt;Image*Expectation  -&gt;  Value         -0.250    0.251
+&lt;br /&gt;Image*Expectation  -&gt;  Satisfaction  -0.165    0.155
+&lt;br /&gt;Value  -&gt;  Satisfaction               0.485    0.714
+&lt;br /&gt;
+</code></pre>
+</div>
+{% endraw %}
+
+
+<p>当然我们还可以使用这个模型进行CBSEM, 但是测量模型定义了很多形成性变量, 这些形成性的测量指标不可以在CBSEM中使用, 那么我们为了演示方便,<br>我们将形成性指标改为反应性指标, 使用的是”as.reflective”方法. 基于协方差矩阵的结构方程需要先评估测量模型, 即先进行验证性因子分析:</p>
+<pre><code class="R">cfa_model &lt;- estimate_cfa(data = mobi, as.reflective(measurements))
+summary(cfa_model)
+</code></pre>
+<p>{% raw %}</p>
+<div class="output" contenteditable="true">
+输出(stream):<br>
+Generating the seminr model for CFA
+
+
+</div>
+{% endraw %}
+
+
+<p>{% raw %}</p>
+<div class="output">
+输出(plain):<br/>
+
+    
+<pre><code>&lt;br /&gt;Results from  package seminr (2.3.2)
+&lt;br /&gt;Estimation used  package seminr (2.3.2)
+&lt;br /&gt;
+&lt;br /&gt; Fit metrics:
+&lt;br /&gt;     npar      fmin      logl       aic       bic    ntotal      bic2       rmr 
+&lt;br /&gt; 3.20e+01  2.36e-01 -5.95e+03  1.20e+04  1.21e+04  2.50e+02  1.20e+04  1.66e-01 
+&lt;br /&gt;     srmr      crmr       gfi      agfi      pgfi       mfi      ecvi 
+&lt;br /&gt; 5.09e-02  5.50e-02  9.31e-01  8.94e-01  6.04e-01  8.88e-01  7.29e-01 
+&lt;br /&gt;                        metric   scaled robust
+&lt;br /&gt;cfi                   9.44e-01 9.57e-01 0.9612
+&lt;br /&gt;tli                   9.26e-01 9.43e-01 0.9487
+&lt;br /&gt;nnfi                  9.26e-01 9.43e-01 0.9487
+&lt;br /&gt;rni                   9.44e-01 9.57e-01 0.9612
+&lt;br /&gt;rmsea                 6.33e-02 4.50e-02 0.0519
+&lt;br /&gt;rmsea.ci.lower        4.66e-02 2.71e-02 0.0275
+&lt;br /&gt;rmsea.ci.upper        7.99e-02 6.10e-02 0.0731
+&lt;br /&gt;rmsea.pvalue          9.12e-02 6.78e-01 0.4230
+&lt;br /&gt;rmsea.notclose.pvalue 4.88e-02 6.25e-05 0.0127
+&lt;br /&gt;chisq                 1.18e+02 8.88e+01     NA
+&lt;br /&gt;df                    5.90e+01 5.90e+01     NA
+&lt;br /&gt;pvalue                7.67e-06 7.24e-03     NA
+&lt;br /&gt;baseline.chisq        1.14e+03 7.73e+02     NA
+&lt;br /&gt;baseline.df           7.80e+01 7.80e+01     NA
+&lt;br /&gt;baseline.pvalue       0.00e+00 0.00e+00     NA
+&lt;br /&gt;rfi                   8.63e-01 8.48e-01     NA
+&lt;br /&gt;nfi                   8.96e-01 8.85e-01     NA
+&lt;br /&gt;pnfi                  6.78e-01 6.69e-01     NA
+&lt;br /&gt;ifi                   9.45e-01 9.58e-01     NA
+&lt;br /&gt;
+&lt;br /&gt; Loadings:
+&lt;br /&gt;$coefficients
+&lt;br /&gt;      Image Expectation Value Satisfaction
+&lt;br /&gt;IMAG1  0.66           .     .            .
+&lt;br /&gt;IMAG2  0.50           .     .            .
+&lt;br /&gt;IMAG3  0.47           .     .            .
+&lt;br /&gt;IMAG4  0.69           .     .            .
+&lt;br /&gt;IMAG5  0.62           .     .            .
+&lt;br /&gt;CUEX1     .        0.52     .            .
+&lt;br /&gt;CUEX2     .        0.53     .            .
+&lt;br /&gt;CUEX3     .        0.38     .            .
+&lt;br /&gt;PERV1     .           .  0.74            .
+&lt;br /&gt;PERV2     .           .  0.95            .
+&lt;br /&gt;CUSA1     .           .     .         0.68
+&lt;br /&gt;CUSA2     .           .     .         0.72
+&lt;br /&gt;CUSA3     .           .     .         0.79
+&lt;br /&gt;
+&lt;br /&gt;$significance
+&lt;br /&gt;                      Std Estimate    SE t-Value 2.5% CI 97.5% CI
+&lt;br /&gt;Image -&gt; IMAG1                0.66 0.055 0.0e+00    0.56     0.77
+&lt;br /&gt;Image -&gt; IMAG2                0.50 0.068 2.1e-13    0.36     0.63
+&lt;br /&gt;Image -&gt; IMAG3                0.47 0.067 2.7e-12    0.34     0.60
+&lt;br /&gt;Image -&gt; IMAG4                0.69 0.063 0.0e+00    0.57     0.82
+&lt;br /&gt;Image -&gt; IMAG5                0.62 0.047 0.0e+00    0.53     0.72
+&lt;br /&gt;Expectation -&gt; CUEX1          0.52 0.090 4.7e-09    0.35     0.70
+&lt;br /&gt;Expectation -&gt; CUEX2          0.53 0.106 6.3e-07    0.32     0.74
+&lt;br /&gt;Expectation -&gt; CUEX3          0.38 0.078 1.1e-06    0.23     0.53
+&lt;br /&gt;Value -&gt; PERV1                0.74 0.049 0.0e+00    0.64     0.83
+&lt;br /&gt;Value -&gt; PERV2                0.95 0.034 0.0e+00    0.88     1.02
+&lt;br /&gt;Satisfaction -&gt; CUSA1         0.68 0.049 0.0e+00    0.59     0.78
+&lt;br /&gt;Satisfaction -&gt; CUSA2         0.72 0.043 0.0e+00    0.64     0.81
+&lt;br /&gt;Satisfaction -&gt; CUSA3         0.79 0.036 0.0e+00    0.72     0.87
+&lt;br /&gt;
+</code></pre>
+</div>
+{% endraw %}
+
+
+<p>然后再进行结构方程模型的估计:</p>
+<pre><code class="R">cbsem_model &lt;- estimate_cbsem(data = mobi, as.reflective(measurements), structure)
+summary(cbsem_model)
+</code></pre>
+<p>{% raw %}</p>
+<div class="output" contenteditable="true">
+输出(stream):<br>
+Generating the seminr model for CBSEM
+
+
+</div>
+{% endraw %}
+
+
+<p>{% raw %}</p>
+<div class="output">
+输出(plain):<br/>
+
+    
+<pre><code>&lt;br /&gt;Results from  package seminr (2.3.2)
+&lt;br /&gt;Estimation used  package seminr (2.3.2)
+&lt;br /&gt;
+&lt;br /&gt;Fit metrics:
+&lt;br /&gt;      npar       fmin       logl        aic        bic     ntotal       bic2 
+&lt;br /&gt;    63.000      2.828 -11493.906  23113.811  23335.663    250.000  23135.948 
+&lt;br /&gt;       rmr       srmr       crmr        gfi       agfi       pgfi        mfi 
+&lt;br /&gt;     0.166      0.091      0.094      0.716      0.663      0.605      0.117 
+&lt;br /&gt;      ecvi 
+&lt;br /&gt;     6.161 
+&lt;br /&gt;
+&lt;br /&gt;                        metric   scaled robust
+&lt;br /&gt;cfi                      0.586    0.618  0.644
+&lt;br /&gt;tli                      0.544    0.579  0.608
+&lt;br /&gt;nnfi                     0.544    0.579  0.608
+&lt;br /&gt;rni                      0.586    0.618  0.644
+&lt;br /&gt;rmsea                    0.112    0.072  0.096
+&lt;br /&gt;rmsea.ci.lower           0.106    0.067  0.087
+&lt;br /&gt;rmsea.ci.upper           0.118    0.077  0.105
+&lt;br /&gt;rmsea.pvalue             0.000    0.000  0.000
+&lt;br /&gt;rmsea.notclose.pvalue    1.000    0.002  0.998
+&lt;br /&gt;chisq                 1414.143  783.068      .
+&lt;br /&gt;df                     343.000  343.000      .
+&lt;br /&gt;pvalue                   0.000    0.000      .
+&lt;br /&gt;baseline.chisq        2964.484 1530.344      .
+&lt;br /&gt;baseline.df            378.000  378.000      .
+&lt;br /&gt;baseline.pvalue          0.000    0.000      .
+&lt;br /&gt;rfi                      0.474    0.436      .
+&lt;br /&gt;nfi                      0.523    0.488      .
+&lt;br /&gt;pnfi                     0.475    0.443      .
+&lt;br /&gt;ifi                      0.591    0.629      .
+&lt;br /&gt;
+&lt;br /&gt;Reliability:
+&lt;br /&gt;             rhoC  AVE
+&lt;br /&gt;Image        0.73 0.36
+&lt;br /&gt;Expectation  0.47 0.23
+&lt;br /&gt;Value        0.73 0.57
+&lt;br /&gt;Satisfaction 0.78 0.54
+&lt;br /&gt;
+&lt;br /&gt;Path Coefficients:
+&lt;br /&gt;                    Value Satisfaction
+&lt;br /&gt;R^2                  0.70         0.84
+&lt;br /&gt;Image                0.79            .
+&lt;br /&gt;Expectation          0.06            .
+&lt;br /&gt;Image_x_Expectation -0.03            .
+&lt;br /&gt;Value                   .         0.92
+&lt;br /&gt;
+</code></pre>
+</div>
+{% endraw %}
+
+
+<h2 id="Bootstrapping方法用于估计参数的显著性"><a href="#Bootstrapping方法用于估计参数的显著性" class="headerlink" title="Bootstrapping方法用于估计参数的显著性"></a>Bootstrapping方法用于估计参数的显著性</h2><p>bootstrap_model 方法接受一个pls模型, 这个模型一般是 estimate_pls 方法返回的结果. 第二个参数是nboot, 代表抽样次数. 第三个参数 cores cpu核心数, 如果你想要高性能的计算, 可以多设定几个核心.</p>
+<p>我们用下面的代码:</p>
+<pre><code class="R"># 抽样1000次, 并且使用2个核心
+boot_seminr_model &lt;- bootstrap_model(seminr_model = pls_model,
+                                 nboot = 1000,
+                                 cores = 2)
+</code></pre>
+<p>{% raw %}</p>
+<div class="output" contenteditable="true">
+输出(stream):<br>
+Bootstrapping model using seminr...
+
+<p>SEMinR Model successfully bootstrapped</p>
+</div>
+{% endraw %}
+
+<p>bootstrap_model 返回多种结果, 我们列在下方:</p>
+<ul>
+<li>boot_seminr_model&#96;$boot_paths 路径系数的显著性检验</li>
+<li>boot_seminr_model$&#96;boot_loadings 因子载荷</li>
+<li>boot_seminr_model&#96;$boot_weights 权重(形成性指标与构念之间的关系叫权重)</li>
+<li>boot_seminr_model$&#96;boot_HTMT HTMT的检验</li>
+<li>boot_seminr_model&#96;$boot_total_paths 总效应的显著性检验</li>
+<li>boot_seminr_model$&#96;paths_descriptives 描述性统计</li>
+<li>boot_seminr_model&#96;$loadings_descriptives 载荷的均值和标准差</li>
+<li>boot_seminr_model$&#96;weights_descriptives 权重的举止和标准差</li>
+<li>boot_seminr_model&#96;$HTMT_descriptives </li>
+<li>boot_seminr_model$&#96;</li>
+</ul>
+<h2 id="汇报结果"><a href="#汇报结果" class="headerlink" title="汇报结果"></a>汇报结果</h2><p>有很多种方法来获取你想要的结果, 最常用的就是使用summary方法, 它接受一个seminr_model模型, 例如estimate_pls返回的模型.<br>对于结构方程模型, 它可以输出R方, 调整R方, 结构部分的路径系数, 构建效度, CR  composite reliability (Dillon and Goldstein 1987), AVE (Fornell and Larcker 1981), and rhoA (Dijkstra and Henseler 2015).</p>
+<p>你还可以使用一个变量来代表summary的输出结果, 这个变量就可以任意调用你想要的结果: <code>model_summary &lt;- summary(seminr_model)</code></p>
+<p>有如下结果:</p>
+<ul>
+<li>meta reports the metadata about the estimation technique and version</li>
+<li>model_summary&#96;$iterations (PLS only) reports the number of iterations to converge on a stable model</li>
+<li>model_summary$&#96;paths reports the matrix of path coefficients, R2, and adjusted R2total_effects reports the total effects of the structural model total_indirect_effects reports the total indirect effects of the structural model</li>
+<li>model_summary&#96;$loadings reports the estimated loadings of the measurement model</li>
+<li>model_summary$&#96;weights reports the estimated weights of the measurement model</li>
+<li>model_summary<code>$validity$</code>vif_items reports the Variance Inflation Factor (VIF) for the measurement model</li>
+<li>model_summary<code>$validity$</code>htmt reports the HTMT for the constructs</li>
+<li>model_summary<code>$validity$</code>fl_criteria reports the fornell larcker criteria for the constructs</li>
+<li>model_summary<code>$validity$</code>cross_loadings (PLS only) reports all possible loadings between contructs and items</li>
+<li>model_summary&#96;$reliability reports composite reliability (rhoC), cronbachs alpha, average variance extracted (AVE), and rhoA</li>
+<li>model_summary$&#96;composite_scores reports the construct scores of composites</li>
+<li>model_summary&#96;$vif_antecedents report the Variance Inflation Factor (VIF) for the structural model</li>
+<li>model_summary$&#96;fSquare reports the effect sizes (f2) for the structural model</li>
+<li>model_summary&#96;$descriptives reports the descriptive statistics and correlations for both items and constructs</li>
+<li>model_summary$&#96;</li>
+</ul>
+<p>输出直接效应中介效应的方法:</p>
+<p>specific_effect_significance 接受一个bootstrap结果, 然后输出具体路径的直接和中介效应及其显著性.</p>
+<pre><code class="R">mobi_mm &lt;- constructs(
+composite(&quot;Image&quot;,        multi_items(&quot;IMAG&quot;, 1:5)),
+composite(&quot;Expectation&quot;,  multi_items(&quot;CUEX&quot;, 1:3)),
+composite(&quot;Quality&quot;,      multi_items(&quot;PERQ&quot;, 1:7)),
+composite(&quot;Value&quot;,        multi_items(&quot;PERV&quot;, 1:2)),
+composite(&quot;Satisfaction&quot;, multi_items(&quot;CUSA&quot;, 1:3)),
+composite(&quot;Complaints&quot;,   single_item(&quot;CUSCO&quot;)),
+composite(&quot;Loyalty&quot;,      multi_items(&quot;CUSL&quot;, 1:3))
+)
+# Creating structural model
+mobi_sm &lt;- relationships(
+ paths(from = &quot;Image&quot;,        to = c(&quot;Expectation&quot;, &quot;Satisfaction&quot;, &quot;Loyalty&quot;)),
+ paths(from = &quot;Expectation&quot;,  to = c(&quot;Quality&quot;, &quot;Value&quot;, &quot;Satisfaction&quot;)),
+ paths(from = &quot;Quality&quot;,      to = c(&quot;Value&quot;, &quot;Satisfaction&quot;)),
+ paths(from = &quot;Value&quot;,        to = c(&quot;Satisfaction&quot;)),
+ paths(from = &quot;Satisfaction&quot;, to = c(&quot;Complaints&quot;, &quot;Loyalty&quot;)),
+ paths(from = &quot;Complaints&quot;,   to = &quot;Loyalty&quot;)
+)
+# Estimating the model
+mobi_pls &lt;- estimate_pls(data = mobi,
+                        measurement_model = mobi_mm,
+                        structural_model = mobi_sm)
+#&gt; Generating the seminr model
+#&gt; All 250 observations are valid.
+# Load data, assemble model, and bootstrap
+boot_seminr_model &lt;- bootstrap_model(seminr_model = mobi_pls,
+                                    nboot = 50, cores = 2, seed = NULL)
+#&gt; Bootstrapping model using seminr...
+#&gt; SEMinR Model successfully bootstrapped
+
+# Calculate the 5% confidence interval for mediated path Image -&gt; Expectation -&gt; Satisfaction
+specific_effect_significance(boot_seminr_model = boot_seminr_model,
+                             from = &quot;Image&quot;,
+                             through = c(&quot;Expectation&quot;, &quot;Satisfaction&quot;),
+                             to = &quot;Complaints&quot;,
+                             alpha = 0.05)
+#&gt;  Original Est. Bootstrap Mean   Bootstrap SD        T Stat.        2.5% CI 
+#&gt;    0.016670348    0.013801736    0.011054848    1.507967125   -0.004741531 
+#&gt;       97.5% CI 
+#&gt;    0.037007585
+
+# Calculate the 10% confidence interval for direct path Image -&gt; Satisfaction
+specific_effect_significance(boot_seminr_model = boot_seminr_model,
+                             from = &quot;Image&quot;,
+                             to = &quot;Satisfaction&quot;,
+                             alpha = 0.10)
+#&gt;  Original Est. Bootstrap Mean   Bootstrap SD        T Stat.          5% CI 
+#&gt;     0.17873950     0.17214888     0.04604578     3.88177842     0.10760500 
+#&gt;         95% CI 
+#&gt;     0.26319886
+</code></pre>
+<h2 id="描述性统计"><a href="#描述性统计" class="headerlink" title="描述性统计"></a>描述性统计</h2><pre><code class="R">+ `model_summary`$descriptives$`statistics`$items` 题目的描述统计
++ `model_summary$`descriptives`$correlations$`items` 题目的相关矩阵
++ `model_summary`$descriptives$`statistics`$constructs` 构念的描述性统计
++ `model_summary$`descriptives`$correlations$`
+
+## 绘制模型图
+
+```R
+# generate a small model for creating the plot
+mobi_mm &lt;- constructs(
+  composite(&quot;Image&quot;,        multi_items(&quot;IMAG&quot;, 1:3)),
+  composite(&quot;Value&quot;,        multi_items(&quot;PERV&quot;, 1:2)),
+  higher_composite(&quot;Satisfaction&quot;, dimensions = c(&quot;Image&quot;,&quot;Value&quot;), method = two_stage),
+  composite(&quot;Quality&quot;,      multi_items(&quot;PERQ&quot;, 1:3), weights = mode_B),
+  composite(&quot;Complaints&quot;,   single_item(&quot;CUSCO&quot;)),
+  reflective(&quot;Loyalty&quot;,      multi_items(&quot;CUSL&quot;, 1:3))
+)
+mobi_sm &lt;- relationships(
+  paths(from = c(&quot;Quality&quot;),  to = &quot;Satisfaction&quot;),
+  paths(from = &quot;Satisfaction&quot;, to = c(&quot;Complaints&quot;, &quot;Loyalty&quot;))
+)
+pls_model &lt;- estimate_pls(
+  data = mobi,
+  measurement_model = mobi_mm,
+  structural_model = mobi_sm
+)
+#&gt; Generating the seminr model
+#&gt; Generating the seminr model
+#&gt; All 250 observations are valid.
+#&gt; All 250 observations are valid.
+boot_estimates &lt;- bootstrap_model(pls_model, nboot = 100, cores = 1)
+#&gt; Bootstrapping model using seminr...
+#&gt; SEMinR Model successfully bootstrapped
+</code></pre>
+<p>当我们有了模型, 我们就可以绘制这个模型图了:</p>
+<pre><code class="R">plot(boot_estimates, title = &quot;Bootstrapped Model&quot;)
+save_plot(&quot;myfigure.png&quot;)
+</code></pre>
+<img src="imgs/sem-plot.png">
+
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://cran.r-project.org/web/packages/seminr/vignettes/SEMinR.html">https://cran.r-project.org/web/packages/seminr/vignettes/SEMinR.html</a><br>Yuan, K. H., &amp; Bentler, P. M. (2000). Three likelihood-based methods for mean and covariance structure analysis with nonnormal missing data. Sociological methodology, 30(1), 165-200.<br>Zhao, X., Lynch Jr, J. G., &amp; Chen, Q. (2010). Reconsidering Baron and Kenny: Myths and truths about mediation analysis. Journal of consumer research, 37(2), 197-206.</p>
+<blockquote>
+<p><strong>注意</strong><br>统计咨询请加QQ 2726725926, 微信 shujufenxidaizuo,  SPSS统计咨询是收费的, 不论什么模型都可以, 只限制于1个研究内.<br>跟我学统计可以代做分析, 每单几百元不等.<br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B.ipynb">notebook</a><br>可以在微博上@mlln-cn向我免费题问<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+</blockquote>

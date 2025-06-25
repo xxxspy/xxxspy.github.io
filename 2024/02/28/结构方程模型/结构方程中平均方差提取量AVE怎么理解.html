@@ -1,0 +1,26 @@
+<hr>
+<p>title: 结构方程中平均方差提取量AVE怎么理解<br>date: 2023-07-27 10:27:12<br>tags:</p>
+<ul>
+<li>结构方程</li>
+<li>效度分析<br>mathjax: true<br>permalink: &#x2F;2023&#x2F;07&#x2F;27&#x2F;结构方程中平均方差提取量AVE怎么理解&#x2F;</li>
+</ul>
+<hr>
+<p>AVE的全称是 Average Variance Extraction，翻译为平均方差提取量，<br>它是一个比率， 就是潜变量可以解释的方差占题目总方差的比率。<br>既然是比率， 它的取值就在(0, 1)之间， 这个值越大越好。</p>
+<p>在结构方程（SEM）中，我们在做测量模型的效度分析的时候，<br>也就是验证性因子分析中，AVE是证明收敛效度的，平均提取方差值（AVE）是计算潜在变量之测量变量的变异数解释力，<br>若AVE越高，则表示构念有越高的信度与收敛效度。理想上标准值须大于0.5。</p>
+<!-- more -->
+
+<p>标准值0.5是由Fornell和Larcker在1981年提出的 ，<br>如果AVE低于0.5，但是CR高于0.6，也可以接受 (Fornell &amp; Larcker, 1981) 。</p>
+<p>我们在做结构方程的培训过程中， 很多同学会问如何理解AVE， 我们这里提供了公式推导和视频教程，<br>可以帮助里理解AVE。</p>
+<h2 id="AVE的计算公式"><a href="#AVE的计算公式" class="headerlink" title="AVE的计算公式"></a>AVE的计算公式</h2><img src="model.png">
+
+<img src="ave.png">
+
+<h2 id="简单模型"><a href="#简单模型" class="headerlink" title="简单模型"></a>简单模型</h2><p>上面的模型图可以转换为数学表达式：</p>
+<p><code>$$     X_1 = \lambda_1 T + e_1 \\     X_2 = \lambda_2 T + e_2 \\     X_3 = \lambda_3 T + e_3 \\     ...\\     X_k = \lambda_k T + e_k \\ $$</code></p>
+<h2 id="方差的分解"><a href="#方差的分解" class="headerlink" title="方差的分解"></a>方差的分解</h2><p>对于两个独立的变量T和e， 方差具有如下性质：<code>$X = T + e的方差为Var(X) = Var(T) + Var(e)$</code> ,<br>应用这个性质， 可以得到下面的方差公式：</p>
+<p><code>$$     Var(X_1) = \lambda_1^2 Var(T) + Var(e_1)$ \\     Var(X_2) = \lambda_2^2 Var(T) + Var(e_2)$ \\     Var(X_3) = \lambda_3^2 Var(T) + Var(e_3)$ \\     ...\\     Var(X_k) = \lambda_k^2 Var(T) + Var(e_k)$ \\ $$</code></p>
+<h2 id="标准化数据方差为1"><a href="#标准化数据方差为1" class="headerlink" title="标准化数据方差为1"></a>标准化数据方差为1</h2><p>因为我们讨论的是标准化因子载荷λ， 因此公式里面看到的方差其实都是1，<br>所以可以简化为：</p>
+<p><code>$$     1 = \lambda_1^2 + Var(e_1)$ \\     1 = \lambda_2^2 + Var(e_2)$ \\     1 = \lambda_3^2 + Var(e_3)$ \\     ...\\     1 = \lambda_k^2 + Var(e_k)$ \\ $$</code></p>
+<h2 id="化简AVE"><a href="#化简AVE" class="headerlink" title="化简AVE"></a>化简AVE</h2><p><code>$$     AVE = {\sum_{i=1}^k \lambda ^ 2 \over {\sum_{i=1}^k \lambda ^ 2 + \sum_{i=1}^k Var(e_i)} } \\     = {\sum_{i=1}^k \lambda ^ 2 \over {\sum_{i=1}^k [\lambda ^ 2 + Var(e_i)}] } \\     = {\sum_{i=1}^k \lambda ^ 2 \over k} $$</code></p>
+<h2 id="证明-lambda-2-R-2"><a href="#证明-lambda-2-R-2" class="headerlink" title="证明$\lambda ^ 2 = R^2$"></a>证明<code>$\lambda ^ 2 = R^2$</code></h2><p>在这篇文章中， 我们已经证明， 请跳转：<a href="/2023/07/26/%E5%85%AC%E5%BC%8F%E6%8E%A8%E5%AF%BC%E8%AF%81%E6%98%8E%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0%E7%AD%89%E4%BA%8E%E5%86%B3%E5%AE%9A%E7%B3%BB%E6%95%B0R%E6%96%B9/">公式推导证明相关系数等于决定系数R方</a></p>
+<h2 id="最终结论"><a href="#最终结论" class="headerlink" title="最终结论"></a>最终结论</h2><p><code>$$ AVE = {\sum_{i=1}^k R_i ^ 2 \over k} $$</code></p>
