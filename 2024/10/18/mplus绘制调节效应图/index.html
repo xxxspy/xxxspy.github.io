@@ -2424,6 +2424,17 @@
 								<div class="article-toc" style="display: none;"></div>
 							</ul>
 			
+							<ul>
+								<li class="file">
+									<a href="/2025/08/07/003%20R%E8%AF%AD%E8%A8%80/%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E6%A1%88%E4%BE%8B%E6%95%99%E7%A8%8B-R%E8%AF%AD%E8%A8%80%E7%89%88/">
+                     
+										    贝叶斯网络案例教程-R语言版
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
 								</li>
 								
 							</ul>
@@ -2711,17 +2722,6 @@
 							</ul>
 			
 							<ul>
-								<li class="file">
-									<a href="/2022/08/31/004%20%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B%E5%A4%9A%E7%BB%84%E6%AF%94%E8%BE%83%E5%88%86%E6%9E%90%E8%B0%83%E8%8A%82%E5%8F%98%E9%87%8F/">
-                     
-										    结构方程模型多组比较分析调节变量
-                     
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
 								<li class="directory">
 									<a href="#" class="directory">
 										<i class="fa fa-plus-square-o"></i>
@@ -2840,6 +2840,17 @@
 			
 								</li>
 								
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/08/31/004%20%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B%E5%A4%9A%E7%BB%84%E6%AF%94%E8%BE%83%E5%88%86%E6%9E%90%E8%B0%83%E8%8A%82%E5%8F%98%E9%87%8F/">
+                     
+										    结构方程模型多组比较分析调节变量
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
 							</ul>
 			
 							<ul>
@@ -7823,9 +7834,9 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2015/03/01/Django%E6%95%99%E7%A8%8B%EF%BC%9A%5B5%5DURLpattern%E7%9A%84%E8%AF%AD%E6%B3%95%20-%20%E5%89%AF%E6%9C%AC/">
+									<a href="/2015/03/01/Django%E6%95%99%E7%A8%8B%EF%BC%9A%5B5%5DURLpattern%E7%9A%84%E8%AF%AD%E6%B3%95/">
                      
-										    Django教程：[5]URLpattern的语法 - 副本
+										    Django教程：[5]URLpattern的语法
                      
 									</a>
 								</li>
@@ -7834,9 +7845,9 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2015/03/01/Django%E6%95%99%E7%A8%8B%EF%BC%9A%5B5%5DURLpattern%E7%9A%84%E8%AF%AD%E6%B3%95/">
+									<a href="/2015/03/01/Django%E6%95%99%E7%A8%8B%EF%BC%9A%5B5%5DURLpattern%E7%9A%84%E8%AF%AD%E6%B3%95%20-%20%E5%89%AF%E6%9C%AC/">
                      
-										    Django教程：[5]URLpattern的语法
+										    Django教程：[5]URLpattern的语法 - 副本
                      
 									</a>
 								</li>
@@ -9057,18 +9068,22 @@
 <div id="article-content">
 	<p>基于mplus用户指南示例 5.13，以下潜在变量示例给出了一个描述 f1 和 f2 在其对 f3 影响中的交互作用的调节图。</p>
 <span id="more"></span>
-
 <p>回归方程为： <code>$ f3 = b1 \cdot f1 + b2 \cdot f2 + b3 \cdot f1 \cdot f2 + e $</code> (1)</p>
-<p>假设我们这样看待 f1 和 f2 的交互作用，即 f2 调节 f1 对 f3 的影响（也可以表达为 f1 调节 f2 对 f3 的影响）。<br>这意味着我们将 (1) 中的回归方程重写为： </p>
+<p>假设我们这样看待 f1 和 f2 的交互作用，即 f2 调节 f1 对 f3 的影响（也可以表达为 f1 调节 f2 对 f3 的影响）。<br>
+这意味着我们将 (1) 中的回归方程重写为：</p>
 <p><code>$ f3 = (b1 + b3 \cdot f2) \cdot f1 + b2 \cdot f2 + e $</code> (2)</p>
 <p>f1 对 f3 的影响受 f2 调节，可以通过显示不同 f2 值下 f1 对 f3 的影响来绘制。</p>
 <p>Mplus 输入如下。添加了感叹号以标记相对于示例 5.13 添加或修改的行。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">TITLE: this is an example of a SEM with</span><br><span class="line"> continuous factor indicators and an</span><br><span class="line"> interaction between two latent variables</span><br><span class="line">DATA: FILE IS ex5.13.dat;</span><br><span class="line">VARIABLE: NAMES ARE y1-y12;</span><br><span class="line">ANALYSIS: TYPE = RANDOM;</span><br><span class="line"> ALGORITHM = INTEGRATION;</span><br><span class="line">MODEL: f1 BY y1-y3*; !</span><br><span class="line"> f2 BY y4-y6*; !</span><br><span class="line"> f1-f2@1; !</span><br><span class="line"> f3 BY y7-y9;</span><br><span class="line"> f4 BY y10-y12; </span><br><span class="line"> f4 ON f3;</span><br><span class="line"> f3 ON f1 (b1) !</span><br><span class="line"> f2 (b2); !</span><br><span class="line"> f1xf2 | f1 XWITH f2;</span><br><span class="line"> f3 ON f1xf2 (b3); !</span><br><span class="line">OUTPUT: TECH1 TECH8;</span><br><span class="line">Model Constraint: !</span><br><span class="line"> PLOT (lowf2 highf2); !</span><br><span class="line"> LOOP(f1, -3, 3, 0.1); !</span><br><span class="line"> lowf2 = (b1+b3*(-1))*f1+b2*(-1); !</span><br><span class="line"> highf2 = (b1+b3*(+1))*f1+b2*(+1); !</span><br><span class="line">Plot: !</span><br><span class="line"> type = plot2; ! </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p>lowf2 和 highf2 表达式对应于 (2) 中 f2 的值分别为 -1 和 +1。<br>这给出了 f2 在零均值下方 1 个标准差和上方 1 个标准差时，f1 对 f3 的影响图，绘制范围为 f1 的 -3 个标准差到 +3 个标准差。<br>这类似于 FAQ 潜在变量交互作用中的图 3。注意，通过将 f1 和 f2 的方差固定为 1 来设置它们的度量单位。<br>这使得 f2 的值 -1 和 +1 分别对应于零均值下方 1 个标准差和上方 1 个标准差。</p>
+<p>lowf2 和 highf2 表达式对应于 (2) 中 f2 的值分别为 -1 和 +1。<br>
+这给出了 f2 在零均值下方 1 个标准差和上方 1 个标准差时，f1 对 f3 的影响图，绘制范围为 f1 的 -3 个标准差到 +3 个标准差。<br>
+这类似于 FAQ 潜在变量交互作用中的图 3。注意，通过将 f1 和 f2 的方差固定为 1 来设置它们的度量单位。<br>
+这使得 f2 的值 -1 和 +1 分别对应于零均值下方 1 个标准差和上方 1 个标准差。</p>
 <p>图可以通过 Plot 菜单中的 LOOP 绘图选项获得。还提供了 95% 的置信区间。</p>
 <img src="mplus-interaction.png">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
+
 </div>
 
 <!-- post-guide -->

@@ -2424,6 +2424,17 @@
 								<div class="article-toc" style="display: none;"></div>
 							</ul>
 			
+							<ul>
+								<li class="file">
+									<a href="/2025/08/07/003%20R%E8%AF%AD%E8%A8%80/%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E6%A1%88%E4%BE%8B%E6%95%99%E7%A8%8B-R%E8%AF%AD%E8%A8%80%E7%89%88/">
+                     
+										    贝叶斯网络案例教程-R语言版
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
 								</li>
 								
 							</ul>
@@ -2711,17 +2722,6 @@
 							</ul>
 			
 							<ul>
-								<li class="file">
-									<a href="/2022/08/31/004%20%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B%E5%A4%9A%E7%BB%84%E6%AF%94%E8%BE%83%E5%88%86%E6%9E%90%E8%B0%83%E8%8A%82%E5%8F%98%E9%87%8F/">
-                     
-										    结构方程模型多组比较分析调节变量
-                     
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
 								<li class="directory">
 									<a href="#" class="directory">
 										<i class="fa fa-plus-square-o"></i>
@@ -2840,6 +2840,17 @@
 			
 								</li>
 								
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/08/31/004%20%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B%E5%A4%9A%E7%BB%84%E6%AF%94%E8%BE%83%E5%88%86%E6%9E%90%E8%B0%83%E8%8A%82%E5%8F%98%E9%87%8F/">
+                     
+										    结构方程模型多组比较分析调节变量
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
 							</ul>
 			
 							<ul>
@@ -7823,9 +7834,9 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2015/03/01/Django%E6%95%99%E7%A8%8B%EF%BC%9A%5B5%5DURLpattern%E7%9A%84%E8%AF%AD%E6%B3%95%20-%20%E5%89%AF%E6%9C%AC/">
+									<a href="/2015/03/01/Django%E6%95%99%E7%A8%8B%EF%BC%9A%5B5%5DURLpattern%E7%9A%84%E8%AF%AD%E6%B3%95/">
                      
-										    Django教程：[5]URLpattern的语法 - 副本
+										    Django教程：[5]URLpattern的语法
                      
 									</a>
 								</li>
@@ -7834,9 +7845,9 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2015/03/01/Django%E6%95%99%E7%A8%8B%EF%BC%9A%5B5%5DURLpattern%E7%9A%84%E8%AF%AD%E6%B3%95/">
+									<a href="/2015/03/01/Django%E6%95%99%E7%A8%8B%EF%BC%9A%5B5%5DURLpattern%E7%9A%84%E8%AF%AD%E6%B3%95%20-%20%E5%89%AF%E6%9C%AC/">
                      
-										    Django教程：[5]URLpattern的语法
+										    Django教程：[5]URLpattern的语法 - 副本
                      
 									</a>
 								</li>
@@ -9057,32 +9068,28 @@
 <div id="article-content">
 	<p>这是jupyter notebook 插件开发的系列文档之一, 文章最末尾列出了这个系列的所有博客连接.</p>
 <span id="more"></span>
-
-
 <p>这里描述了为Jupyter笔记本前端编写JavaScript插件的基本步骤。这允许您自定义各种页面的行为，如仪表板，笔记本或文本编辑器。</p>
-<h3 id="前端插件的结构"><a href="#前端插件的结构" class="headerlink" title="前端插件的结构"></a>前端插件的结构</h3><blockquote>
-<p> 注意: 笔记本前端和Javascript API不稳定，并且会受到很多变化。为当前笔记本电脑写的任何扩展程序几乎都无法保证在下一个版本兼容。</p>
+<h3 id="%E5%89%8D%E7%AB%AF%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%93%E6%9E%84" tabindex="-1">前端插件的结构</h3>
+<blockquote>
+<p>注意: 笔记本前端和Javascript API不稳定，并且会受到很多变化。为当前笔记本电脑写的任何扩展程序几乎都无法保证在下一个版本兼容。</p>
 </blockquote>
 <p>前端扩展是一个JavaScript文件，它定义了一个AMD模块，该模块至少公开了一个名为load_ipython_extension的函数，该函数不带任何参数。我们不会深入讨论每个术语的细节，但这里是工作扩展所需的最少代码：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// file my_extension/main.js</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">define</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">load_ipython_extension</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">info</span>(<span class="string">&#x27;this is my first extension&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="attr">load_ipython_extension</span>: load_ipython_extension</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
 <p>如果您熟悉JavaScript，则可以使用此模板来调用任何Jupyter模块并修改其配置，或者在客户端JavaScript中执行其他任何操作。您的扩展程序将在笔记本页面初始化期间的正确加载，以便为页面可触发的各种事件设置侦听程序。</p>
 <p>您可能需要访问页面上各种Jupyter笔记本组件的对象，而不是模块中定义的类。当前实例由名为<code>base / js / namespace</code>的模块所暴露。如果您打算访问页面上的实例，则应该要求使用此模块，而不是访问将来将被删除的全局变量Jupyter。以下示例演示如何访问当前笔记本实例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// file my_extension/main.js</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">define</span>([</span><br><span class="line">    <span class="string">&#x27;base/js/namespace&#x27;</span></span><br><span class="line">], <span class="keyword">function</span>(<span class="params"></span></span><br><span class="line"><span class="params">    Jupyter</span></span><br><span class="line"><span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">load_ipython_extension</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(</span><br><span class="line">            <span class="string">&#x27;This is the current notebook application instance:&#x27;</span>,</span><br><span class="line">            <span class="title class_">Jupyter</span>.<span class="property">notebook</span></span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="attr">load_ipython_extension</span>: load_ipython_extension</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="修改快捷键"><a href="#修改快捷键" class="headerlink" title="修改快捷键"></a>修改快捷键</h3><p>插件的功能之一是修改热键绑定，但是这又是一个不能保证稳定的API。但是，自定义热键经常被用到，并且有助于增加用户友好度，因此在下面我们将演示如何设置他们。</p>
+<h3 id="%E4%BF%AE%E6%94%B9%E5%BF%AB%E6%8D%B7%E9%94%AE" tabindex="-1">修改快捷键</h3>
+<p>插件的功能之一是修改热键绑定，但是这又是一个不能保证稳定的API。但是，自定义热键经常被用到，并且有助于增加用户友好度，因此在下面我们将演示如何设置他们。</p>
 <p>下面是一个扩展的例子，它将在命令模式下取消绑定快捷键0,0，这通常会重新启动内核，并在其位置绑定0,0,0：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// file my_extension/main.js</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">define</span>([</span><br><span class="line">    <span class="string">&#x27;base/js/namespace&#x27;</span></span><br><span class="line">], <span class="keyword">function</span>(<span class="params"></span></span><br><span class="line"><span class="params">    Jupyter</span></span><br><span class="line"><span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">load_ipython_extension</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="comment">// 删除热键</span></span><br><span class="line">        <span class="title class_">Jupyter</span>.<span class="property">keyboard_manager</span>.<span class="property">command_shortcuts</span>.<span class="title function_">remove_shortcut</span>(<span class="string">&#x27;0,0&#x27;</span>);</span><br><span class="line">        <span class="comment">// 添加热键</span></span><br><span class="line">        <span class="title class_">Jupyter</span>.<span class="property">keyboard_manager</span>.<span class="property">command_shortcuts</span>.<span class="title function_">add_shortcut</span>(<span class="string">&#x27;0,0,0&#x27;</span>, <span class="string">&#x27;jupyter-notebook:restart-kernel&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="attr">load_ipython_extension</span>: load_ipython_extension</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>标准键盘绑定可能无法在非美式键盘上正常工作。不幸的是，这是浏览器实现的局限性，以及一般网络上键盘事件处理的状态。</p>
 </blockquote>
-<p>你可以看到我使用了action(动作&#x2F;操作)名称<code>jupyter-notebook：restart-kernel</code>来绑定新的快捷方式。目前还没有API可以访问所有可用action的列表，尽管在笔记本页面的浏览器的JavaScript控制台中的以下内容应该让您了解可用的action:</p>
+<p>你可以看到我使用了action(动作/操作)名称<code>jupyter-notebook：restart-kernel</code>来绑定新的快捷方式。目前还没有API可以访问所有可用action的列表，尽管在笔记本页面的浏览器的JavaScript控制台中的以下内容应该让您了解可用的action:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">keys</span>(<span class="built_in">require</span>(<span class="string">&#x27;base/js/namespace&#x27;</span>).<span class="property">actions</span>.<span class="property">_actions</span>);</span><br></pre></td></tr></table></figure>
-
-<h3 id="定义和注册您自己的action-动作-x2F-操作"><a href="#定义和注册您自己的action-动作-x2F-操作" class="headerlink" title="定义和注册您自己的action(动作&#x2F;操作)"></a>定义和注册您自己的action(动作&#x2F;操作)</h3><p>作为前端扩展的一部分，您可能希望定义可附加到工具栏按钮的动作，或从命令选项板调用动作。下面是一个扩展示例，它定义了一个（不是非常有用的）动作来显示警告信息，并使用完整的动作名称添加了toolabr按钮：</p>
+<h3 id="%E5%AE%9A%E4%B9%89%E5%92%8C%E6%B3%A8%E5%86%8C%E6%82%A8%E8%87%AA%E5%B7%B1%E7%9A%84action(%E5%8A%A8%E4%BD%9C%2F%E6%93%8D%E4%BD%9C)" tabindex="-1">定义和注册您自己的action(动作/操作)</h3>
+<p>作为前端扩展的一部分，您可能希望定义可附加到工具栏按钮的动作，或从命令选项板调用动作。下面是一个扩展示例，它定义了一个（不是非常有用的）动作来显示警告信息，并使用完整的动作名称添加了toolabr按钮：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// file my_extension/main.js</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">define</span>([</span><br><span class="line">    <span class="string">&#x27;base/js/namespace&#x27;</span></span><br><span class="line">], <span class="keyword">function</span>(<span class="params"></span></span><br><span class="line"><span class="params">    Jupyter</span></span><br><span class="line"><span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">load_ipython_extension</span>(<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> handler = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            <span class="title function_">alert</span>(<span class="string">&#x27;this is an alert from my_extension!&#x27;</span>);</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> action = &#123;</span><br><span class="line">            <span class="attr">icon</span>: <span class="string">&#x27;fa-comment-o&#x27;</span>, <span class="comment">// a font-awesome class used on buttons, etc</span></span><br><span class="line">            help    : <span class="string">&#x27;Show an alert&#x27;</span>,</span><br><span class="line">            help_index : <span class="string">&#x27;zz&#x27;</span>,</span><br><span class="line">            handler : handler</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">var</span> prefix = <span class="string">&#x27;my_extension&#x27;</span>;</span><br><span class="line">        <span class="keyword">var</span> action_name = <span class="string">&#x27;show-alert&#x27;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> full_action_name = <span class="title class_">Jupyter</span>.<span class="property">actions</span>.<span class="title function_">register</span>(action, action_name, prefix); <span class="comment">// returns &#x27;my_extension:show-alert&#x27;</span></span><br><span class="line">        <span class="title class_">Jupyter</span>.<span class="property">toolbar</span>.<span class="title function_">add_buttons_group</span>([full_action_name]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="attr">load_ipython_extension</span>: load_ipython_extension</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
 <p>每个动作都需要一个名字，当与其前缀连接起来形成完整的动作名称时，该名称应该是唯一的。内置的操作，如jupyter-notebook：在先前的Modifying Key绑定示例中绑定的重新启动内核，使用前缀jupyter-notebook。对于扩展中定义的操作，使用扩展名称作为前缀是有意义的。对于动作名称，应考虑以下准则：</p>
 <ul>
 <li>首先为动作选择一个名词和动词。例如，如果操作是“重新启动内核”，则动词是“restart”，名词是“kernel”。</li>
@@ -9092,18 +9099,18 @@
 <li>不要使用<code>before/after </code>，因为它们具有在空间环境中使用时容易混淆的时间内涵。</li>
 <li>对于对话框，请使用指示对话框将完成的动作，如“confirm-restart-kernel”。</li>
 </ul>
-<h3 id="安装和启用扩展"><a href="#安装和启用扩展" class="headerlink" title="安装和启用扩展"></a>安装和启用扩展</h3><p>您可以使用以下命令来安装nbextension：</p>
+<h3 id="%E5%AE%89%E8%A3%85%E5%92%8C%E5%90%AF%E7%94%A8%E6%89%A9%E5%B1%95" tabindex="-1">安装和启用扩展</h3>
+<p>您可以使用以下命令来安装nbextension：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter nbextension install path/to/my_extension/ [--user|--sys-prefix]</span><br></pre></td></tr></table></figure>
-
-
-
-<p>默认安装是系统范围的。您可以使用–user来执行每个用户的安装，或者使用–sys-prefix来安装到Python的前缀（例如，在虚拟或conda环境中）。 my_extension是包含Javascript文件的目录。这会将其复制到Jupyter数据目录（确切位置取决于操作系统&#x2F;平台 - 请参阅<a target="_blank" rel="noopener" href="https://jupyter.readthedocs.io/en/latest/projects/jupyter-directories.html#jupyter-path">Data Files</a>）。</p>
+<p>默认安装是系统范围的。您可以使用–user来执行每个用户的安装，或者使用–sys-prefix来安装到Python的前缀（例如，在虚拟或conda环境中）。 my_extension是包含Javascript文件的目录。这会将其复制到Jupyter数据目录（确切位置取决于操作系统/平台 - 请参阅<a target="_blank" rel="noopener" href="https://jupyter.readthedocs.io/en/latest/projects/jupyter-directories.html#jupyter-path">Data Files</a>）。</p>
 <p>如果插件正在开发中, 还没发布，您可以使用<code>--symlink</code>标志来链接您的扩展，而不是复制它，这样不需要在更改后重新安装。</p>
 <p>要使用你的扩展，你还需要启用它，它告诉笔记本接口加载它。你可以用另一个命令来做到这一点：</p>
 <p><code>jupyter nbextension enable my_extension/main [--sys-prefix]</code></p>
 <p>该参数引用包含您的load_ipython_extension函数的Javascript模块，在本例中为<code>my_extension / main.js</code>。有一个相应的禁用命令来停止使用扩展程序而不卸载它。</p>
 <p>在版本4.2中进行了更改：添加了<code>--sys-prefix</code>参数</p>
-<h3 id="内核特定的扩展"><a href="#内核特定的扩展" class="headerlink" title="内核特定的扩展"></a>内核特定的扩展</h3><h3 id="jupyter-notebook-扩展开发系列"><a href="#jupyter-notebook-扩展开发系列" class="headerlink" title="jupyter notebook 扩展开发系列:"></a>jupyter notebook 扩展开发系列:</h3><ul>
+<h3 id="%E5%86%85%E6%A0%B8%E7%89%B9%E5%AE%9A%E7%9A%84%E6%89%A9%E5%B1%95" tabindex="-1">内核特定的扩展</h3>
+<h3 id="jupyter-notebook-%E6%89%A9%E5%B1%95%E5%BC%80%E5%8F%91%E7%B3%BB%E5%88%97%3A" tabindex="-1">jupyter notebook 扩展开发系列:</h3>
+<ul>
 <li>jupyter notebook 扩展开发之自定义请求处理程序</li>
 <li>jupyter notebook 扩展开发之内容API</li>
 <li>jupyter notebook 扩展开发之 Custom bundler extensions</li>
@@ -9111,7 +9118,9 @@
 <li>jupyter notebook扩展开发之前端插件开发</li>
 <li>jupyter notebook 扩展开发之 将Jupyter扩展作为Python包分发</li>
 </ul>
-<p>转载请注明出处:<a href="http://mlln.cn/">http://mlln.cn</a> 或者 <a target="_blank" rel="noopener" href="http://jupyter.cn/">http://jupyter.cn</a></p>
+<p>转载请注明出处:<a href="http://mlln.cn">http://mlln.cn</a> 或者 <a target="_blank" rel="noopener" href="http://jupyter.cn">http://jupyter.cn</a></p>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
 
 </div>
 
@@ -9120,16 +9129,16 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2018/03/31/jupyter%20notebook%20%E6%89%A9%E5%B1%95%E5%BC%80%E5%8F%91%E4%B9%8B%E5%86%85%E5%AE%B9API/">
+              <a href="/2018/03/31/jupyter%20notebook%20%E6%89%A9%E5%B1%95%E5%BC%80%E5%8F%91%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F/">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  jupyter notebook 扩展开发之内容API
+                  jupyter notebook 扩展开发之自定义请求处理程序
               </a>
             
         </div>
         <div class="item right">
             
-              <a href="/2018/03/31/jupyter%20notebook%20%E6%89%A9%E5%B1%95%E5%BC%80%E5%8F%91%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F/">
-                jupyter notebook 扩展开发之自定义请求处理程序
+              <a href="/2018/03/14/%E6%B1%82%E5%8F%96%E6%9C%80%E5%B0%8F%E4%BA%8C%E8%8C%83%E6%95%B0%E8%A7%A3%E7%9A%84%E5%85%B7%E4%BD%93%E8%BF%87%E7%A8%8B/">
+                求取最小二范数解的具体过程
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

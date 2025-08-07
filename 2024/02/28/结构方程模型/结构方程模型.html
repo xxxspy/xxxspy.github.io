@@ -1,62 +1,64 @@
 <hr>
-<p>title: 结构方程模型R语言实战教程<br>date: 2024-02-28 12:44:03<br>tags:</p>
+<p>title: 结构方程模型R语言实战教程<br>
+date: 2024-02-28 12:44:03<br>
+tags:</p>
 <ul>
 <li>结构方程</li>
 <li>R</li>
 <li>mplus</li>
-<li>amos<br>mathjax: true<br>permalink: &#x2F;2024&#x2F;02&#x2F;28&#x2F;结构方程模型&#x2F;</li>
+<li>amos<br>
+mathjax: true<br>
+permalink: /2024/02/28/结构方程模型/</li>
 </ul>
 <hr>
 <p>SEMinR 为创建和估计结构方程模型 (SEM) 非常容易的使用方法。  SEMinR 集成了 SmartPLS 具有的偏最小二乘路径建模 (PLS-PM) 进行估计，也可以使用 LISREL 和 AMOS 的基于协方差的结构方程模型 (CBSEM) 进行估计， 还支持反应性测量模型的验证性因素分析 (CFA)。SEMinR 中 CBSEM 和 CFA 估计都使用 Lavaan 软件包。</p>
 <!-- more -->
-
 <p>SEMinR 有如下特点：</p>
 <ul>
 <li>使用一种通俗易懂语言，用于在 R 中构建和估计结构方程模型</li>
-<li>可以使用基于方差的 PLS 估计和基于协方差的 SEM 估计来对潜变量结构进行建模 </li>
+<li>可以使用基于方差的 PLS 估计和基于协方差的 SEM 估计来对潜变量结构进行建模</li>
 <li>高级函数可快速指定交互作用、高阶结构 和结构路径</li>
 </ul>
-<p>SEMinR 使用自己的 PLS-PM 估计引擎，并与 Lavaan 软件包集成以进行 CBSEM&#x2F;CFA 估计。 它还带来了其他软件包或软件中没有的一些方法。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>使用如下代码安装 SEMinR ， 它是R的包， 所以你需要在R中运行如下代码：</p>
-<pre><code class="R">install.packages(&quot;seminr&quot;)
+<p>SEMinR 使用自己的 PLS-PM 估计引擎，并与 Lavaan 软件包集成以进行 CBSEM/CFA 估计。 它还带来了其他软件包或软件中没有的一些方法。</p>
+<h2 id="%E5%AE%89%E8%A3%85" tabindex="-1">安装</h2>
+<p>使用如下代码安装 SEMinR ， 它是R的包， 所以你需要在R中运行如下代码：</p>
+<pre><code class="language-R">install.packages(&quot;seminr&quot;)
 </code></pre>
 <p>注意seminr是使用R4.3.3编译的, 你的R版本不能低于这个版本.</p>
 <p>然后加载包：</p>
-<pre><code class="R">library(seminr)
+<pre><code class="language-R">library(seminr)
 </code></pre>
-<h2 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h2><p>你需要从任何数据文件中加载数据到数据框（data.frame）。 列名必须是测量项目的名称。 重要提示：避免在列名称中使用星号“*”（这些是为交互术语保留的）。</p>
+<h2 id="%E6%95%B0%E6%8D%AE" tabindex="-1">数据</h2>
+<p>你需要从任何数据文件中加载数据到数据框（data.frame）。 列名必须是测量项目的名称。 重要提示：避免在列名称中使用星号“*”（这些是为交互术语保留的）。</p>
 <p>我们的教程使用的是 seminr 自带的数据集 mobi, 可以使用data方法加载数据, 如下:</p>
-<pre><code class="R">df=data(&#39;mobi&#39;)
+<pre><code class="language-R">df=data('mobi')
 head(mobi)
 </code></pre>
-<p>{% raw %}</p>
+<p %="" raw="" %=""></p>
 <div class="output" contenteditable="true">
 输出(html):<br>
 <table class="dataframe">
 <caption>A data.frame: 6 × 24</caption>
 <thead>
-    <tr><th></th><th scope=col>CUEX1</th><th scope=col>CUEX2</th><th scope=col>CUEX3</th><th scope=col>CUSA1</th><th scope=col>CUSA2</th><th scope=col>CUSA3</th><th scope=col>CUSCO</th><th scope=col>CUSL1</th><th scope=col>CUSL2</th><th scope=col>CUSL3</th><th scope=col>⋯</th><th scope=col>IMAG5</th><th scope=col>PERQ1</th><th scope=col>PERQ2</th><th scope=col>PERQ3</th><th scope=col>PERQ4</th><th scope=col>PERQ5</th><th scope=col>PERQ6</th><th scope=col>PERQ7</th><th scope=col>PERV1</th><th scope=col>PERV2</th></tr>
-    <tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>⋯</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+	<tr><th></th><th scope=col>CUEX1</th><th scope=col>CUEX2</th><th scope=col>CUEX3</th><th scope=col>CUSA1</th><th scope=col>CUSA2</th><th scope=col>CUSA3</th><th scope=col>CUSCO</th><th scope=col>CUSL1</th><th scope=col>CUSL2</th><th scope=col>CUSL3</th><th scope=col>⋯</th><th scope=col>IMAG5</th><th scope=col>PERQ1</th><th scope=col>PERQ2</th><th scope=col>PERQ3</th><th scope=col>PERQ4</th><th scope=col>PERQ5</th><th scope=col>PERQ6</th><th scope=col>PERQ7</th><th scope=col>PERV1</th><th scope=col>PERV2</th></tr>
+	<tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>⋯</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th></tr>
 </thead>
 <tbody>
-    <tr><th scope=row>1</th><td> 7</td><td> 7</td><td> 6</td><td> 6</td><td> 4</td><td> 7</td><td> 7</td><td> 6</td><td>5</td><td> 6</td><td>⋯</td><td> 4</td><td> 7</td><td> 6</td><td> 4</td><td> 7</td><td>6</td><td> 5</td><td> 5</td><td> 2</td><td> 3</td></tr>
-    <tr><th scope=row>2</th><td>10</td><td>10</td><td> 9</td><td>10</td><td>10</td><td> 8</td><td>10</td><td>10</td><td>2</td><td>10</td><td>⋯</td><td> 9</td><td>10</td><td> 9</td><td>10</td><td>10</td><td>9</td><td>10</td><td>10</td><td>10</td><td>10</td></tr>
-    <tr><th scope=row>3</th><td> 7</td><td> 7</td><td> 7</td><td> 8</td><td> 7</td><td> 7</td><td> 6</td><td> 6</td><td>2</td><td> 7</td><td>⋯</td><td> 7</td><td> 7</td><td> 8</td><td> 5</td><td> 7</td><td>8</td><td> 7</td><td> 7</td><td> 7</td><td> 7</td></tr>
-    <tr><th scope=row>4</th><td> 7</td><td>10</td><td> 5</td><td>10</td><td>10</td><td>10</td><td> 5</td><td>10</td><td>4</td><td>10</td><td>⋯</td><td>10</td><td> 8</td><td>10</td><td>10</td><td> 8</td><td>4</td><td> 5</td><td> 8</td><td> 5</td><td> 5</td></tr>
-    <tr><th scope=row>5</th><td> 8</td><td> 7</td><td>10</td><td>10</td><td> 8</td><td> 8</td><td> 5</td><td>10</td><td>3</td><td> 8</td><td>⋯</td><td> 9</td><td>10</td><td> 9</td><td> 8</td><td>10</td><td>9</td><td> 9</td><td> 8</td><td> 6</td><td> 6</td></tr>
-    <tr><th scope=row>6</th><td>10</td><td> 9</td><td> 7</td><td> 8</td><td> 7</td><td> 7</td><td> 8</td><td>10</td><td>3</td><td>10</td><td>⋯</td><td> 9</td><td> 9</td><td>10</td><td> 9</td><td>10</td><td>8</td><td> 9</td><td> 9</td><td>10</td><td>10</td></tr>
+	<tr><th scope=row>1</th><td> 7</td><td> 7</td><td> 6</td><td> 6</td><td> 4</td><td> 7</td><td> 7</td><td> 6</td><td>5</td><td> 6</td><td>⋯</td><td> 4</td><td> 7</td><td> 6</td><td> 4</td><td> 7</td><td>6</td><td> 5</td><td> 5</td><td> 2</td><td> 3</td></tr>
+	<tr><th scope=row>2</th><td>10</td><td>10</td><td> 9</td><td>10</td><td>10</td><td> 8</td><td>10</td><td>10</td><td>2</td><td>10</td><td>⋯</td><td> 9</td><td>10</td><td> 9</td><td>10</td><td>10</td><td>9</td><td>10</td><td>10</td><td>10</td><td>10</td></tr>
+	<tr><th scope=row>3</th><td> 7</td><td> 7</td><td> 7</td><td> 8</td><td> 7</td><td> 7</td><td> 6</td><td> 6</td><td>2</td><td> 7</td><td>⋯</td><td> 7</td><td> 7</td><td> 8</td><td> 5</td><td> 7</td><td>8</td><td> 7</td><td> 7</td><td> 7</td><td> 7</td></tr>
+	<tr><th scope=row>4</th><td> 7</td><td>10</td><td> 5</td><td>10</td><td>10</td><td>10</td><td> 5</td><td>10</td><td>4</td><td>10</td><td>⋯</td><td>10</td><td> 8</td><td>10</td><td>10</td><td> 8</td><td>4</td><td> 5</td><td> 8</td><td> 5</td><td> 5</td></tr>
+	<tr><th scope=row>5</th><td> 8</td><td> 7</td><td>10</td><td>10</td><td> 8</td><td> 8</td><td> 5</td><td>10</td><td>3</td><td> 8</td><td>⋯</td><td> 9</td><td>10</td><td> 9</td><td> 8</td><td>10</td><td>9</td><td> 9</td><td> 8</td><td> 6</td><td> 6</td></tr>
+	<tr><th scope=row>6</th><td>10</td><td> 9</td><td> 7</td><td> 8</td><td> 7</td><td> 7</td><td> 8</td><td>10</td><td>3</td><td>10</td><td>⋯</td><td> 9</td><td> 9</td><td>10</td><td> 9</td><td>10</td><td>8</td><td> 9</td><td> 9</td><td>10</td><td>10</td></tr>
 </tbody>
 </table>
-
 </div>
 {% endraw %}
-
-
-<p> mobi 数据框（也可在 semPLS R 软件包中找到） 该数据集来自适用于移动电话市场的欧洲客户满意度指数 (ECSI) 测量工具（Tenenhaus 等人，2005 年）。</p>
-<p> 下面是一些描述性统计:</p>
-<pre><code class="R">dim(mobi) # 有250个样本, 24个变量
+<p>mobi 数据框（也可在 semPLS R 软件包中找到） 该数据集来自适用于移动电话市场的欧洲客户满意度指数 (ECSI) 测量工具（Tenenhaus 等人，2005 年）。</p>
+<p>下面是一些描述性统计:</p>
+<pre><code class="language-R">dim(mobi) # 有250个样本, 24个变量
 </code></pre>
-<p>{% raw %}</p>
+<p %="" raw="" %=""></p>
 <div class="output" contenteditable="true">
 输出(html):<br>
 <style>
@@ -65,18 +67,13 @@ head(mobi)
 .list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
 </style>
 <ol class=list-inline><li>250</li><li>24</li></ol>
-
 </div>
 {% endraw %}
-
-
-
-<pre><code class="R">summary(mobi)
+<pre><code class="language-R">summary(mobi)
 </code></pre>
-<p>{% raw %}</p>
+<p %="" raw="" %=""></p>
 <div class="output">
 输出(plain):<br/>
-
 <pre><code>     CUEX1           CUEX2            CUEX3            CUSA1       
 &lt;br /&gt; Min.   : 1.00   Min.   : 1.000   Min.   : 1.000   Min.   : 4.000  
 &lt;br /&gt; 1st Qu.: 7.00   1st Qu.: 7.000   1st Qu.: 6.000   1st Qu.: 7.000  
@@ -122,12 +119,11 @@ head(mobi)
 </code></pre>
 </div>
 {% endraw %}
-
-
-<h2 id="测量模型的设定"><a href="#测量模型的设定" class="headerlink" title="测量模型的设定"></a>测量模型的设定</h2><p>“multi_items”这个函数非常有用, 我么可以使用”multi_items”来生成连续变化的变量名, 例如:</p>
-<pre><code class="R">multi_items(&quot;IMAG&quot;, 1:5)
+<h2 id="%E6%B5%8B%E9%87%8F%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%AE%BE%E5%AE%9A" tabindex="-1">测量模型的设定</h2>
+<p>&quot;multi_items&quot;这个函数非常有用, 我么可以使用&quot;multi_items&quot;来生成连续变化的变量名, 例如:</p>
+<pre><code class="language-R">multi_items(&quot;IMAG&quot;, 1:5)
 </code></pre>
-<p>{% raw %}</p>
+<p %="" raw="" %=""></p>
 <div class="output" contenteditable="true">
 输出(html):<br>
 <style>
@@ -136,17 +132,13 @@ head(mobi)
 .list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
 </style>
 <ol class=list-inline><li>'IMAG1'</li><li>'IMAG2'</li><li>'IMAG3'</li><li>'IMAG4'</li><li>'IMAG5'</li></ol>
-
 </div>
 {% endraw %}
-
-
-
-<pre><code class="R"># 不连续的变量名
+<pre><code class="language-R"># 不连续的变量名
 
 multi_items(&quot;IMAG&quot;, c(1, 3:5))
 </code></pre>
-<p>{% raw %}</p>
+<p %="" raw="" %=""></p>
 <div class="output" contenteditable="true">
 输出(html):<br>
 <style>
@@ -155,16 +147,13 @@ multi_items(&quot;IMAG&quot;, c(1, 3:5))
 .list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
 </style>
 <ol class=list-inline><li>'IMAG1'</li><li>'IMAG3'</li><li>'IMAG4'</li><li>'IMAG5'</li></ol>
-
 </div>
 {% endraw %}
-
-
-<p>“composite”这个函数顾名思义, 就是生成一个”构建”, 即形成性潜变量, 形成性只能在pls-sem中使用, 也就是说像AMOS这样的软件是不支持的, 例如:</p>
-<pre><code class="R"># 构建一个潜变量, 名为IMAG, 有五个题目, 分别是: &#39;IMAG1&#39;&#39;IMAG2&#39;&#39;IMAG3&#39;&#39;IMAG4&#39;&#39;IMAG5&#39;
+<p>“composite&quot;这个函数顾名思义, 就是生成一个&quot;构建”, 即形成性潜变量, 形成性只能在pls-sem中使用, 也就是说像AMOS这样的软件是不支持的, 例如:</p>
+<pre><code class="language-R"># 构建一个潜变量, 名为IMAG, 有五个题目, 分别是: 'IMAG1''IMAG2''IMAG3''IMAG4''IMAG5'
 composite(&quot;IMAG&quot;, multi_items(&quot;IMAG&quot;, 1:5))
 </code></pre>
-<p>{% raw %}</p>
+<p %="" raw="" %=""></p>
 <div class="output" contenteditable="true">
 输出(html):<br>
 <style>
@@ -173,15 +162,12 @@ composite(&quot;IMAG&quot;, multi_items(&quot;IMAG&quot;, 1:5))
 .list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
 </style>
 <ol class=list-inline><li>'IMAG'</li><li>'IMAG1'</li><li>'A'</li><li>'IMAG'</li><li>'IMAG2'</li><li>'A'</li><li>'IMAG'</li><li>'IMAG3'</li><li>'A'</li><li>'IMAG'</li><li>'IMAG4'</li><li>'A'</li><li>'IMAG'</li><li>'IMAG5'</li><li>'A'</li></ol>
-
 </div>
 {% endraw %}
-
-
 <p>如果你的潜变量是反应性的, 即由反应性指标构成, 那么我们需要使用 “reflective” 方法, 基于协方差矩阵的结构方程模型只能支持反应性的指标:</p>
-<pre><code class="R">reflective(&quot;IMAG&quot;, multi_items(&quot;IMAG&quot;, 1:5))
+<pre><code class="language-R">reflective(&quot;IMAG&quot;, multi_items(&quot;IMAG&quot;, 1:5))
 </code></pre>
-<p>{% raw %}</p>
+<p %="" raw="" %=""></p>
 <div class="output" contenteditable="true">
 输出(html):<br>
 <style>
@@ -190,13 +176,10 @@ composite(&quot;IMAG&quot;, multi_items(&quot;IMAG&quot;, 1:5))
 .list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
 </style>
 <ol class=list-inline><li>'IMAG'</li><li>'IMAG1'</li><li>'C'</li><li>'IMAG'</li><li>'IMAG2'</li><li>'C'</li><li>'IMAG'</li><li>'IMAG3'</li><li>'C'</li><li>'IMAG'</li><li>'IMAG4'</li><li>'C'</li><li>'IMAG'</li><li>'IMAG5'</li><li>'C'</li></ol>
-
 </div>
 {% endraw %}
-
-
-<p>定义测量模型使用”constructs”, 例如:</p>
-<pre><code class="R">measurements &lt;- constructs(
+<p>定义测量模型使用&quot;constructs&quot;, 例如:</p>
+<pre><code class="language-R">measurements &lt;- constructs(
   composite(&quot;Image&quot;,        multi_items(&quot;IMAG&quot;, 1:5)),
   composite(&quot;Expectation&quot;,  multi_items(&quot;CUEX&quot;, 1:3)),
   composite(&quot;Value&quot;,        multi_items(&quot;PERV&quot;, 1:2)),
@@ -205,45 +188,46 @@ composite(&quot;IMAG&quot;, multi_items(&quot;IMAG&quot;, 1:5))
 )
 
 measurement
+
 </code></pre>
-<p>{% raw %}</p>
+<p %="" raw="" %=""></p>
 <div class="output" contenteditable="true">
 输出(html):<br>
 <dl>
-    <dt>$composite</dt>
-        <dd><style>
+	<dt>$composite</dt>
+		<dd><style>
 .list-inline {list-style: none; margin:0; padding: 0}
 .list-inline>li {display: inline-block}
 .list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
 </style>
 <ol class=list-inline><li>'Image'</li><li>'IMAG1'</li><li>'A'</li><li>'Image'</li><li>'IMAG2'</li><li>'A'</li><li>'Image'</li><li>'IMAG3'</li><li>'A'</li><li>'Image'</li><li>'IMAG4'</li><li>'A'</li><li>'Image'</li><li>'IMAG5'</li><li>'A'</li></ol>
 </dd>
-    <dt>$composite</dt>
-        <dd><style>
+	<dt>$composite</dt>
+		<dd><style>
 .list-inline {list-style: none; margin:0; padding: 0}
 .list-inline>li {display: inline-block}
 .list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
 </style>
 <ol class=list-inline><li>'Expectation'</li><li>'CUEX1'</li><li>'A'</li><li>'Expectation'</li><li>'CUEX2'</li><li>'A'</li><li>'Expectation'</li><li>'CUEX3'</li><li>'A'</li></ol>
 </dd>
-    <dt>$composite</dt>
-        <dd><style>
+	<dt>$composite</dt>
+		<dd><style>
 .list-inline {list-style: none; margin:0; padding: 0}
 .list-inline>li {display: inline-block}
 .list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
 </style>
 <ol class=list-inline><li>'Value'</li><li>'PERV1'</li><li>'A'</li><li>'Value'</li><li>'PERV2'</li><li>'A'</li></ol>
 </dd>
-    <dt>$composite</dt>
-        <dd><style>
+	<dt>$composite</dt>
+		<dd><style>
 .list-inline {list-style: none; margin:0; padding: 0}
 .list-inline>li {display: inline-block}
 .list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
 </style>
 <ol class=list-inline><li>'Satisfaction'</li><li>'CUSA1'</li><li>'A'</li><li>'Satisfaction'</li><li>'CUSA2'</li><li>'A'</li><li>'Satisfaction'</li><li>'CUSA3'</li><li>'A'</li></ol>
 </dd>
-    <dt>$scaled_interaction</dt>
-        <dd><pre class=language-r><code>structure(function (data, measurement_model, structural_model, 
+	<dt>$scaled_interaction</dt>
+		<dd><pre class=language-r><code>structure(function (data, measurement_model, structural_model, 
 <span style=white-space:pre-wrap>    ints, ...) </span>
 {
 <span style=white-space:pre-wrap>    interaction_name &lt;- paste(iv, moderator, sep = "*")</span>
@@ -263,41 +247,35 @@ measurement
 <span style=white-space:pre-wrap>        mm = intxn_mm))</span>
 }, class = c("function", "interaction", "scaled_interaction"))</code></pre></dd>
 </dl>
-
 </div>
 {% endraw %}
-
-
 <p>我们使用了interaction_term来定义交互项, 它是用来检验调节效应的, 下面我们定义结构模型:</p>
-<h2 id="结构模型的设定"><a href="#结构模型的设定" class="headerlink" title="结构模型的设定"></a>结构模型的设定</h2><p>“paths”就是路径的意思, 我们用这个方法可以定义一条或者多条路径, 它的from参数就是路径的起点, 它的to参数就是路径的终点, “relationships”函数用于将所有的路径组合起来构成结构模型:</p>
-<pre><code class="R">
+<h2 id="%E7%BB%93%E6%9E%84%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%AE%BE%E5%AE%9A" tabindex="-1">结构模型的设定</h2>
+<p>&quot;paths&quot;就是路径的意思, 我们用这个方法可以定义一条或者多条路径, 它的from参数就是路径的起点, 它的to参数就是路径的终点, &quot;relationships&quot;函数用于将所有的路径组合起来构成结构模型:</p>
+<pre><code class="language-R">
 structure &lt;- relationships(
   paths(from = c(&quot;Image&quot;, &quot;Expectation&quot;, &quot;Image*Expectation&quot;), to = &quot;Value&quot;),
   paths(from = &quot;Value&quot;, to = &quot;Satisfaction&quot;)
 )
 </code></pre>
-<h2 id="估计结果"><a href="#估计结果" class="headerlink" title="估计结果"></a>估计结果</h2><p>结构方程由测量模型和结构模型构成, 有了上面的模型, 我们可以计算结果了.</p>
+<h2 id="%E4%BC%B0%E8%AE%A1%E7%BB%93%E6%9E%9C" tabindex="-1">估计结果</h2>
+<p>结构方程由测量模型和结构模型构成, 有了上面的模型, 我们可以计算结果了.</p>
 <p>假如我们想使用最小二乘法估计结构方程, 那么我们这样做:</p>
-<pre><code class="R">pls_model &lt;- estimate_pls(data = mobi, 
+<pre><code class="language-R">pls_model &lt;- estimate_pls(data = mobi, 
                           measurement_model = measurements, 
                           structural_model = structure)
 summary(pls_model)
 </code></pre>
-<p>{% raw %}</p>
+<p %="" raw="" %=""></p>
 <div class="output" contenteditable="true">
 输出(stream):<br>
 Generating the seminr model
-
 <p>All 250 observations are valid.</p>
 </div>
 {% endraw %}
-
-
-<p>{% raw %}</p>
+<p %="" raw="" %=""></p>
 <div class="output">
 输出(plain):<br/>
-
-    
 <pre><code>&lt;br /&gt;Results from  package seminr (2.3.2)
 &lt;br /&gt;
 &lt;br /&gt;Path Coefficients:
@@ -322,28 +300,20 @@ Generating the seminr model
 </code></pre>
 </div>
 {% endraw %}
-
-
-
-<pre><code class="R"># 使用bootstrap的方法来计算路径系数的显著性和置信区间
+<pre><code class="language-R"># 使用bootstrap的方法来计算路径系数的显著性和置信区间
 boot_estimates &lt;- bootstrap_model(pls_model, nboot = 1000, cores = 2)
 summary(boot_estimates)
 </code></pre>
-<p>{% raw %}</p>
+<p %="" raw="" %=""></p>
 <div class="output" contenteditable="true">
 输出(stream):<br>
 Bootstrapping model using seminr...
-
 <p>SEMinR Model successfully bootstrapped</p>
 </div>
 {% endraw %}
-
-
-<p>{% raw %}</p>
+<p %="" raw="" %=""></p>
 <div class="output">
 输出(plain):<br/>
-
-    
 <pre><code>&lt;br /&gt;Results from Bootstrap resamples:  1000
 &lt;br /&gt;
 &lt;br /&gt;Bootstrapped Structural Paths:
@@ -523,27 +493,20 @@ Bootstrapping model using seminr...
 </code></pre>
 </div>
 {% endraw %}
-
-
-<p>当然我们还可以使用这个模型进行CBSEM, 但是测量模型定义了很多形成性变量, 这些形成性的测量指标不可以在CBSEM中使用, 那么我们为了演示方便,<br>我们将形成性指标改为反应性指标, 使用的是”as.reflective”方法. 基于协方差矩阵的结构方程需要先评估测量模型, 即先进行验证性因子分析:</p>
-<pre><code class="R">cfa_model &lt;- estimate_cfa(data = mobi, as.reflective(measurements))
+<p>当然我们还可以使用这个模型进行CBSEM, 但是测量模型定义了很多形成性变量, 这些形成性的测量指标不可以在CBSEM中使用, 那么我们为了演示方便,<br>
+我们将形成性指标改为反应性指标, 使用的是&quot;as.reflective&quot;方法. 基于协方差矩阵的结构方程需要先评估测量模型, 即先进行验证性因子分析:</p>
+<pre><code class="language-R">cfa_model &lt;- estimate_cfa(data = mobi, as.reflective(measurements))
 summary(cfa_model)
 </code></pre>
-<p>{% raw %}</p>
+<p %="" raw="" %=""></p>
 <div class="output" contenteditable="true">
 输出(stream):<br>
 Generating the seminr model for CFA
-
-
 </div>
 {% endraw %}
-
-
-<p>{% raw %}</p>
+<p %="" raw="" %=""></p>
 <div class="output">
 输出(plain):<br/>
-
-    
 <pre><code>&lt;br /&gt;Results from  package seminr (2.3.2)
 &lt;br /&gt;Estimation used  package seminr (2.3.2)
 &lt;br /&gt;
@@ -609,27 +572,19 @@ Generating the seminr model for CFA
 </code></pre>
 </div>
 {% endraw %}
-
-
 <p>然后再进行结构方程模型的估计:</p>
-<pre><code class="R">cbsem_model &lt;- estimate_cbsem(data = mobi, as.reflective(measurements), structure)
+<pre><code class="language-R">cbsem_model &lt;- estimate_cbsem(data = mobi, as.reflective(measurements), structure)
 summary(cbsem_model)
 </code></pre>
-<p>{% raw %}</p>
+<p %="" raw="" %=""></p>
 <div class="output" contenteditable="true">
 输出(stream):<br>
 Generating the seminr model for CBSEM
-
-
 </div>
 {% endraw %}
-
-
-<p>{% raw %}</p>
+<p %="" raw="" %=""></p>
 <div class="output">
 输出(plain):<br/>
-
-    
 <pre><code>&lt;br /&gt;Results from  package seminr (2.3.2)
 &lt;br /&gt;Estimation used  package seminr (2.3.2)
 &lt;br /&gt;
@@ -680,60 +635,60 @@ Generating the seminr model for CBSEM
 </code></pre>
 </div>
 {% endraw %}
-
-
-<h2 id="Bootstrapping方法用于估计参数的显著性"><a href="#Bootstrapping方法用于估计参数的显著性" class="headerlink" title="Bootstrapping方法用于估计参数的显著性"></a>Bootstrapping方法用于估计参数的显著性</h2><p>bootstrap_model 方法接受一个pls模型, 这个模型一般是 estimate_pls 方法返回的结果. 第二个参数是nboot, 代表抽样次数. 第三个参数 cores cpu核心数, 如果你想要高性能的计算, 可以多设定几个核心.</p>
+<h2 id="bootstrapping%E6%96%B9%E6%B3%95%E7%94%A8%E4%BA%8E%E4%BC%B0%E8%AE%A1%E5%8F%82%E6%95%B0%E7%9A%84%E6%98%BE%E8%91%97%E6%80%A7" tabindex="-1">Bootstrapping方法用于估计参数的显著性</h2>
+<p>bootstrap_model 方法接受一个pls模型, 这个模型一般是 estimate_pls 方法返回的结果. 第二个参数是nboot, 代表抽样次数. 第三个参数 cores cpu核心数, 如果你想要高性能的计算, 可以多设定几个核心.</p>
 <p>我们用下面的代码:</p>
-<pre><code class="R"># 抽样1000次, 并且使用2个核心
+<pre><code class="language-R"># 抽样1000次, 并且使用2个核心
 boot_seminr_model &lt;- bootstrap_model(seminr_model = pls_model,
                                  nboot = 1000,
                                  cores = 2)
+
 </code></pre>
-<p>{% raw %}</p>
+<p %="" raw="" %=""></p>
 <div class="output" contenteditable="true">
 输出(stream):<br>
 Bootstrapping model using seminr...
-
 <p>SEMinR Model successfully bootstrapped</p>
 </div>
 {% endraw %}
-
 <p>bootstrap_model 返回多种结果, 我们列在下方:</p>
 <ul>
-<li>boot_seminr_model&#96;$boot_paths 路径系数的显著性检验</li>
-<li>boot_seminr_model$&#96;boot_loadings 因子载荷</li>
-<li>boot_seminr_model&#96;$boot_weights 权重(形成性指标与构念之间的关系叫权重)</li>
-<li>boot_seminr_model$&#96;boot_HTMT HTMT的检验</li>
-<li>boot_seminr_model&#96;$boot_total_paths 总效应的显著性检验</li>
-<li>boot_seminr_model$&#96;paths_descriptives 描述性统计</li>
-<li>boot_seminr_model&#96;$loadings_descriptives 载荷的均值和标准差</li>
-<li>boot_seminr_model$&#96;weights_descriptives 权重的举止和标准差</li>
-<li>boot_seminr_model&#96;$HTMT_descriptives </li>
-<li>boot_seminr_model$&#96;</li>
+<li>boot_seminr_model`$boot_paths 路径系数的显著性检验</li>
+<li>boot_seminr_model$`boot_loadings 因子载荷</li>
+<li>boot_seminr_model`$boot_weights 权重(形成性指标与构念之间的关系叫权重)</li>
+<li>boot_seminr_model$`boot_HTMT HTMT的检验</li>
+<li>boot_seminr_model`$boot_total_paths 总效应的显著性检验</li>
+<li>boot_seminr_model$`paths_descriptives 描述性统计</li>
+<li>boot_seminr_model`$loadings_descriptives 载荷的均值和标准差</li>
+<li>boot_seminr_model$`weights_descriptives 权重的举止和标准差</li>
+<li>boot_seminr_model`$HTMT_descriptives</li>
+<li>boot_seminr_model$`</li>
 </ul>
-<h2 id="汇报结果"><a href="#汇报结果" class="headerlink" title="汇报结果"></a>汇报结果</h2><p>有很多种方法来获取你想要的结果, 最常用的就是使用summary方法, 它接受一个seminr_model模型, 例如estimate_pls返回的模型.<br>对于结构方程模型, 它可以输出R方, 调整R方, 结构部分的路径系数, 构建效度, CR  composite reliability (Dillon and Goldstein 1987), AVE (Fornell and Larcker 1981), and rhoA (Dijkstra and Henseler 2015).</p>
+<h2 id="%E6%B1%87%E6%8A%A5%E7%BB%93%E6%9E%9C" tabindex="-1">汇报结果</h2>
+<p>有很多种方法来获取你想要的结果, 最常用的就是使用summary方法, 它接受一个seminr_model模型, 例如estimate_pls返回的模型.<br>
+对于结构方程模型, 它可以输出R方, 调整R方, 结构部分的路径系数, 构建效度, CR  composite reliability (Dillon and Goldstein 1987), AVE (Fornell and Larcker 1981), and rhoA (Dijkstra and Henseler 2015).</p>
 <p>你还可以使用一个变量来代表summary的输出结果, 这个变量就可以任意调用你想要的结果: <code>model_summary &lt;- summary(seminr_model)</code></p>
 <p>有如下结果:</p>
 <ul>
 <li>meta reports the metadata about the estimation technique and version</li>
-<li>model_summary&#96;$iterations (PLS only) reports the number of iterations to converge on a stable model</li>
-<li>model_summary$&#96;paths reports the matrix of path coefficients, R2, and adjusted R2total_effects reports the total effects of the structural model total_indirect_effects reports the total indirect effects of the structural model</li>
-<li>model_summary&#96;$loadings reports the estimated loadings of the measurement model</li>
-<li>model_summary$&#96;weights reports the estimated weights of the measurement model</li>
+<li>model_summary`$iterations (PLS only) reports the number of iterations to converge on a stable model</li>
+<li>model_summary$`paths reports the matrix of path coefficients, R2, and adjusted R2total_effects reports the total effects of the structural model total_indirect_effects reports the total indirect effects of the structural model</li>
+<li>model_summary`$loadings reports the estimated loadings of the measurement model</li>
+<li>model_summary$`weights reports the estimated weights of the measurement model</li>
 <li>model_summary<code>$validity$</code>vif_items reports the Variance Inflation Factor (VIF) for the measurement model</li>
 <li>model_summary<code>$validity$</code>htmt reports the HTMT for the constructs</li>
 <li>model_summary<code>$validity$</code>fl_criteria reports the fornell larcker criteria for the constructs</li>
 <li>model_summary<code>$validity$</code>cross_loadings (PLS only) reports all possible loadings between contructs and items</li>
-<li>model_summary&#96;$reliability reports composite reliability (rhoC), cronbachs alpha, average variance extracted (AVE), and rhoA</li>
-<li>model_summary$&#96;composite_scores reports the construct scores of composites</li>
-<li>model_summary&#96;$vif_antecedents report the Variance Inflation Factor (VIF) for the structural model</li>
-<li>model_summary$&#96;fSquare reports the effect sizes (f2) for the structural model</li>
-<li>model_summary&#96;$descriptives reports the descriptive statistics and correlations for both items and constructs</li>
-<li>model_summary$&#96;</li>
+<li>model_summary`$reliability reports composite reliability (rhoC), cronbachs alpha, average variance extracted (AVE), and rhoA</li>
+<li>model_summary$`composite_scores reports the construct scores of composites</li>
+<li>model_summary`$vif_antecedents report the Variance Inflation Factor (VIF) for the structural model</li>
+<li>model_summary$`fSquare reports the effect sizes (f2) for the structural model</li>
+<li>model_summary`$descriptives reports the descriptive statistics and correlations for both items and constructs</li>
+<li>model_summary$`</li>
 </ul>
 <p>输出直接效应中介效应的方法:</p>
 <p>specific_effect_significance 接受一个bootstrap结果, 然后输出具体路径的直接和中介效应及其显著性.</p>
-<pre><code class="R">mobi_mm &lt;- constructs(
+<pre><code class="language-R">mobi_mm &lt;- constructs(
 composite(&quot;Image&quot;,        multi_items(&quot;IMAG&quot;, 1:5)),
 composite(&quot;Expectation&quot;,  multi_items(&quot;CUEX&quot;, 1:3)),
 composite(&quot;Quality&quot;,      multi_items(&quot;PERQ&quot;, 1:7)),
@@ -784,7 +739,8 @@ specific_effect_significance(boot_seminr_model = boot_seminr_model,
 #&gt;         95% CI 
 #&gt;     0.26319886
 </code></pre>
-<h2 id="描述性统计"><a href="#描述性统计" class="headerlink" title="描述性统计"></a>描述性统计</h2><pre><code class="R">+ `model_summary`$descriptives$`statistics`$items` 题目的描述统计
+<h2 id="%E6%8F%8F%E8%BF%B0%E6%80%A7%E7%BB%9F%E8%AE%A1" tabindex="-1">描述性统计</h2>
+<pre><code class="language-R">+ `model_summary`$descriptives$`statistics`$items` 题目的描述统计
 + `model_summary$`descriptives`$correlations$`items` 题目的相关矩阵
 + `model_summary`$descriptives$`statistics`$constructs` 构念的描述性统计
 + `model_summary$`descriptives`$correlations$`
@@ -819,12 +775,21 @@ boot_estimates &lt;- bootstrap_model(pls_model, nboot = 100, cores = 1)
 #&gt; SEMinR Model successfully bootstrapped
 </code></pre>
 <p>当我们有了模型, 我们就可以绘制这个模型图了:</p>
-<pre><code class="R">plot(boot_estimates, title = &quot;Bootstrapped Model&quot;)
+<pre><code class="language-R">plot(boot_estimates, title = &quot;Bootstrapped Model&quot;)
 save_plot(&quot;myfigure.png&quot;)
 </code></pre>
 <img src="imgs/sem-plot.png">
-
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://cran.r-project.org/web/packages/seminr/vignettes/SEMinR.html">https://cran.r-project.org/web/packages/seminr/vignettes/SEMinR.html</a><br>Yuan, K. H., &amp; Bentler, P. M. (2000). Three likelihood-based methods for mean and covariance structure analysis with nonnormal missing data. Sociological methodology, 30(1), 165-200.<br>Zhao, X., Lynch Jr, J. G., &amp; Chen, Q. (2010). Reconsidering Baron and Kenny: Myths and truths about mediation analysis. Journal of consumer research, 37(2), 197-206.</p>
+<h2 id="%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE" tabindex="-1">参考文献</h2>
+<p><a href="https://cran.r-project.org/web/packages/seminr/vignettes/SEMinR.html">https://cran.r-project.org/web/packages/seminr/vignettes/SEMinR.html</a><br>
+Yuan, K. H., &amp; Bentler, P. M. (2000). Three likelihood-based methods for mean and covariance structure analysis with nonnormal missing data. Sociological methodology, 30(1), 165-200.<br>
+Zhao, X., Lynch Jr, J. G., &amp; Chen, Q. (2010). Reconsidering Baron and Kenny: Myths and truths about mediation analysis. Journal of consumer research, 37(2), 197-206.</p>
 <blockquote>
-<p><strong>注意</strong><br>统计咨询请加QQ 2726725926, 微信 shujufenxidaizuo,  SPSS统计咨询是收费的, 不论什么模型都可以, 只限制于1个研究内.<br>跟我学统计可以代做分析, 每单几百元不等.<br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B.ipynb">notebook</a><br>可以在微博上@mlln-cn向我免费题问<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+<p><strong>注意</strong><br>
+统计咨询请加QQ 2726725926, 微信 shujufenxidaizuo,  SPSS统计咨询是收费的, 不论什么模型都可以, 只限制于1个研究内.<br>
+跟我学统计可以代做分析, 每单几百元不等.<br>
+本文由jupyter notebook转换而来, 您可以在这里下载<a href="%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B.ipynb">notebook</a><br>
+可以在微博上@mlln-cn向我免费题问<br>
+请记住我的网址: <a href="http://mlln.cn">mlln.cn</a> 或者 <a href="http://jupyter.cn">jupyter.cn</a></p>
 </blockquote>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">

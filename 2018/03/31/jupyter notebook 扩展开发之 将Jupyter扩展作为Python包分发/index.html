@@ -2424,6 +2424,17 @@
 								<div class="article-toc" style="display: none;"></div>
 							</ul>
 			
+							<ul>
+								<li class="file">
+									<a href="/2025/08/07/003%20R%E8%AF%AD%E8%A8%80/%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E6%A1%88%E4%BE%8B%E6%95%99%E7%A8%8B-R%E8%AF%AD%E8%A8%80%E7%89%88/">
+                     
+										    贝叶斯网络案例教程-R语言版
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
 								</li>
 								
 							</ul>
@@ -2711,17 +2722,6 @@
 							</ul>
 			
 							<ul>
-								<li class="file">
-									<a href="/2022/08/31/004%20%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B%E5%A4%9A%E7%BB%84%E6%AF%94%E8%BE%83%E5%88%86%E6%9E%90%E8%B0%83%E8%8A%82%E5%8F%98%E9%87%8F/">
-                     
-										    结构方程模型多组比较分析调节变量
-                     
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
 								<li class="directory">
 									<a href="#" class="directory">
 										<i class="fa fa-plus-square-o"></i>
@@ -2840,6 +2840,17 @@
 			
 								</li>
 								
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/08/31/004%20%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B%E5%A4%9A%E7%BB%84%E6%AF%94%E8%BE%83%E5%88%86%E6%9E%90%E8%B0%83%E8%8A%82%E5%8F%98%E9%87%8F/">
+                     
+										    结构方程模型多组比较分析调节变量
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
 							</ul>
 			
 							<ul>
@@ -7823,9 +7834,9 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2015/03/01/Django%E6%95%99%E7%A8%8B%EF%BC%9A%5B5%5DURLpattern%E7%9A%84%E8%AF%AD%E6%B3%95%20-%20%E5%89%AF%E6%9C%AC/">
+									<a href="/2015/03/01/Django%E6%95%99%E7%A8%8B%EF%BC%9A%5B5%5DURLpattern%E7%9A%84%E8%AF%AD%E6%B3%95/">
                      
-										    Django教程：[5]URLpattern的语法 - 副本
+										    Django教程：[5]URLpattern的语法
                      
 									</a>
 								</li>
@@ -7834,9 +7845,9 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2015/03/01/Django%E6%95%99%E7%A8%8B%EF%BC%9A%5B5%5DURLpattern%E7%9A%84%E8%AF%AD%E6%B3%95/">
+									<a href="/2015/03/01/Django%E6%95%99%E7%A8%8B%EF%BC%9A%5B5%5DURLpattern%E7%9A%84%E8%AF%AD%E6%B3%95%20-%20%E5%89%AF%E6%9C%AC/">
                      
-										    Django教程：[5]URLpattern的语法
+										    Django教程：[5]URLpattern的语法 - 副本
                      
 									</a>
 								</li>
@@ -9057,63 +9068,70 @@
 <div id="article-content">
 	<p>这是jupyter notebook 插件开发的系列文档之一, 文章最末尾列出了这个系列的所有博客连接.</p>
 <span id="more"></span>
-
-
-<h3 id="怎样扩展notebook功能"><a href="#怎样扩展notebook功能" class="headerlink" title="怎样扩展notebook功能"></a>怎样扩展notebook功能</h3><p>Jupyter Notebook客户端和服务器应用程序都可以进行深度定制。他们的行为可以通过分别创建以下功能来扩展：</p>
+<h3 id="%E6%80%8E%E6%A0%B7%E6%89%A9%E5%B1%95notebook%E5%8A%9F%E8%83%BD" tabindex="-1">怎样扩展notebook功能</h3>
+<p>Jupyter Notebook客户端和服务器应用程序都可以进行深度定制。他们的行为可以通过分别创建以下功能来扩展：</p>
 <ul>
-<li>nbextension：笔记本扩展<ul>
+<li>nbextension：笔记本扩展
+<ul>
 <li>一个单独的JS文件或JavaScript目录或Cascading StyleSheets等，它们至少包含一个AMD模块，该模块导出一个函数<code>load_ipython_extension</code></li>
 </ul>
 </li>
-<li>服务器扩展：一个可导入的Python模块<ul>
+<li>服务器扩展：一个可导入的Python模块
+<ul>
 <li>实现load_jupyter_server_extension</li>
 </ul>
 </li>
-<li>bundler扩展：一个可导入的Python模块，利用<code>File  - &gt; Download as / Deploy</code>作为菜单项触发器<ul>
+<li>bundler扩展：一个可导入的Python模块，利用<code>File  - &gt; Download as / Deploy</code>作为菜单项触发器
+<ul>
 <li>实现<code>bundler</code>方法</li>
 </ul>
 </li>
 </ul>
-<h3 id="为什么要为Jupyter扩展创建一个Python包？"><a href="#为什么要为Jupyter扩展创建一个Python包？" class="headerlink" title="为什么要为Jupyter扩展创建一个Python包？"></a>为什么要为Jupyter扩展创建一个Python包？</h3><p>由于很少有服务器扩展没有任何前端组件（nExxtension），为了方便和一致，所有这些客户端和服务器扩展及其资产都可以作为Python包打包和版本化，并带有一些简单的命令。这使得用户可以更容易地安装扩展包并且不易出错。</p>
-<h3 id="安装Jupyter扩展"><a href="#安装Jupyter扩展" class="headerlink" title="安装Jupyter扩展"></a>安装Jupyter扩展</h3><h4 id="安装一个包含Jupyter扩展的Python包"><a href="#安装一个包含Jupyter扩展的Python包" class="headerlink" title="安装一个包含Jupyter扩展的Python包"></a>安装一个包含Jupyter扩展的Python包</h4><p>有几种方法可以获得包含Jupyter Extensions的Python包。通常，您会使用软件包管理器：</p>
+<h3 id="%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%B8%BAjupyter%E6%89%A9%E5%B1%95%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AApython%E5%8C%85%EF%BC%9F" tabindex="-1">为什么要为Jupyter扩展创建一个Python包？</h3>
+<p>由于很少有服务器扩展没有任何前端组件（nExxtension），为了方便和一致，所有这些客户端和服务器扩展及其资产都可以作为Python包打包和版本化，并带有一些简单的命令。这使得用户可以更容易地安装扩展包并且不易出错。</p>
+<h3 id="%E5%AE%89%E8%A3%85jupyter%E6%89%A9%E5%B1%95" tabindex="-1">安装Jupyter扩展</h3>
+<h4 id="%E5%AE%89%E8%A3%85%E4%B8%80%E4%B8%AA%E5%8C%85%E5%90%ABjupyter%E6%89%A9%E5%B1%95%E7%9A%84python%E5%8C%85" tabindex="-1">安装一个包含Jupyter扩展的Python包</h4>
+<p>有几种方法可以获得包含Jupyter Extensions的Python包。通常，您会使用软件包管理器：</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pip install helpful_package</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">conda install helpful_package</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">apt-get install helpful_package</span><br><span class="line"></span><br><span class="line"><span class="comment"># where &#x27;helpful_package&#x27; is a Python package containing one or more Jupyter Extensions</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="启用服务器扩展"><a href="#启用服务器扩展" class="headerlink" title="启用服务器扩展"></a>启用服务器扩展</h4><p>最简单的情况是启用没有前端组件的服务器扩展。</p>
+<h4 id="%E5%90%AF%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%89%A9%E5%B1%95" tabindex="-1">启用服务器扩展</h4>
+<p>最简单的情况是启用没有前端组件的服务器扩展。</p>
 <p>希望将其配置存储在其主目录中的pip用户将键入以下命令：</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter serverextension enable --py helpful_package</span><br></pre></td></tr></table></figure>
-
 <p>或者，virtualenv或conda用户可以传递–sys-prefix，以保持其环境的独立性和可重复性。例如：</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Make sure that your virtualenv or conda environment is activated</span><br><span class="line">[source] activate my-environment</span><br><span class="line"></span><br><span class="line">jupyter serverextension enable --py helpful_package --sys-prefix</span><br></pre></td></tr></table></figure>
-
-<h4 id="安装nbextension-assets"><a href="#安装nbextension-assets" class="headerlink" title="安装nbextension assets"></a>安装nbextension assets</h4><p>如果某个软件包还具nbextension前端资源（但默认情况下未启用），请使用以下命令安装这些资源：</p>
+<h4 id="%E5%AE%89%E8%A3%85nbextension-assets" tabindex="-1">安装nbextension assets</h4>
+<p>如果某个软件包还具nbextension前端资源（但默认情况下未启用），请使用以下命令安装这些资源：</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter nbextension install --py helpful_package <span class="comment"># or --sys-prefix if using virtualenv or conda</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="启用nbextension资源"><a href="#启用nbextension资源" class="headerlink" title="启用nbextension资源"></a>启用nbextension资源</h4><p>如果每次在浏览器中加载Jupyter应用程序（例如实验室，笔记本，仪表板，终端）时，你的应用程序需要加载资源，则可使用以下命令启用nbextension：</p>
+<h4 id="%E5%90%AF%E7%94%A8nbextension%E8%B5%84%E6%BA%90" tabindex="-1">启用nbextension资源</h4>
+<p>如果每次在浏览器中加载Jupyter应用程序（例如实验室，笔记本，仪表板，终端）时，你的应用程序需要加载资源，则可使用以下命令启用nbextension：</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter nbextension enable --py helpful_package # or --sys-prefix <span class="keyword">if</span> using virtualenv or conda</span><br></pre></td></tr></table></figure>
-
-<h4 id="它生效了吗？通过列出Jupyter扩展来检查"><a href="#它生效了吗？通过列出Jupyter扩展来检查" class="headerlink" title="它生效了吗？通过列出Jupyter扩展来检查"></a>它生效了吗？通过列出Jupyter扩展来检查</h4><p>在运行一个或多个扩展安装步骤之后，您可以列出目前已知的有关nbextensions，服务器扩展或捆绑包扩展的内容。以下命令将列出哪些扩展可用，是否已启用以及其他扩展详细信息：</p>
+<h4 id="%E5%AE%83%E7%94%9F%E6%95%88%E4%BA%86%E5%90%97%EF%BC%9F%E9%80%9A%E8%BF%87%E5%88%97%E5%87%BAjupyter%E6%89%A9%E5%B1%95%E6%9D%A5%E6%A3%80%E6%9F%A5" tabindex="-1">它生效了吗？通过列出Jupyter扩展来检查</h4>
+<p>在运行一个或多个扩展安装步骤之后，您可以列出目前已知的有关nbextensions，服务器扩展或捆绑包扩展的内容。以下命令将列出哪些扩展可用，是否已启用以及其他扩展详细信息：</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jupyter nbextension list</span><br><span class="line">jupyter serverextension list</span><br><span class="line">jupyter bundlerextension list</span><br></pre></td></tr></table></figure>
-
-<h3 id="示例-服务器扩展"><a href="#示例-服务器扩展" class="headerlink" title="示例 - 服务器扩展"></a>示例 - 服务器扩展</h3><h4 id="使用服务器扩展创建一个Python包"><a href="#使用服务器扩展创建一个Python包" class="headerlink" title="使用服务器扩展创建一个Python包"></a>使用服务器扩展创建一个Python包</h4><p>下面是一个python模块的例子，它包含一个服务器扩展。它有这个目录结构：</p>
+<h3 id="%E7%A4%BA%E4%BE%8B---%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%89%A9%E5%B1%95" tabindex="-1">示例 - 服务器扩展</h3>
+<h4 id="%E4%BD%BF%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%89%A9%E5%B1%95%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AApython%E5%8C%85" tabindex="-1">使用服务器扩展创建一个Python包</h4>
+<p>下面是一个python模块的例子，它包含一个服务器扩展。它有这个目录结构：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- setup.py</span><br><span class="line">- MANIFEST.in</span><br><span class="line">- my_module/</span><br><span class="line">  - __init__.py</span><br></pre></td></tr></table></figure>
-
-<h4 id="定义服务器扩展"><a href="#定义服务器扩展" class="headerlink" title="定义服务器扩展"></a>定义服务器扩展</h4><p>此示例显示服务器扩展及其<code>load_jupyter_server_extension</code>函数是在<code>__init__.py</code>文件中定义的。</p>
+<h4 id="%E5%AE%9A%E4%B9%89%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%89%A9%E5%B1%95" tabindex="-1">定义服务器扩展</h4>
+<p>此示例显示服务器扩展及其<code>load_jupyter_server_extension</code>函数是在<code>__init__.py</code>文件中定义的。</p>
 <p><code>my_module/__init__.py</code>:</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">_jupyter_server_extension_paths</span>():</span><br><span class="line">    <span class="keyword">return</span> [&#123;</span><br><span class="line">        <span class="string">&quot;module&quot;</span>: <span class="string">&quot;my_module&quot;</span></span><br><span class="line">    &#125;]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">load_jupyter_server_extension</span>(<span class="params">nbapp</span>):</span><br><span class="line">    nbapp.log.info(<span class="string">&quot;my module enabled!&quot;</span>)</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
-
-<h3 id="示例-服务器扩展和nbextension"><a href="#示例-服务器扩展和nbextension" class="headerlink" title="示例 - 服务器扩展和nbextension"></a>示例 - 服务器扩展和nbextension</h3><h4 id="使用服务器扩展创建一个Python包-1"><a href="#使用服务器扩展创建一个Python包-1" class="headerlink" title="使用服务器扩展创建一个Python包"></a>使用服务器扩展创建一个Python包</h4><p>这是另一个带有前端模块的服务器扩展。它应当有这样的目录结构:</p>
+<h3 id="%E7%A4%BA%E4%BE%8B---%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%89%A9%E5%B1%95%E5%92%8Cnbextension" tabindex="-1">示例 - 服务器扩展和nbextension</h3>
+<h4 id="%E4%BD%BF%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%89%A9%E5%B1%95%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AApython%E5%8C%85-1" tabindex="-1">使用服务器扩展创建一个Python包</h4>
+<p>这是另一个带有前端模块的服务器扩展。它应当有这样的目录结构:</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- setup.py</span><br><span class="line">- MANIFEST.<span class="keyword">in</span></span><br><span class="line">- my_fancy_module/</span><br><span class="line">  - __init__.py</span><br><span class="line">  - static/</span><br><span class="line">    index.js</span><br></pre></td></tr></table></figure>
-<h4 id="定义服务器扩展和nbextension"><a href="#定义服务器扩展和nbextension" class="headerlink" title="定义服务器扩展和nbextension"></a>定义服务器扩展和nbextension</h4><p>这个例子再次表明服务器扩展及其<code>load_jupyter_server_extension</code>函数是在<code>__init__.py</code>文件中定义的。这一次，<code>nbextension</code>还有一个函数<code>_jupyter_nbextension_path</code>。</p>
+<h4 id="%E5%AE%9A%E4%B9%89%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%89%A9%E5%B1%95%E5%92%8Cnbextension" tabindex="-1">定义服务器扩展和nbextension</h4>
+<p>这个例子再次表明服务器扩展及其<code>load_jupyter_server_extension</code>函数是在<code>__init__.py</code>文件中定义的。这一次，<code>nbextension</code>还有一个函数<code>_jupyter_nbextension_path</code>。</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_jupyter_server_extension_paths</span>():</span><br><span class="line">    <span class="keyword">return</span> [&#123;</span><br><span class="line">        <span class="string">&quot;module&quot;</span>: <span class="string">&quot;my_fancy_module&quot;</span></span><br><span class="line">    &#125;]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Jupyter Extension points</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_jupyter_nbextension_paths</span>():</span><br><span class="line">    <span class="keyword">return</span> [<span class="built_in">dict</span>(</span><br><span class="line">        section=<span class="string">&quot;notebook&quot;</span>,</span><br><span class="line">        <span class="comment"># 相对于 `my_fancy_module`的相对路径</span></span><br><span class="line">        src=<span class="string">&quot;static&quot;</span>,</span><br><span class="line">        <span class="comment"># directory in the `nbextension/` namespace</span></span><br><span class="line">        dest=<span class="string">&quot;my_fancy_module&quot;</span>,</span><br><span class="line">        <span class="comment"># _also_ in the `nbextension/` namespace</span></span><br><span class="line">        require=<span class="string">&quot;my_fancy_module/index&quot;</span>)]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">load_jupyter_server_extension</span>(<span class="params">nbapp</span>):</span><br><span class="line">    nbapp.log.info(<span class="string">&quot;my module enabled!&quot;</span>)</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
-
-<h4 id="安装并启用服务器扩展和nbextension"><a href="#安装并启用服务器扩展和nbextension" class="headerlink" title="安装并启用服务器扩展和nbextension"></a>安装并启用服务器扩展和nbextension</h4><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jupyter nbextension install --py my_fancy_module [--sys-prefix|--user]</span><br><span class="line">jupyter nbextension enable --py my_fancy_module [--sys-prefix|--system]</span><br><span class="line">jupyter serverextension enable --py my_fancy_module [--sys-prefix|--system]</span><br></pre></td></tr></table></figure>
-
-<h3 id="案例-Bundler-extension"><a href="#案例-Bundler-extension" class="headerlink" title="案例- Bundler extension"></a>案例- Bundler extension</h3><h4 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h4><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- setup.py</span><br><span class="line">- MANIFEST.<span class="keyword">in</span></span><br><span class="line">- my_tarball_bundler/</span><br><span class="line">  - __init__.py</span><br></pre></td></tr></table></figure>
-
-<h4 id="在-init-py中定义"><a href="#在-init-py中定义" class="headerlink" title="在__init__.py中定义"></a>在<code>__init__.py</code>中定义</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tarfile</span><br><span class="line"><span class="keyword">import</span> io</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> nbformat</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_jupyter_bundlerextension_paths</span>():</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Declare bundler extensions provided by this package.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> [&#123;</span><br><span class="line">        <span class="comment"># unique bundler name</span></span><br><span class="line">        <span class="string">&quot;name&quot;</span>: <span class="string">&quot;tarball_bundler&quot;</span>,</span><br><span class="line">        <span class="comment"># module containing bundle function</span></span><br><span class="line">        <span class="string">&quot;module_name&quot;</span>: <span class="string">&quot;my_tarball_bundler&quot;</span>,</span><br><span class="line">        <span class="comment"># human-redable menu item label</span></span><br><span class="line">        <span class="string">&quot;label&quot;</span> : <span class="string">&quot;Notebook Tarball (tar.gz)&quot;</span>,</span><br><span class="line">        <span class="comment"># group under &#x27;deploy&#x27; or &#x27;download&#x27; menu</span></span><br><span class="line">        <span class="string">&quot;group&quot;</span> : <span class="string">&quot;download&quot;</span>,</span><br><span class="line">    &#125;]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bundle</span>(<span class="params">handler, model</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Create a compressed tarball containing the notebook document.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Parameters</span></span><br><span class="line"><span class="string">    ----------</span></span><br><span class="line"><span class="string">    handler : tornado.web.RequestHandler</span></span><br><span class="line"><span class="string">        Handler that serviced the bundle request</span></span><br><span class="line"><span class="string">    model : dict</span></span><br><span class="line"><span class="string">        Notebook model from the configured ContentManager</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    notebook_filename = model[<span class="string">&#x27;name&#x27;</span>]</span><br><span class="line">    notebook_content = nbformat.writes(model[<span class="string">&#x27;content&#x27;</span>]).encode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">    notebook_name = os.path.splitext(notebook_filename)[<span class="number">0</span>]</span><br><span class="line">    tar_filename = <span class="string">&#x27;&#123;&#125;.tar.gz&#x27;</span>.<span class="built_in">format</span>(notebook_name)</span><br><span class="line"></span><br><span class="line">    info = tarfile.TarInfo(notebook_filename)</span><br><span class="line">    info.size = <span class="built_in">len</span>(notebook_content)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> io.BytesIO() <span class="keyword">as</span> tar_buffer:</span><br><span class="line">        <span class="keyword">with</span> tarfile.<span class="built_in">open</span>(tar_filename, <span class="string">&quot;w:gz&quot;</span>, fileobj=tar_buffer) <span class="keyword">as</span> tar:</span><br><span class="line">            tar.addfile(info, io.BytesIO(notebook_content))</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Set headers to trigger browser download</span></span><br><span class="line">        handler.set_header(<span class="string">&#x27;Content-Disposition&#x27;</span>,</span><br><span class="line">                           <span class="string">&#x27;attachment; filename=&quot;&#123;&#125;&quot;&#x27;</span>.<span class="built_in">format</span>(tar_filename))</span><br><span class="line">        handler.set_header(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;application/gzip&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Return the buffer value as the response</span></span><br><span class="line">        handler.finish(tar_buffer.getvalue())</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="jupyter-notebook-扩展开发系列"><a href="#jupyter-notebook-扩展开发系列" class="headerlink" title="jupyter notebook 扩展开发系列:"></a>jupyter notebook 扩展开发系列:</h3><ul>
+<h4 id="%E5%AE%89%E8%A3%85%E5%B9%B6%E5%90%AF%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%89%A9%E5%B1%95%E5%92%8Cnbextension" tabindex="-1">安装并启用服务器扩展和nbextension</h4>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jupyter nbextension install --py my_fancy_module [--sys-prefix|--user]</span><br><span class="line">jupyter nbextension enable --py my_fancy_module [--sys-prefix|--system]</span><br><span class="line">jupyter serverextension enable --py my_fancy_module [--sys-prefix|--system]</span><br></pre></td></tr></table></figure>
+<h3 id="%E6%A1%88%E4%BE%8B--bundler-extension" tabindex="-1">案例- Bundler extension</h3>
+<h4 id="%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84" tabindex="-1">目录结构</h4>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- setup.py</span><br><span class="line">- MANIFEST.<span class="keyword">in</span></span><br><span class="line">- my_tarball_bundler/</span><br><span class="line">  - __init__.py</span><br></pre></td></tr></table></figure>
+<h4 id="%E5%9C%A8__init__.py%E4%B8%AD%E5%AE%9A%E4%B9%89" tabindex="-1">在<code>__init__.py</code>中定义</h4>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tarfile</span><br><span class="line"><span class="keyword">import</span> io</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> nbformat</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_jupyter_bundlerextension_paths</span>():</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Declare bundler extensions provided by this package.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> [&#123;</span><br><span class="line">        <span class="comment"># unique bundler name</span></span><br><span class="line">        <span class="string">&quot;name&quot;</span>: <span class="string">&quot;tarball_bundler&quot;</span>,</span><br><span class="line">        <span class="comment"># module containing bundle function</span></span><br><span class="line">        <span class="string">&quot;module_name&quot;</span>: <span class="string">&quot;my_tarball_bundler&quot;</span>,</span><br><span class="line">        <span class="comment"># human-redable menu item label</span></span><br><span class="line">        <span class="string">&quot;label&quot;</span> : <span class="string">&quot;Notebook Tarball (tar.gz)&quot;</span>,</span><br><span class="line">        <span class="comment"># group under &#x27;deploy&#x27; or &#x27;download&#x27; menu</span></span><br><span class="line">        <span class="string">&quot;group&quot;</span> : <span class="string">&quot;download&quot;</span>,</span><br><span class="line">    &#125;]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bundle</span>(<span class="params">handler, model</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Create a compressed tarball containing the notebook document.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Parameters</span></span><br><span class="line"><span class="string">    ----------</span></span><br><span class="line"><span class="string">    handler : tornado.web.RequestHandler</span></span><br><span class="line"><span class="string">        Handler that serviced the bundle request</span></span><br><span class="line"><span class="string">    model : dict</span></span><br><span class="line"><span class="string">        Notebook model from the configured ContentManager</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    notebook_filename = model[<span class="string">&#x27;name&#x27;</span>]</span><br><span class="line">    notebook_content = nbformat.writes(model[<span class="string">&#x27;content&#x27;</span>]).encode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">    notebook_name = os.path.splitext(notebook_filename)[<span class="number">0</span>]</span><br><span class="line">    tar_filename = <span class="string">&#x27;&#123;&#125;.tar.gz&#x27;</span>.<span class="built_in">format</span>(notebook_name)</span><br><span class="line"></span><br><span class="line">    info = tarfile.TarInfo(notebook_filename)</span><br><span class="line">    info.size = <span class="built_in">len</span>(notebook_content)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> io.BytesIO() <span class="keyword">as</span> tar_buffer:</span><br><span class="line">        <span class="keyword">with</span> tarfile.<span class="built_in">open</span>(tar_filename, <span class="string">&quot;w:gz&quot;</span>, fileobj=tar_buffer) <span class="keyword">as</span> tar:</span><br><span class="line">            tar.addfile(info, io.BytesIO(notebook_content))</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Set headers to trigger browser download</span></span><br><span class="line">        handler.set_header(<span class="string">&#x27;Content-Disposition&#x27;</span>,</span><br><span class="line">                           <span class="string">&#x27;attachment; filename=&quot;&#123;&#125;&quot;&#x27;</span>.<span class="built_in">format</span>(tar_filename))</span><br><span class="line">        handler.set_header(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;application/gzip&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Return the buffer value as the response</span></span><br><span class="line">        handler.finish(tar_buffer.getvalue())</span><br></pre></td></tr></table></figure>
+<h3 id="jupyter-notebook-%E6%89%A9%E5%B1%95%E5%BC%80%E5%8F%91%E7%B3%BB%E5%88%97%3A" tabindex="-1">jupyter notebook 扩展开发系列:</h3>
+<ul>
 <li>jupyter notebook 扩展开发之自定义请求处理程序</li>
 <li>jupyter notebook 扩展开发之内容API</li>
 <li>jupyter notebook 扩展开发之 Custom bundler extensions</li>
@@ -9121,7 +9139,9 @@
 <li>jupyter notebook扩展开发之前端插件开发</li>
 <li>jupyter notebook 扩展开发之 将Jupyter扩展作为Python包分发</li>
 </ul>
-<p>转载请注明出处:<a href="http://mlln.cn/">http://mlln.cn</a> 或者 <a target="_blank" rel="noopener" href="http://jupyter.cn/">http://jupyter.cn</a></p>
+<p>转载请注明出处:<a href="http://mlln.cn">http://mlln.cn</a> 或者 <a target="_blank" rel="noopener" href="http://jupyter.cn">http://jupyter.cn</a></p>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
 
 </div>
 
@@ -9130,16 +9150,16 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2018/03/31/jupyter%20notebook%20%E6%89%A9%E5%B1%95%E5%BC%80%E5%8F%91%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F/">
+              <a href="/2018/04/12/python-win32com%E5%BC%80%E5%8F%91office%E6%8F%92%E4%BB%B6%E6%97%B6%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  jupyter notebook 扩展开发之自定义请求处理程序
+                  python win32com开发office插件时问题汇总
               </a>
             
         </div>
         <div class="item right">
             
-              <a href="/2018/03/14/%E6%B1%82%E5%8F%96%E6%9C%80%E5%B0%8F%E4%BA%8C%E8%8C%83%E6%95%B0%E8%A7%A3%E7%9A%84%E5%85%B7%E4%BD%93%E8%BF%87%E7%A8%8B/">
-                求取最小二范数解的具体过程
+              <a href="/2018/03/31/jupyter%20notebook%20%E6%89%A9%E5%B1%95%E5%BC%80%E5%8F%91%E4%B9%8B%20%20%E6%96%87%E4%BB%B6%E4%BF%9D%E5%AD%98%E9%92%A9%E5%AD%90/">
+                jupyter notebook 扩展开发之  文件保存钩子
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

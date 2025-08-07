@@ -2424,6 +2424,17 @@
 								<div class="article-toc" style="display: none;"></div>
 							</ul>
 			
+							<ul>
+								<li class="file">
+									<a href="/2025/08/07/003%20R%E8%AF%AD%E8%A8%80/%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E6%A1%88%E4%BE%8B%E6%95%99%E7%A8%8B-R%E8%AF%AD%E8%A8%80%E7%89%88/">
+                     
+										    贝叶斯网络案例教程-R语言版
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
 								</li>
 								
 							</ul>
@@ -2711,17 +2722,6 @@
 							</ul>
 			
 							<ul>
-								<li class="file">
-									<a href="/2022/08/31/004%20%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B%E5%A4%9A%E7%BB%84%E6%AF%94%E8%BE%83%E5%88%86%E6%9E%90%E8%B0%83%E8%8A%82%E5%8F%98%E9%87%8F/">
-                     
-										    结构方程模型多组比较分析调节变量
-                     
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
 								<li class="directory">
 									<a href="#" class="directory">
 										<i class="fa fa-plus-square-o"></i>
@@ -2840,6 +2840,17 @@
 			
 								</li>
 								
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/08/31/004%20%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B%E5%A4%9A%E7%BB%84%E6%AF%94%E8%BE%83%E5%88%86%E6%9E%90%E8%B0%83%E8%8A%82%E5%8F%98%E9%87%8F/">
+                     
+										    结构方程模型多组比较分析调节变量
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
 							</ul>
 			
 							<ul>
@@ -7823,9 +7834,9 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2015/03/01/Django%E6%95%99%E7%A8%8B%EF%BC%9A%5B5%5DURLpattern%E7%9A%84%E8%AF%AD%E6%B3%95%20-%20%E5%89%AF%E6%9C%AC/">
+									<a href="/2015/03/01/Django%E6%95%99%E7%A8%8B%EF%BC%9A%5B5%5DURLpattern%E7%9A%84%E8%AF%AD%E6%B3%95/">
                      
-										    Django教程：[5]URLpattern的语法 - 副本
+										    Django教程：[5]URLpattern的语法
                      
 									</a>
 								</li>
@@ -7834,9 +7845,9 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2015/03/01/Django%E6%95%99%E7%A8%8B%EF%BC%9A%5B5%5DURLpattern%E7%9A%84%E8%AF%AD%E6%B3%95/">
+									<a href="/2015/03/01/Django%E6%95%99%E7%A8%8B%EF%BC%9A%5B5%5DURLpattern%E7%9A%84%E8%AF%AD%E6%B3%95%20-%20%E5%89%AF%E6%9C%AC/">
                      
-										    Django教程：[5]URLpattern的语法
+										    Django教程：[5]URLpattern的语法 - 副本
                      
 									</a>
 								</li>
@@ -9073,7 +9084,6 @@
 <div id="article-content">
 	<p>这篇文章我主要介绍一下自己是如何在mongodb中实现中文的全文搜索功能的!</p>
 <span id="more"></span>
-
 <p>我们都知道, mongodb有textsearch的功能, 也就是文本搜索, 但是实际上它并没有对中文提供很好的支持, 因为中文并没有像英文那样的词干和分词符号(空格), 所以你在使用mongodb的文本搜索功能的时候难免会发现–根本没卵用!!!</p>
 <p>为了解决这个问题, 我们其实可以给mongodb预先分好词, 为了简单起见, 我并不太追求分词的准确性, 使用的是最简单的jieba分词库, 这是python里的一个自然语言处理第三方库!</p>
 <p>为了实现以上目标, 我们的工作分为两步:</p>
@@ -9081,9 +9091,9 @@
 <li>将搜索字段进行分词, 并以空格为词的分隔符形成新的字符串</li>
 <li>在mongodb中设置文本索引</li>
 </ul>
-<h3 id="安装和使用jieba"><a href="#安装和使用jieba" class="headerlink" title="安装和使用jieba"></a>安装和使用jieba</h3><p>我们使用pip安装jieba:</p>
+<h3 id="%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8jieba" tabindex="-1">安装和使用jieba</h3>
+<p>我们使用pip安装jieba:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!pip install jieba</span><br></pre></td></tr></table></figure>
-
 
 <div class="output" contenteditable="true">
 输出(stream):<br>
@@ -9100,7 +9110,6 @@ Successfully installed jieba-0.39
 </div>
 
 
-
 <div class="output" contenteditable="true">
 输出(stream):<br>
 You are using pip version 19.0.3, however version 19.1.1 is available.
@@ -9108,10 +9117,8 @@ You should consider upgrading via the 'python -m pip install --upgrade pip' comm
 
 </div>
 
-
 <p>jieba中有专门为搜索而设的分词接口: cut_for_search</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba</span><br><span class="line"></span><br><span class="line">words = jieba.cut_for_search(<span class="string">&#x27;你好mlln.cn, 我可以被分词吗?&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> w <span class="keyword">in</span> words:</span><br><span class="line">    <span class="built_in">print</span>(w)</span><br></pre></td></tr></table></figure>
-
 
 <div class="output" contenteditable="true">
 输出(stream):<br>
@@ -9121,7 +9128,6 @@ Loading model cost 1.273 seconds.
 Prefix dict has been built succesfully.
 
 </div>
-
 
 
 <div class="output" contenteditable="true">
@@ -9141,24 +9147,26 @@ cn
 
 </div>
 
-
-<h3 id="设置mongodb的文本索引"><a href="#设置mongodb的文本索引" class="headerlink" title="设置mongodb的文本索引"></a>设置mongodb的文本索引</h3><p>我使用的是python中的mongoengine模块, 它可以帮助我们用类的方式组织Document, 我的其中一个需要搜索的Document的定义是这样的:</p>
+<h3 id="%E8%AE%BE%E7%BD%AEmongodb%E7%9A%84%E6%96%87%E6%9C%AC%E7%B4%A2%E5%BC%95" tabindex="-1">设置mongodb的文本索引</h3>
+<p>我使用的是python中的mongoengine模块, 它可以帮助我们用类的方式组织Document, 我的其中一个需要搜索的Document的定义是这样的:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Questionaire</span>(<span class="title class_ inherited__">Document</span>):</span><br><span class="line">    qtype = StringField(required=<span class="literal">True</span>)</span><br><span class="line">    source_id = StringField(required=<span class="literal">True</span>, unique=<span class="literal">True</span>)</span><br><span class="line">    title = StringField(required=<span class="literal">True</span>)</span><br><span class="line">    title_words = StringField(required=<span class="literal">False</span>)</span><br><span class="line">    des = StringField(required=<span class="literal">False</span>)</span><br><span class="line">    des_words = StringField(required=<span class="literal">False</span>)</span><br><span class="line">    has_factor = BooleanField(default=<span class="literal">False</span>)</span><br><span class="line">    has_data = BooleanField(default=<span class="literal">False</span>)</span><br><span class="line">    meta = &#123;</span><br><span class="line">        <span class="string">&#x27;indexes&#x27;</span>: [</span><br><span class="line">            <span class="string">&#x27;source_id&#x27;</span>, </span><br><span class="line">            &#123;</span><br><span class="line">                <span class="string">&#x27;fields&#x27;</span>: [<span class="string">&#x27;$title_words&#x27;</span>, <span class="string">&quot;$des_words&quot;</span>],</span><br><span class="line">                <span class="string">&#x27;default_language&#x27;</span>: <span class="string">&#x27;english&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;weights&#x27;</span>: &#123;<span class="string">&#x27;title_words&#x27;</span>: <span class="number">10</span>, <span class="string">&#x27;des_words&#x27;</span>: <span class="number">2</span>&#125;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
 <p>你不需要理解上面的代码, 你只需要看meta这个成员, 它定义了索引, 第二个索引就是一个文本索引:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    &#123;</span><br><span class="line">        &#x27;fields&#x27;: [&#x27;`$title_words&#x27;, &quot;$`</span><br><span class="line"></span><br><span class="line">### 分词</span><br><span class="line"></span><br><span class="line">使用jieba将需要分词的字段进行分词, 然后重新组合成分词后的字符串, 伪代码是这样的:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">def fenci(sentence: str)-&gt;str:</span><br><span class="line">    words = jieba.lcut_for_search(sentence)</span><br><span class="line">    return &#x27; &#x27;.join(words)</span><br></pre></td></tr></table></figure>
-
 <p>我们使用上面的方法分词以后, 将分词后的字符串保存到mongodb, 然后就可以进行搜索了:</p>
-<h3 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h3><p>核心的方式就是使用search_text方法进行搜索, 排序的话使用text_score, 这个text_score的定义就要看我们在构建索引的时候定义的计算权重:<code> &#39;weights&#39;: &#123;&#39;title_words&#39;: 10, &#39;des_words&#39;: 2&#125;</code>, 它的意思是title_words占10分, des_words占2分, 以这样的权重来计算text_score。</p>
+<h3 id="%E6%90%9C%E7%B4%A2" tabindex="-1">搜索</h3>
+<p>核心的方式就是使用search_text方法进行搜索, 排序的话使用text_score, 这个text_score的定义就要看我们在构建索引的时候定义的计算权重:<code> 'weights': &#123;'title_words': 10, 'des_words': 2&#125;</code>, 它的意思是title_words占10分, des_words占2分, 以这样的权重来计算text_score。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> itembank <span class="keyword">import</span> models <span class="keyword">as</span> M </span><br><span class="line"><span class="keyword">from</span> itembank <span class="keyword">import</span> settings</span><br><span class="line"></span><br><span class="line">M.get_cnn(settings.DBNAME)</span><br><span class="line">qs = M.Questionaire.objects.search_text(<span class="string">&#x27;生活&#x27;</span>).order_by(<span class="string">&#x27;$text_score&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(qs)</span><br></pre></td></tr></table></figure>
-
 <p>搜索得到的结果就是:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&lt;Questionaire: &lt;Questionaire 大学生生活体验调查问卷&gt;&gt;]</span><br></pre></td></tr></table></figure>
-
-
 <blockquote>
-<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="mongodb%E8%A7%A3%E5%86%B3textsearch%E6%90%9C%E7%B4%A2%E4%B8%AD%E6%96%87%E7%9A%84%E9%97%AE%E9%A2%98.ipynb">notebook</a><br>统计咨询请加QQ 2726725926, 微信 mllncn,  SPSS统计咨询是收费的<br>微博上@mlln-cn可以向我免费题问<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+<p><strong>注意</strong><br>
+本文由jupyter notebook转换而来, 您可以在这里下载<a href="mongodb%E8%A7%A3%E5%86%B3textsearch%E6%90%9C%E7%B4%A2%E4%B8%AD%E6%96%87%E7%9A%84%E9%97%AE%E9%A2%98.ipynb">notebook</a><br>
+统计咨询请加QQ 2726725926, 微信 mllncn,  SPSS统计咨询是收费的<br>
+微博上@mlln-cn可以向我免费题问<br>
+请记住我的网址: <a href="http://mlln.cn">mlln.cn</a> 或者 <a target="_blank" rel="noopener" href="http://jupyter.cn">jupyter.cn</a></p>
 </blockquote>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
 
 </div>
 

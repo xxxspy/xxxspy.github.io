@@ -2424,6 +2424,17 @@
 								<div class="article-toc" style="display: none;"></div>
 							</ul>
 			
+							<ul>
+								<li class="file">
+									<a href="/2025/08/07/003%20R%E8%AF%AD%E8%A8%80/%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E6%A1%88%E4%BE%8B%E6%95%99%E7%A8%8B-R%E8%AF%AD%E8%A8%80%E7%89%88/">
+                     
+										    贝叶斯网络案例教程-R语言版
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
 								</li>
 								
 							</ul>
@@ -2711,17 +2722,6 @@
 							</ul>
 			
 							<ul>
-								<li class="file">
-									<a href="/2022/08/31/004%20%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B%E5%A4%9A%E7%BB%84%E6%AF%94%E8%BE%83%E5%88%86%E6%9E%90%E8%B0%83%E8%8A%82%E5%8F%98%E9%87%8F/">
-                     
-										    结构方程模型多组比较分析调节变量
-                     
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
 								<li class="directory">
 									<a href="#" class="directory">
 										<i class="fa fa-plus-square-o"></i>
@@ -2840,6 +2840,17 @@
 			
 								</li>
 								
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/08/31/004%20%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B%E5%A4%9A%E7%BB%84%E6%AF%94%E8%BE%83%E5%88%86%E6%9E%90%E8%B0%83%E8%8A%82%E5%8F%98%E9%87%8F/">
+                     
+										    结构方程模型多组比较分析调节变量
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
 							</ul>
 			
 							<ul>
@@ -7823,9 +7834,9 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2015/03/01/Django%E6%95%99%E7%A8%8B%EF%BC%9A%5B5%5DURLpattern%E7%9A%84%E8%AF%AD%E6%B3%95%20-%20%E5%89%AF%E6%9C%AC/">
+									<a href="/2015/03/01/Django%E6%95%99%E7%A8%8B%EF%BC%9A%5B5%5DURLpattern%E7%9A%84%E8%AF%AD%E6%B3%95/">
                      
-										    Django教程：[5]URLpattern的语法 - 副本
+										    Django教程：[5]URLpattern的语法
                      
 									</a>
 								</li>
@@ -7834,9 +7845,9 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2015/03/01/Django%E6%95%99%E7%A8%8B%EF%BC%9A%5B5%5DURLpattern%E7%9A%84%E8%AF%AD%E6%B3%95/">
+									<a href="/2015/03/01/Django%E6%95%99%E7%A8%8B%EF%BC%9A%5B5%5DURLpattern%E7%9A%84%E8%AF%AD%E6%B3%95%20-%20%E5%89%AF%E6%9C%AC/">
                      
-										    Django教程：[5]URLpattern的语法
+										    Django教程：[5]URLpattern的语法 - 副本
                      
 									</a>
 								</li>
@@ -9049,12 +9060,10 @@
 <div id="article-content">
 	<p><span></span></p>
 <span id="more"></span>
-
 <p>OLS回归受极端值的影响很大, 如果数据集中存在极端值, 那么很容易导致回归曲线偏向极端值, 这就导致回归方程因为极端值而偏离真实的情况。</p>
-<p>衡量一个case(一个样本)的影响力的指标是lev(leverage), 在stata中可以使用”predict lev, leverage”命令来实现。</p>
-<p>还是以”nerlove.dta”数据集为例, 先导入数据:</p>
+<p>衡量一个case(一个样本)的影响力的指标是lev(leverage), 在stata中可以使用&quot;predict lev, leverage&quot;命令来实现。</p>
+<p>还是以&quot;nerlove.dta&quot;数据集为例, 先导入数据:</p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> data/nerlove.dta, <span class="keyword">clear</span></span><br></pre></td></tr></table></figure>
-
 
 <div class="output" contenteditable="true">
 输出(stream):<br>
@@ -9062,10 +9071,8 @@
 
 </div>
 
-
 <p>做回归分析:</p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span> lntc lnq lnpl lnpk lnpf</span><br></pre></td></tr></table></figure>
-
 
 <div class="output" contenteditable="true">
 输出(stream):<br>
@@ -9089,13 +9096,10 @@
 
 </div>
 
-
-<p>计算每个样本的影响力, 存为变量”lev”:</p>
+<p>计算每个样本的影响力, 存为变量&quot;lev&quot;:</p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">predict</span> lev, <span class="keyword">leverage</span></span><br></pre></td></tr></table></figure>
-
 <p>描述变量lev的基本情况:</p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sum</span> lev</span><br></pre></td></tr></table></figure>
-
 
 <div class="output" contenteditable="true">
 输出(stream):<br>
@@ -9106,10 +9110,8 @@
 
 </div>
 
-
 <p>我们指导lev越大, 样本的影响力越大, 所以看最大值为.1177, 计算它比均值的倍数:</p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dis</span> <span class="built_in">r</span>(max)/<span class="built_in">r</span>(<span class="keyword">mean</span>)</span><br></pre></td></tr></table></figure>
-
 
 <div class="output" contenteditable="true">
 输出(stream):<br>
@@ -9117,14 +9119,10 @@
 
 </div>
 
-
 <p>这个数据似乎还不是很大。</p>
 <p>我们还可以对lev进行排序, 然后查看其中最大的几个数值:</p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">gsort</span> - lev</span><br></pre></td></tr></table></figure>
-
-
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">list</span> lev <span class="keyword">in</span> 1/5</span><br></pre></td></tr></table></figure>
-
 
 <div class="output" contenteditable="true">
 输出(stream):<br>
@@ -9141,10 +9139,8 @@
 
 </div>
 
-
 <p>我们还可以绘制出lev的散点图来找出极端值:</p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">stem</span> lev,  lines(2)</span><br></pre></td></tr></table></figure>
-
 
 <div class="output" contenteditable="true">
 输出(stream):<br>
@@ -9179,11 +9175,9 @@ plot in units of .001
 
 </div>
 
-
 <p>从上面的结果中, 如果把最下面的这个数当作异常值也是可以的, 或者最下面的三个, 但是你需要给出充足理由, 所以你需要做一些样本来源的调查, 如果确认他们为异常值, 你可以删除他们, 但是在论文中, 通常需要汇报删除前后的统计结果。</p>
 <p>除了茎叶图, 还可以绘制直方图, 其解读方法和茎叶图一样, 这里不再赘述。</p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">hist</span> lev</span><br></pre></td></tr></table></figure>
-
 
 <div class="output" contenteditable="true">
 输出(stream):<br>
@@ -9191,9 +9185,7 @@ plot in units of .001
 
 </div>
 
-
-
-<p><img src="/output_21_1.svg" alt="svg"></p>
+<p><img src="output_21_1.svg" alt="svg"></p>
 
 <div class="output" contenteditable="true">
 输出(stream):<br>
@@ -9203,11 +9195,15 @@ plot in units of .001
 
 </div>
 
-
-
 <blockquote>
-<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="stata%E6%95%99%E7%A8%8B14-%E6%9E%81%E7%AB%AF%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86.ipynb">notebook</a><br>统计咨询请加QQ 2726725926, 微信 mllncn,  SPSS统计咨询是收费的<br>微博上@mlln-cn可以向我免费题问<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+<p><strong>注意</strong><br>
+本文由jupyter notebook转换而来, 您可以在这里下载<a href="stata%E6%95%99%E7%A8%8B14-%E6%9E%81%E7%AB%AF%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86.ipynb">notebook</a><br>
+统计咨询请加QQ 2726725926, 微信 mllncn,  SPSS统计咨询是收费的<br>
+微博上@mlln-cn可以向我免费题问<br>
+请记住我的网址: <a href="http://mlln.cn">mlln.cn</a> 或者 <a target="_blank" rel="noopener" href="http://jupyter.cn">jupyter.cn</a></p>
 </blockquote>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
 
 </div>
 

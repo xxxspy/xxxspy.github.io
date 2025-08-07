@@ -2424,6 +2424,17 @@
 								<div class="article-toc" style="display: none;"></div>
 							</ul>
 			
+							<ul>
+								<li class="file">
+									<a href="/2025/08/07/003%20R%E8%AF%AD%E8%A8%80/%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E6%A1%88%E4%BE%8B%E6%95%99%E7%A8%8B-R%E8%AF%AD%E8%A8%80%E7%89%88/">
+                     
+										    贝叶斯网络案例教程-R语言版
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
 								</li>
 								
 							</ul>
@@ -2711,17 +2722,6 @@
 							</ul>
 			
 							<ul>
-								<li class="file">
-									<a href="/2022/08/31/004%20%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B%E5%A4%9A%E7%BB%84%E6%AF%94%E8%BE%83%E5%88%86%E6%9E%90%E8%B0%83%E8%8A%82%E5%8F%98%E9%87%8F/">
-                     
-										    结构方程模型多组比较分析调节变量
-                     
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
 								<li class="directory">
 									<a href="#" class="directory">
 										<i class="fa fa-plus-square-o"></i>
@@ -2840,6 +2840,17 @@
 			
 								</li>
 								
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/08/31/004%20%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B%E5%A4%9A%E7%BB%84%E6%AF%94%E8%BE%83%E5%88%86%E6%9E%90%E8%B0%83%E8%8A%82%E5%8F%98%E9%87%8F/">
+                     
+										    结构方程模型多组比较分析调节变量
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
 							</ul>
 			
 							<ul>
@@ -7823,9 +7834,9 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2015/03/01/Django%E6%95%99%E7%A8%8B%EF%BC%9A%5B5%5DURLpattern%E7%9A%84%E8%AF%AD%E6%B3%95%20-%20%E5%89%AF%E6%9C%AC/">
+									<a href="/2015/03/01/Django%E6%95%99%E7%A8%8B%EF%BC%9A%5B5%5DURLpattern%E7%9A%84%E8%AF%AD%E6%B3%95/">
                      
-										    Django教程：[5]URLpattern的语法 - 副本
+										    Django教程：[5]URLpattern的语法
                      
 									</a>
 								</li>
@@ -7834,9 +7845,9 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2015/03/01/Django%E6%95%99%E7%A8%8B%EF%BC%9A%5B5%5DURLpattern%E7%9A%84%E8%AF%AD%E6%B3%95/">
+									<a href="/2015/03/01/Django%E6%95%99%E7%A8%8B%EF%BC%9A%5B5%5DURLpattern%E7%9A%84%E8%AF%AD%E6%B3%95%20-%20%E5%89%AF%E6%9C%AC/">
                      
-										    Django教程：[5]URLpattern的语法
+										    Django教程：[5]URLpattern的语法 - 副本
                      
 									</a>
 								</li>
@@ -9057,17 +9068,13 @@
 <div id="article-content">
 	<p><span></span></p>
 <span id="more"></span>
-
 <p>我们需要从模型中估计一个参数。通常，我们选择一个模型 - 比如说线性回归 - 并使用观测数据X来估计模型的参数θ。</p>
 <p>那么模型参数到底是如何估计出来的呢?例如, 我们从均值为<code>mu</code>标准差为<code>sd</code>的总体中随机抽取样本<code>x</code>, 我们的目标就是估计mu和sd的值。</p>
 <p>设想你正在做一个线性回归, 并且你要估计出模型自变量x的系数:</p>
-<h3 id="估计参数"><a href="#估计参数" class="headerlink" title="估计参数"></a>估计参数</h3><p>我们从正态分布的概率密度函数(PDF)出发, 讲一些数学知识。</p>
+<h3 id="%E4%BC%B0%E8%AE%A1%E5%8F%82%E6%95%B0" tabindex="-1">估计参数</h3>
+<p>我们从正态分布的概率密度函数(PDF)出发, 讲一些数学知识。</p>
 <p><code>$$ f(x) = \frac&#123;1&#125;&#123;\sigma \sqrt&#123;2\pi&#125;&#125; \exp\left(−\frac&#123;(x−\mu)^2&#125;&#123;2\sigma^2&#125;\right). $$</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> norm</span><br><span class="line"></span><br><span class="line">norm.pdf(<span class="number">3</span>, <span class="number">3</span>, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
 
 <div class="output">
 输出(plain):<br/>
@@ -9076,15 +9083,8 @@
 
 </div>
 
-
-
-
 <p>如果总体参数是<code>$\mu=7$</code>和<code>$\sigma=2$</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">norm.pdf(<span class="number">3</span>, <span class="number">7</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
 
 <div class="output">
 输出(plain):<br/>
@@ -9093,16 +9093,9 @@
 
 </div>
 
-
-
-
 <p>综上所述, pdf告诉我们, 一个样本来自于某个总体的概率的大小。 那么我们的样本量不是1, 而是大于1呢? 其实也很简单, 根据概率公式, 多个独立事件出现的概率就是每个事件概率之积。</p>
-<p>比如现在有两个样本x&#x3D;[2, 7], 那么他们来自总体N($(2, 1)的概率是:</p>
+<p>比如现在有两个样本x=[2, 7], 那么他们来自总体N($(2, 1)的概率是:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">norm.pdf(<span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>) * norm.pdf(<span class="number">7</span>, <span class="number">2</span>, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
 
 <div class="output">
 输出(plain):<br/>
@@ -9111,13 +9104,10 @@
 
 </div>
 
-
-
-
-<h3 id="根据样本选择分布"><a href="#根据样本选择分布" class="headerlink" title="根据样本选择分布"></a>根据样本选择分布</h3><p>假如现在给你两个可能分布N(2, 1)和N(3, 2), 让你猜测, 样本x&#x3D;[2, 7]来自哪个分布?</p>
+<h3 id="%E6%A0%B9%E6%8D%AE%E6%A0%B7%E6%9C%AC%E9%80%89%E6%8B%A9%E5%88%86%E5%B8%83" tabindex="-1">根据样本选择分布</h3>
+<p>假如现在给你两个可能分布N(2, 1)和N(3, 2), 让你猜测, 样本x=[2, 7]来自哪个分布?</p>
 <p>我们很容易想到, 分别求出样本x来自两个总体的概率即可:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p1 = norm.pdf(<span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>) * norm.pdf(<span class="number">7</span>, <span class="number">2</span>, <span class="number">1</span>)</span><br><span class="line">p2 = norm.pdf(<span class="number">2</span>, <span class="number">3</span>, <span class="number">2</span>) * norm.pdf(<span class="number">7</span>, <span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;p1:&#x27;</span>, p1)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;p2:&#x27;</span>, p2)</span><br></pre></td></tr></table></figure>
-
 
 <div class="output" contenteditable="true">
 输出(stream):<br>
@@ -9126,18 +9116,14 @@ p2: 0.0047520868169464775
 
 </div>
 
-
 <p>所以我们说, 样本更有可能来自于N(3, 2)。</p>
 <p>到这里我们就大概知道MLE在做什么了, MLE就是知道一个样本, 让你求参θ(比如pdf的<code>$\mu$</code>和<code>$\sigma$</code></p>
 <p>用数学来表达这件事就是, 我们知道x出现的概率可以这样计算:</p>
 <p><code>$$ f(x) = \frac&#123;1&#125;&#123;\sigma \sqrt&#123;2\pi&#125;&#125; \exp\left(−\frac&#123;(x−\mu)^2&#125;&#123;2\sigma^2&#125;\right). $$</code></p>
-<h3 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h3><p>根据高中知识, 求函数的最大值, 可以使用求导的方式, 让导数为0 ,就可以得到极值点。</p>
+<h3 id="%E5%AE%9E%E6%88%98" tabindex="-1">实战</h3>
+<p>根据高中知识, 求函数的最大值, 可以使用求导的方式, 让导数为0 ,就可以得到极值点。</p>
 <p>因为我比较懒, 不喜欢求导数, 所以我用了一个求导数的python模块sympy, 下面我们先写出上面的公式<code>$\log p$</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sympy <span class="keyword">import</span> symbols, pi, exp, log</span><br><span class="line"><span class="keyword">from</span> sympy.stats <span class="keyword">import</span> Probability, Normal</span><br><span class="line"></span><br><span class="line"><span class="comment"># 样本</span></span><br><span class="line">X = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>, <span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">6</span>,]</span><br><span class="line">x = symbols(<span class="string">&#x27;x&#x27;</span>)</span><br><span class="line"><span class="comment"># 总体 mu 和 sigma</span></span><br><span class="line">m, s = symbols(<span class="string">&#x27;m s&#x27;</span>)</span><br><span class="line"><span class="comment"># pdf</span></span><br><span class="line">pdf = <span class="number">1</span>/ (s * (<span class="number">2</span>*pi)**<span class="number">0.5</span>)*exp( -(x-m)**<span class="number">2</span> / (<span class="number">2</span>*s**<span class="number">2</span>) )</span><br><span class="line">logpdf = log(pdf)</span><br><span class="line">logpdf</span><br></pre></td></tr></table></figure>
-
-
-
-
 
 <div class="output">
 输出(plain):<br/>
@@ -9146,16 +9132,9 @@ p2: 0.0047520868169464775
 
 </div>
 
-
-
-
 <p>上面输出的内容就是logpdf公式。</p>
 <p>下面我们求已知样本后的累加log联合概率, 也叫似然函数:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">logP = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> xi <span class="keyword">in</span> X:</span><br><span class="line">    logP += logpdf.subs(&#123;x: xi&#125;)</span><br><span class="line">    </span><br><span class="line">logP</span><br></pre></td></tr></table></figure>
-
-
-
-
 
 <div class="output">
 输出(plain):<br/>
@@ -9164,12 +9143,8 @@ p2: 0.0047520868169464775
 
 </div>
 
-
-
-
 <p>然后我们知道, 要求logP的最大值, 只需要分别求得m和s的偏导数, 然后让偏导数为0可以得到联立方程组:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sympy <span class="keyword">import</span> diff</span><br><span class="line"></span><br><span class="line">logp_diff_m = diff(logP, m)</span><br><span class="line">logp_diff_s = diff(logP, s)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;m偏导数:&#x27;</span>, <span class="built_in">str</span>(logp_diff_m))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;s偏导数:&#x27;</span>, <span class="built_in">str</span>(logp_diff_s))</span><br></pre></td></tr></table></figure>
-
 
 <div class="output" contenteditable="true">
 输出(stream):<br>
@@ -9178,14 +9153,9 @@ s偏导数: 1.4142135623731*pi**0.5*s*(-0.707106781186547*pi**(-0.5)*exp(-(-m + 
 
 </div>
 
-
-<p>我们知道让logp_diff_m&#x3D;0和logp_diff_s&#x3D;0可以得到联立方程组,然后解方程就可以得到参数的值, 但是我好像不会解这样的方程!!!</p>
+<p>我们知道让logp_diff_m=0和logp_diff_s=0可以得到联立方程组,然后解方程就可以得到参数的值, 但是我好像不会解这样的方程!!!</p>
 <p>先化简一下:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sympy <span class="keyword">import</span> simplify</span><br><span class="line"></span><br><span class="line">logp_diff_m = simplify(logp_diff_m)</span><br><span class="line">logp_diff_m</span><br></pre></td></tr></table></figure>
-
-
-
-
 
 <div class="output">
 输出(plain):<br/>
@@ -9194,15 +9164,7 @@ s偏导数: 1.4142135623731*pi**0.5*s*(-0.707106781186547*pi**(-0.5)*exp(-(-m + 
 
 </div>
 
-
-
-
-
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">logp_diff_s= simplify(logp_diff_s)</span><br><span class="line">logp_diff_s</span><br></pre></td></tr></table></figure>
-
-
-
-
 
 <div class="output">
 输出(plain):<br/>
@@ -9211,15 +9173,8 @@ s偏导数: 1.4142135623731*pi**0.5*s*(-0.707106781186547*pi**(-0.5)*exp(-(-m + 
 
 </div>
 
-
-
-
 <p>其实你看到上面化简的式子就能够手动解这个方程了, 不过我还是太懒了, 我想sympy一定能解!</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sympy <span class="keyword">import</span> solve</span><br><span class="line"></span><br><span class="line">funcs = [logp_diff_s, logp_diff_m]</span><br><span class="line">solve(funcs, [m, s])</span><br></pre></td></tr></table></figure>
-
-
-
-
 
 <div class="output">
 输出(plain):<br/>
@@ -9228,13 +9183,16 @@ s偏导数: 1.4142135623731*pi**0.5*s*(-0.707106781186547*pi**(-0.5)*exp(-(-m + 
 
 </div>
 
-
-
-
 <p>好了上面得到了m和s的值, 有两组解, 但是我们知道s&gt;0, 所以第二组解是对的。</p>
 <blockquote>
-<p><strong>注意</strong><br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="%E6%95%B0%E5%AD%A6%E5%B0%8F%E7%99%BD%E7%94%A8python%E5%81%9A%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1MLE.ipynb">notebook</a><br>统计咨询请加QQ 2726725926, 微信 mllncn,  SPSS统计咨询是收费的<br>微博上@mlln-cn可以向我免费题问<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+<p><strong>注意</strong><br>
+本文由jupyter notebook转换而来, 您可以在这里下载<a href="%E6%95%B0%E5%AD%A6%E5%B0%8F%E7%99%BD%E7%94%A8python%E5%81%9A%E6%9E%81%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1MLE.ipynb">notebook</a><br>
+统计咨询请加QQ 2726725926, 微信 mllncn,  SPSS统计咨询是收费的<br>
+微博上@mlln-cn可以向我免费题问<br>
+请记住我的网址: <a href="http://mlln.cn">mlln.cn</a> 或者 <a target="_blank" rel="noopener" href="http://jupyter.cn">jupyter.cn</a></p>
 </blockquote>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
 
 </div>
 

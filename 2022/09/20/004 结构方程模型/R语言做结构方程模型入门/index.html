@@ -2424,6 +2424,17 @@
 								<div class="article-toc" style="display: none;"></div>
 							</ul>
 			
+							<ul>
+								<li class="file">
+									<a href="/2025/08/07/003%20R%E8%AF%AD%E8%A8%80/%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E6%A1%88%E4%BE%8B%E6%95%99%E7%A8%8B-R%E8%AF%AD%E8%A8%80%E7%89%88/">
+                     
+										    贝叶斯网络案例教程-R语言版
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
 								</li>
 								
 							</ul>
@@ -2711,17 +2722,6 @@
 							</ul>
 			
 							<ul>
-								<li class="file">
-									<a href="/2022/08/31/004%20%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B%E5%A4%9A%E7%BB%84%E6%AF%94%E8%BE%83%E5%88%86%E6%9E%90%E8%B0%83%E8%8A%82%E5%8F%98%E9%87%8F/">
-                     
-										    结构方程模型多组比较分析调节变量
-                     
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
 								<li class="directory">
 									<a href="#" class="directory">
 										<i class="fa fa-plus-square-o"></i>
@@ -2840,6 +2840,17 @@
 			
 								</li>
 								
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2022/08/31/004%20%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B%E5%A4%9A%E7%BB%84%E6%AF%94%E8%BE%83%E5%88%86%E6%9E%90%E8%B0%83%E8%8A%82%E5%8F%98%E9%87%8F/">
+                     
+										    结构方程模型多组比较分析调节变量
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
 							</ul>
 			
 							<ul>
@@ -7823,9 +7834,9 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2015/03/01/Django%E6%95%99%E7%A8%8B%EF%BC%9A%5B5%5DURLpattern%E7%9A%84%E8%AF%AD%E6%B3%95%20-%20%E5%89%AF%E6%9C%AC/">
+									<a href="/2015/03/01/Django%E6%95%99%E7%A8%8B%EF%BC%9A%5B5%5DURLpattern%E7%9A%84%E8%AF%AD%E6%B3%95/">
                      
-										    Django教程：[5]URLpattern的语法 - 副本
+										    Django教程：[5]URLpattern的语法
                      
 									</a>
 								</li>
@@ -7834,9 +7845,9 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2015/03/01/Django%E6%95%99%E7%A8%8B%EF%BC%9A%5B5%5DURLpattern%E7%9A%84%E8%AF%AD%E6%B3%95/">
+									<a href="/2015/03/01/Django%E6%95%99%E7%A8%8B%EF%BC%9A%5B5%5DURLpattern%E7%9A%84%E8%AF%AD%E6%B3%95%20-%20%E5%89%AF%E6%9C%AC/">
                      
-										    Django教程：[5]URLpattern的语法
+										    Django教程：[5]URLpattern的语法 - 副本
                      
 									</a>
 								</li>
@@ -9057,18 +9068,31 @@
 <div id="article-content">
 	<p>这是用R做结构方程的案例, 最下方有视频教程.</p>
 <span id="more"></span>
-
-<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>这篇教程目的是介绍如何使用R语言的<a target="_blank" rel="noopener" href="http://lavaan.ugent.be/">lavaan</a>包来做结构方程模型，<br>如果你不清楚什么是结构方程（SEM）， 建议你先看这个<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV17v4y1M7Kk/?spm_id_from=333.788.recommend_more_video.1&vd_source=a196c58475bb84633185dbd4a3bdaf20">介绍视频</a>。<br>当然， 我们会在教程的前面简要介绍结构方程的概念， 以便于我们教程的完整性。</p>
-<h2 id="案例介绍"><a href="#案例介绍" class="headerlink" title="案例介绍"></a>案例介绍</h2><p>这是一个研究学生的学业成绩影响因素的研究，<br>目前数据已经采集技术， 你可以在<a target="_blank" rel="noopener" href="https://stats.idre.ucla.edu/wp-content/uploads/2021/02/worland5.csv">这里下载</a>这个数据,<br>这个数据有9个观测指标（9个变量）：Motivation（冬季）, Harmony, Stability, Negative Parental Psychology, SES, Verbal IQ, Reading, Arithmetic and Spelling（动机、和谐、稳定、消极的父母心理、SES、语言智力、阅读、算术和拼写）。研究员假设三个潜变量：Adjustment, Risk, Achievement， 他们的测量指标如下， 其中包含了变量名及其解释：</p>
-<p>Adjustment<br>    - motiv Motivation<br>    - harm Harmony<br>    - stabi Stability</p>
-<p>Risk<br>    - ppsych (Negative) Parental Psychology<br>    - ses SES<br>    - verbal Verbal IQ</p>
-<p>Achievement<br>    - read Reading<br>    - arith Arithmetic<br>    - spell Spelling</p>
-<h3 id="模型表示"><a href="#模型表示" class="headerlink" title="模型表示"></a>模型表示</h3><p>对于任何结构方程研究， 你最好事先绘制理论模型图， 下面就是我们的假定模型图：</p>
+<h2 id="%E7%9B%AE%E7%9A%84" tabindex="-1">目的</h2>
+<p>这篇教程目的是介绍如何使用R语言的<a target="_blank" rel="noopener" href="http://lavaan.ugent.be/">lavaan</a>包来做结构方程模型，<br>
+如果你不清楚什么是结构方程（SEM）， 建议你先看这个<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV17v4y1M7Kk/?spm_id_from=333.788.recommend_more_video.1&amp;vd_source=a196c58475bb84633185dbd4a3bdaf20">介绍视频</a>。<br>
+当然， 我们会在教程的前面简要介绍结构方程的概念， 以便于我们教程的完整性。</p>
+<h2 id="%E6%A1%88%E4%BE%8B%E4%BB%8B%E7%BB%8D" tabindex="-1">案例介绍</h2>
+<p>这是一个研究学生的学业成绩影响因素的研究，<br>
+目前数据已经采集技术， 你可以在<a target="_blank" rel="noopener" href="https://stats.idre.ucla.edu/wp-content/uploads/2021/02/worland5.csv">这里下载</a>这个数据,<br>
+这个数据有9个观测指标（9个变量）：Motivation（冬季）, Harmony, Stability, Negative Parental Psychology, SES, Verbal IQ, Reading, Arithmetic and Spelling（动机、和谐、稳定、消极的父母心理、SES、语言智力、阅读、算术和拼写）。研究员假设三个潜变量：Adjustment, Risk, Achievement， 他们的测量指标如下， 其中包含了变量名及其解释：</p>
+<p>Adjustment<br>
+- motiv Motivation<br>
+- harm Harmony<br>
+- stabi Stability</p>
+<p>Risk<br>
+- ppsych (Negative) Parental Psychology<br>
+- ses SES<br>
+- verbal Verbal IQ</p>
+<p>Achievement<br>
+- read Reading<br>
+- arith Arithmetic<br>
+- spell Spelling</p>
+<h3 id="%E6%A8%A1%E5%9E%8B%E8%A1%A8%E7%A4%BA" tabindex="-1">模型表示</h3>
+<p>对于任何结构方程研究， 你最好事先绘制理论模型图， 下面就是我们的假定模型图：</p>
 <img src="imgs/r-sem-model.png">
-
 <p>根据理论模型， 如果用数学符号表示， 我们可以绘制具有数学意义的模型图：</p>
 <img src="imgs/r-sem-model2.png">
-
 <p>我们先来解释一下图中的符号的意义：</p>
 <ul>
 <li>observed variable: 显变量或者叫观测指标， 就是在你的数据中有一列数据可以代表该变量， 图中用矩形表示</li>
@@ -9081,11 +9105,13 @@
 <li>structural model: 由自变量和因变量构成的结构， 比如<code>$\eta_1 \eta_2 \xi_1$</code>及其连线构成的结构</li>
 <li>regression path: 回归路径， 自变量和因变量之间的连线， 用字母<code>$\gamma\$</code></li>
 </ul>
-<h2 id="R代码"><a href="#R代码" class="headerlink" title="R代码"></a>R代码</h2><p>有了数据和模型， 下一步就是如何用R来表示模型和估计模型。</p>
-<h3 id="模型的表示"><a href="#模型的表示" class="headerlink" title="模型的表示"></a>模型的表示</h3><p>R中最常用的SEM包就是lavaan , 它定义了一些模型表示的方法, 列在这里:</p>
+<h2 id="r%E4%BB%A3%E7%A0%81" tabindex="-1">R代码</h2>
+<p>有了数据和模型， 下一步就是如何用R来表示模型和估计模型。</p>
+<h3 id="%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%A1%A8%E7%A4%BA" tabindex="-1">模型的表示</h3>
+<p>R中最常用的SEM包就是lavaan , 它定义了一些模型表示的方法, 列在这里:</p>
 <ul>
 <li>~ 波浪号, 表示观测变量的回归关系, <code>(e.g., y ~ x)</code></li>
-<li>&#x3D;~ 等号波浪号, 用于表示测量模型, <code>(e.g., f =~ q + r + s)</code>, f表示潜变量, q r s 表示测量指标</li>
+<li>=~ 等号波浪号, 用于表示测量模型, <code>(e.g., f =~ q + r + s)</code>, f表示潜变量, q r s 表示测量指标</li>
 <li><code>~~</code> 协方差 <code>(e.g., x ~~ x)</code></li>
 <li>~1 截距或者均值, 比如<code>x ~ 1</code>估计了变量x的均值</li>
 <li><code>*</code> 固定参数, 比如<code>f =~ 1*q</code>意思是f对q的因子载荷固定为1</li>
@@ -9093,17 +9119,16 @@
 <li>a* 参数标签, 比如<code>f =~ a*q</code>, 意思是f对q的因子载荷是a, 在设定模型constrants时非常有用</li>
 </ul>
 <img src="imgs/r-sem-model.png">
-
 <p>参考这个模型图, 我们有三个潜变量, 每个潜变量有三个测量指标, 测量模型的表示为:</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adjust <span class="operator">=</span><span class="operator">~</span> motiv <span class="operator">+</span> harm <span class="operator">+</span> stabi</span><br><span class="line">risk <span class="operator">=</span><span class="operator">~</span> verbal <span class="operator">+</span> ses <span class="operator">+</span> ppsych</span><br><span class="line">achieve <span class="operator">=</span><span class="operator">~</span> read <span class="operator">+</span> arith <span class="operator">+</span> spell</span><br></pre></td></tr></table></figure>
-
-<p>结构方程需要你清楚模型中有多少个因变量, 因为有多少因变量, 就可以写几行回归方程, 识别因变量最好的方法就是看有几个变量被箭头指向,<br>根据模型图, 我们得出两个回归方程, 结构模型的表示:</p>
+<p>结构方程需要你清楚模型中有多少个因变量, 因为有多少因变量, 就可以写几行回归方程, 识别因变量最好的方法就是看有几个变量被箭头指向,<br>
+根据模型图, 我们得出两个回归方程, 结构模型的表示:</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adjust <span class="operator">~</span> risk </span><br><span class="line">achieve <span class="operator">~</span> adjust <span class="operator">+</span> risk</span><br></pre></td></tr></table></figure>
-
-<h3 id="R-代码"><a href="#R-代码" class="headerlink" title="R 代码"></a>R 代码</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># m6b就是模型代码, 它在R中数据类型是字符串</span></span><br><span class="line">m6b <span class="operator">&lt;-</span> <span class="string">&#x27;</span></span><br><span class="line"><span class="string"># measurement model</span></span><br><span class="line"><span class="string">adjust =~ motiv + harm + stabi</span></span><br><span class="line"><span class="string">risk =~ verbal + ses + ppsych</span></span><br><span class="line"><span class="string">achieve =~ read + arith + spell</span></span><br><span class="line"><span class="string"># regressions</span></span><br><span class="line"><span class="string">adjust ~ risk </span></span><br><span class="line"><span class="string">achieve ~ adjust + risk</span></span><br><span class="line"><span class="string">&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用SEM函数, 第一个参数是模型代码, 第二个参数是数据(DataFrame)</span></span><br><span class="line">fit6b <span class="operator">&lt;-</span> sem<span class="punctuation">(</span>m6b<span class="punctuation">,</span> data<span class="operator">=</span>dat<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用summary输出结果</span></span><br><span class="line">summary<span class="punctuation">(</span>fit6b<span class="punctuation">,</span> standardized<span class="operator">=</span><span class="literal">TRUE</span><span class="punctuation">,</span> fit.measures<span class="operator">=</span><span class="literal">TRUE</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><h3 id="安装和加载库"><a href="#安装和加载库" class="headerlink" title="安装和加载库"></a>安装和加载库</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">install.packages<span class="punctuation">(</span><span class="string">&quot;lavaan&quot;</span><span class="punctuation">,</span> dependencies<span class="operator">=</span><span class="literal">TRUE</span><span class="punctuation">)</span></span><br><span class="line">library<span class="punctuation">(</span>lavaan<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
+<h3 id="r-%E4%BB%A3%E7%A0%81" tabindex="-1">R 代码</h3>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># m6b就是模型代码, 它在R中数据类型是字符串</span></span><br><span class="line">m6b <span class="operator">&lt;-</span> <span class="string">&#x27;</span></span><br><span class="line"><span class="string"># measurement model</span></span><br><span class="line"><span class="string">adjust =~ motiv + harm + stabi</span></span><br><span class="line"><span class="string">risk =~ verbal + ses + ppsych</span></span><br><span class="line"><span class="string">achieve =~ read + arith + spell</span></span><br><span class="line"><span class="string"># regressions</span></span><br><span class="line"><span class="string">adjust ~ risk </span></span><br><span class="line"><span class="string">achieve ~ adjust + risk</span></span><br><span class="line"><span class="string">&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用SEM函数, 第一个参数是模型代码, 第二个参数是数据(DataFrame)</span></span><br><span class="line">fit6b <span class="operator">&lt;-</span> sem<span class="punctuation">(</span>m6b<span class="punctuation">,</span> data<span class="operator">=</span>dat<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用summary输出结果</span></span><br><span class="line">summary<span class="punctuation">(</span>fit6b<span class="punctuation">,</span> standardized<span class="operator">=</span><span class="literal">TRUE</span><span class="punctuation">,</span> fit.measures<span class="operator">=</span><span class="literal">TRUE</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<h2 id="%E5%AE%9E%E6%88%98" tabindex="-1">实战</h2>
+<h3 id="%E5%AE%89%E8%A3%85%E5%92%8C%E5%8A%A0%E8%BD%BD%E5%BA%93" tabindex="-1">安装和加载库</h3>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">install.packages<span class="punctuation">(</span><span class="string">&quot;lavaan&quot;</span><span class="punctuation">,</span> dependencies<span class="operator">=</span><span class="literal">TRUE</span><span class="punctuation">)</span></span><br><span class="line">library<span class="punctuation">(</span>lavaan<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
 
 <div class="output" contenteditable="true">
 输出(stream):<br>
@@ -9112,7 +9137,6 @@ Installing package into 'C:/Users/syd/AppData/Local/R/win-library/4.2'
 
 
 </div>
-
 
 
 <div class="output" contenteditable="true">
@@ -9125,7 +9149,6 @@ The downloaded binary packages are in
 </div>
 
 
-
 <div class="output" contenteditable="true">
 输出(stream):<br>
 This is lavaan 0.6-12
@@ -9134,14 +9157,11 @@ lavaan is FREE software! Please report any bugs.
 
 </div>
 
-
-<h3 id="下载数据"><a href="#下载数据" class="headerlink" title="下载数据"></a>下载数据</h3><p>这是一个网络数据, 你可以下载到本地, 点<a target="_blank" rel="noopener" href="https://stats.idre.ucla.edu/wp-content/uploads/2021/02/worland5.csv">这里</a>,<br>你也可以直接加载到R中.</p>
+<h3 id="%E4%B8%8B%E8%BD%BD%E6%95%B0%E6%8D%AE" tabindex="-1">下载数据</h3>
+<p>这是一个网络数据, 你可以下载到本地, 点<a target="_blank" rel="noopener" href="https://stats.idre.ucla.edu/wp-content/uploads/2021/02/worland5.csv">这里</a>,<br>
+你也可以直接加载到R中.</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dat <span class="operator">&lt;-</span> read.csv<span class="punctuation">(</span><span class="string">&quot;https://stats.idre.ucla.edu/wp-content/uploads/2021/02/worland5.csv&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head<span class="punctuation">(</span>dat<span class="punctuation">)</span> <span class="comment"># 查看数据前几行</span></span><br></pre></td></tr></table></figure>
-
-
 
 <div class="output" contenteditable="true">
 输出(html):<br>
@@ -9163,17 +9183,14 @@ lavaan is FREE software! Please report any bugs.
 
 </div>
 
-
-
-<p>根据前面测量模型的代码, 我们知道, 各个变量的意义, </p>
+<p>根据前面测量模型的代码, 我们知道, 各个变量的意义,</p>
 <ul>
 <li>adjust的测量指标是: motiv + harm + stabi</li>
 <li>risk 的测量指标是: verbal + ses + ppsych</li>
 <li>achieve 的测量指标是: read + arith + spell</li>
 </ul>
-<h3 id="估计模型"><a href="#估计模型" class="headerlink" title="估计模型"></a>估计模型</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># m6b就是模型代码, 它在R中数据类型是字符串</span></span><br><span class="line">m6b <span class="operator">&lt;-</span> <span class="string">&#x27;</span></span><br><span class="line"><span class="string"># measurement model</span></span><br><span class="line"><span class="string">adjust =~ motiv + harm + stabi</span></span><br><span class="line"><span class="string">risk =~ verbal + ses + ppsych</span></span><br><span class="line"><span class="string">achieve =~ read + arith + spell</span></span><br><span class="line"><span class="string"># regressions</span></span><br><span class="line"><span class="string">adjust ~ risk </span></span><br><span class="line"><span class="string">achieve ~ adjust + risk</span></span><br><span class="line"><span class="string">&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用SEM函数, 第一个参数是模型代码, 第二个参数是数据(DataFrame)</span></span><br><span class="line">fit6b <span class="operator">&lt;-</span> sem<span class="punctuation">(</span>m6b<span class="punctuation">,</span> data<span class="operator">=</span>dat<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用summary输出结果</span></span><br><span class="line">summary<span class="punctuation">(</span>fit6b<span class="punctuation">,</span> standardized<span class="operator">=</span><span class="literal">TRUE</span><span class="punctuation">,</span> fit.measures<span class="operator">=</span><span class="literal">TRUE</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-
+<h3 id="%E4%BC%B0%E8%AE%A1%E6%A8%A1%E5%9E%8B" tabindex="-1">估计模型</h3>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># m6b就是模型代码, 它在R中数据类型是字符串</span></span><br><span class="line">m6b <span class="operator">&lt;-</span> <span class="string">&#x27;</span></span><br><span class="line"><span class="string"># measurement model</span></span><br><span class="line"><span class="string">adjust =~ motiv + harm + stabi</span></span><br><span class="line"><span class="string">risk =~ verbal + ses + ppsych</span></span><br><span class="line"><span class="string">achieve =~ read + arith + spell</span></span><br><span class="line"><span class="string"># regressions</span></span><br><span class="line"><span class="string">adjust ~ risk </span></span><br><span class="line"><span class="string">achieve ~ adjust + risk</span></span><br><span class="line"><span class="string">&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用SEM函数, 第一个参数是模型代码, 第二个参数是数据(DataFrame)</span></span><br><span class="line">fit6b <span class="operator">&lt;-</span> sem<span class="punctuation">(</span>m6b<span class="punctuation">,</span> data<span class="operator">=</span>dat<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用summary输出结果</span></span><br><span class="line">summary<span class="punctuation">(</span>fit6b<span class="punctuation">,</span> standardized<span class="operator">=</span><span class="literal">TRUE</span><span class="punctuation">,</span> fit.measures<span class="operator">=</span><span class="literal">TRUE</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
 
 <div class="output" contenteditable="true">
 输出(html):<br>
@@ -9287,11 +9304,8 @@ lavaan is FREE software! Please report any bugs.
 
 </div>
 
-
-
 <p>展示模型的概览:</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show<span class="punctuation">(</span>fit6b<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
 
 <div class="output" contenteditable="true">
 输出(stream):<br>
@@ -9311,25 +9325,17 @@ Model Test User Model:
 
 </div>
 
-
 <ul>
 <li>获取模型拟合参数</li>
 </ul>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fits <span class="operator">=</span> fitMeasures<span class="punctuation">(</span>fit6b<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">fits<span class="punctuation">[</span><span class="string">&#x27;rmsea&#x27;</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
-
-
 
 <div class="output" contenteditable="true">
 输出(html):<br>
 <strong>rmsea:</strong> 0.102054633215282
 </div>
 
-
-
-
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fits<span class="punctuation">[</span><span class="built_in">c</span><span class="punctuation">(</span><span class="string">&#x27;chisq&#x27;</span><span class="punctuation">,</span> <span class="string">&#x27;df&#x27;</span><span class="punctuation">,</span>  <span class="string">&#x27;pvalue&#x27;</span><span class="punctuation">,</span> <span class="string">&#x27;cfi&#x27;</span> <span class="punctuation">,</span><span class="string">&#x27;rmsea&#x27;</span><span class="punctuation">,</span> <span class="string">&#x27;srmr&#x27;</span><span class="punctuation">,</span> <span class="string">&#x27;aic&#x27;</span><span class="punctuation">)</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
-
-
 
 <div class="output" contenteditable="true">
 输出(html):<br>
@@ -9342,12 +9348,9 @@ Model Test User Model:
 
 </div>
 
-
-
-<h3 id="计算中介效应和总效应"><a href="#计算中介效应和总效应" class="headerlink" title="计算中介效应和总效应"></a>计算中介效应和总效应</h3><p>我们注意到, 这是一个中介模型, 我们想要检验中介效应以及总效应是否显著, 可以使用下面的代码:</p>
+<h3 id="%E8%AE%A1%E7%AE%97%E4%B8%AD%E4%BB%8B%E6%95%88%E5%BA%94%E5%92%8C%E6%80%BB%E6%95%88%E5%BA%94" tabindex="-1">计算中介效应和总效应</h3>
+<p>我们注意到, 这是一个中介模型, 我们想要检验中介效应以及总效应是否显著, 可以使用下面的代码:</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># m6b就是模型代码, 它在R中数据类型是字符串</span></span><br><span class="line">m6b <span class="operator">&lt;-</span> <span class="string">&#x27;</span></span><br><span class="line"><span class="string"># measurement model</span></span><br><span class="line"><span class="string">adjust =~ motiv + harm + stabi</span></span><br><span class="line"><span class="string">risk =~ verbal + ses + ppsych</span></span><br><span class="line"><span class="string">achieve =~ read + arith + spell</span></span><br><span class="line"><span class="string"># regressions</span></span><br><span class="line"><span class="string">adjust ~ a*risk # 设置参数a</span></span><br><span class="line"><span class="string">achieve ~ b*adjust + c*risk # 设置参数b和c</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 中介效应</span></span><br><span class="line"><span class="string">indirect := a * b</span></span><br><span class="line"><span class="string">total := a*b + c</span></span><br><span class="line"><span class="string">&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用SEM函数, 第一个参数是模型代码, 第二个参数是数据(DataFrame)</span></span><br><span class="line">fit6b <span class="operator">&lt;-</span> sem<span class="punctuation">(</span>m6b<span class="punctuation">,</span> data<span class="operator">=</span>dat<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用summary输出结果</span></span><br><span class="line">summary<span class="punctuation">(</span>fit6b<span class="punctuation">,</span> standardized<span class="operator">=</span><span class="literal">TRUE</span><span class="punctuation">,</span> fit.measures<span class="operator">=</span><span class="literal">TRUE</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-
 
 <div class="output" contenteditable="true">
 输出(html):<br>
@@ -9463,13 +9466,18 @@ Model Test User Model:
 
 </div>
 
-
-
-<h2 id="视频教程"><a href="#视频教程" class="headerlink" title="视频教程"></a>视频教程</h2><iframe src="//player.bilibili.com/player.html?bvid=BV1RP411H79W&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:900px;height:600px"> </iframe>
-
+<h2 id="%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B" tabindex="-1">视频教程</h2>
+<iframe src="//player.bilibili.com/player.html?bvid=BV1RP411H79W&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:900px;height:600px"> </iframe>
 <blockquote>
-<p><strong>注意</strong><br>统计咨询请加QQ 2726725926, 微信 shujufenxidaizuo,  SPSS统计咨询是收费的, 不论什么模型都可以, 只限制于1个研究内.<br>跟我学统计可以代做分析, 每单几百元不等.<br>本文由jupyter notebook转换而来, 您可以在这里下载<a href="R%E8%AF%AD%E8%A8%80%E5%81%9A%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B%E5%85%A5%E9%97%A8.ipynb">notebook</a><br>可以在微博上@mlln-cn向我免费题问<br>请记住我的网址: mlln.cn 或者 jupyter.cn</p>
+<p><strong>注意</strong><br>
+统计咨询请加QQ 2726725926, 微信 shujufenxidaizuo,  SPSS统计咨询是收费的, 不论什么模型都可以, 只限制于1个研究内.<br>
+跟我学统计可以代做分析, 每单几百元不等.<br>
+本文由jupyter notebook转换而来, 您可以在这里下载<a href="R%E8%AF%AD%E8%A8%80%E5%81%9A%E7%BB%93%E6%9E%84%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B%E5%85%A5%E9%97%A8.ipynb">notebook</a><br>
+可以在微博上@mlln-cn向我免费题问<br>
+请记住我的网址: <a href="http://mlln.cn">mlln.cn</a> 或者 <a target="_blank" rel="noopener" href="http://jupyter.cn">jupyter.cn</a></p>
 </blockquote>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
 
 </div>
 
