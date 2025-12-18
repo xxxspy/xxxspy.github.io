@@ -209,9 +209,9 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2025/06/21/anova/">
+									<a href="/2025/06/21/anova-what-is-it/">
                      
-										    anova
+										    anova-what-is-it
                      
 									</a>
 								</li>
@@ -220,9 +220,9 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2025/06/21/anova-what-is-it/">
+									<a href="/2025/06/21/anova/">
                      
-										    anova-what-is-it
+										    anova
                      
 									</a>
 								</li>
@@ -1030,6 +1030,17 @@
 									<a href="/2015/03/23/SPSS%E5%AE%9E%E4%BE%8B%EF%BC%9A%5B9%5D%E5%9B%A0%E5%AD%90%E8%BD%BD%E8%8D%B7%E5%9B%BE%E6%80%8E%E4%B9%88%E5%81%9A/">
                      
 										    SPSS实例：[9]因子载荷图怎么做
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/12/18/000%20SPSS/SPSS%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%A8%A1%E6%9D%BF-%E7%A0%94%E7%A9%B6%E7%94%9F%E6%AF%95%E4%B8%9A%E8%AE%BA%E6%96%87%E9%97%AE%E5%8D%B7%E7%A0%94%E7%A9%B6/">
+                     
+										    SPSS数据分析模板-研究生毕业论文问卷研究
                      
 									</a>
 								</li>
@@ -9035,13 +9046,15 @@
 		<div id="index">
 	
 		<div class="index-li">
-			<a href="/2018/12/23/003%20Stata/stata%E6%95%99%E7%A8%8B11-raschtest%E6%A8%A1%E5%9D%97%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE%E5%8F%8D%E5%BA%94%E8%AF%95%E9%A2%98%E5%88%86%E6%9E%90/">
+			<a href="/2018/12/23/003%20Stata/stata%E6%95%99%E7%A8%8B10-%E9%A1%B9%E7%9B%AE%E5%8F%8D%E5%BA%94%E4%BD%BF%E7%94%A8irt%E5%91%BD%E4%BB%A4%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%8F%82%E6%95%B0logit%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/">
 				<h2 class="index-title">
-					stata教程11-raschtest模块进行项目反应试题分析
+					stata教程10-项目反应使用irt命令进行单参数logit参数估计
 				</h2>
 				<div class="index-brief">
-					本篇文章中用到的很多代码来自这里: https://www.stata-journal.com/sjpdf.html?articlenum=st0119  , 英文好的朋友可以直接看这个文章就行。
-另外, 这篇教程只是展示一下stata在IRT分析时能做什么, 并没有对IRT的相关知识进行介绍。 另
+					上一篇文章我们介绍了如何使用clogit命令估计题目的难度参数, 从这篇文章开始我们主要是介绍一下stata进行项目反应分析的原理。下面我们开始使用stata本身就支持的irt命令, 用更好的工具进行项目特征的分析。
+加载数据
+我们仍然使用上一篇的数据, 可以直接从网络中加载数据:
+1use htt
 					...
 				</div>
 			</a>
@@ -9054,15 +9067,13 @@
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2018/12/23/003%20Stata/stata%E6%95%99%E7%A8%8B10-%E9%A1%B9%E7%9B%AE%E5%8F%8D%E5%BA%94%E4%BD%BF%E7%94%A8irt%E5%91%BD%E4%BB%A4%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%8F%82%E6%95%B0logit%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/">
+			<a href="/2018/12/23/003%20Stata/stata%E6%95%99%E7%A8%8B11-raschtest%E6%A8%A1%E5%9D%97%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE%E5%8F%8D%E5%BA%94%E8%AF%95%E9%A2%98%E5%88%86%E6%9E%90/">
 				<h2 class="index-title">
-					stata教程10-项目反应使用irt命令进行单参数logit参数估计
+					stata教程11-raschtest模块进行项目反应试题分析
 				</h2>
 				<div class="index-brief">
-					上一篇文章我们介绍了如何使用clogit命令估计题目的难度参数, 从这篇文章开始我们主要是介绍一下stata进行项目反应分析的原理。下面我们开始使用stata本身就支持的irt命令, 用更好的工具进行项目特征的分析。
-加载数据
-我们仍然使用上一篇的数据, 可以直接从网络中加载数据:
-1use htt
+					本篇文章中用到的很多代码来自这里: https://www.stata-journal.com/sjpdf.html?articlenum=st0119  , 英文好的朋友可以直接看这个文章就行。
+另外, 这篇教程只是展示一下stata在IRT分析时能做什么, 并没有对IRT的相关知识进行介绍。 另
 					...
 				</div>
 			</a>
